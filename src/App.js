@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Projectile from "./components/Projectile";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      projectiles: [],
+      index: 0
+    };
+  }
+
+  componentDidMount() {
+    setInterval(() => {
+      const { projectiles, index } = this.state;
+      this.setState({
+        projectiles: [...projectiles, index],
+        index: index + 1
+      });
+      console.log(projectiles);
+    }, 1000);
+  }
+
+  render() {
+    const { projectiles } = this.state;
+    return (
+      <div className="App">
+        {projectiles.map(projectile => (
+          <Projectile key={projectile} />
+        ))}
+      </div>
+    );
+  }
 }
 
 export default App;
