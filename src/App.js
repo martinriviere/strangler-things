@@ -18,16 +18,27 @@ class App extends Component {
         projectiles: [...projectiles, index],
         index: index + 1
       });
-      console.log(projectiles);
+      // console.log(projectiles);
     }, 1000);
   }
+
+  handleDelete = projectileId => {
+    const projectiles = this.state.projectiles.filter(
+      projectile => projectile !== projectileId
+    );
+    this.setState({ projectiles: projectiles });
+  };
 
   render() {
     const { projectiles } = this.state;
     return (
       <div className="App">
         {projectiles.map(projectile => (
-          <Projectile key={projectile} />
+          <Projectile
+            id={projectile}
+            onDelete={this.handleDelete}
+            key={projectile}
+          />
         ))}
       </div>
     );

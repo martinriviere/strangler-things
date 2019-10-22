@@ -1,6 +1,9 @@
 .App {
-  width: 375px;
-  height: 812px;
+  width: 100vw;
+  height: 100vh;
   border: 1px solid black;
   margin: auto;
+  background-image: url(./Design/Images/GameScreen.png);
+  background-size: 100% 100%;
+  position: relative;
 }

@@ -1,29 +1,43 @@
 import React, { Component } from "react";
 
 class Projectile extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      y: 20,
+      y: "16.2%",
       display: "block"
     };
+    this.myRef = React.createRef();
   }
 
   fallsDown = () => {
-    this.state.y < 812 - 60
-      ? this.setState({ y: this.state.y + 10 })
-      : this.setState({ display: "none" });
-    setTimeout(this.fallsDown, 20);
+    const { y } = this.state;
+    if (y < "62%") {
+      this.setState({ y: `${parseInt(y.slice(0, y.length - 1)) + 1}%` });
+    } else {
+      console.log("hide");
+      this.setState({ display: "none" });
+    }
   };
 
   componentDidMount() {
-    this.fallsDown();
+    this.interval = setInterval(this.fallsDown, 20);
+  }
+
+  componentDidUpdate() {
+    if (this.state.display === "none") {
+      this.props.onDelete(this.props.id);
+      window.clearTimeout(this.interval);
+    }
   }
 
   render() {
     const { y, display } = this.state;
     return (
-      <div style={{ ...styles.projectile, top: y, display: display }}></div>
+      <div
+        ref={this.myRef}
+        style={{ ...styles.projectile, top: y, display: display }}
+      ></div>
     );
   }
 }
