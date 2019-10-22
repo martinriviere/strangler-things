@@ -1,23 +1,41 @@
 import React, {Component} from 'react';
+import heart from "../Design/Image/pixel-heart-2779422_960_720-1.png"
 
-let totalLife = 5
-
-
+const heartStyle = {
+    backgroundImage : `url(${heart})`,
+    width : '50px',
+    height : '50px',
+    left : '50px',
+    backgroundSize : 'cover'
+}
 class HomerLife extends Component{
     constructor(props){
         super(props);
-        this.state = {};
+        this.state = {
+            lifeNumber : 5,
+            lifeMax : 5
+        };
         
     }
     initializeLifeBar = () =>{
-        const lifeBarArr=[];
-        for (let i=0; i< this.totalLife; i++){
-            lifeBarArr.push(<div style ={{
-                backgroundImage : "../Design/Ressources image/pixel-heart-2779422_960_720-1.png",
-                width : "15px",
-                heigth : "15px"
-            }}/>)
+        const lifeBarDom = [];
+        for (let i=0; i< this.state.lifeNumber; i++){
+            lifeBarDom.push(<div style ={heartStyle} key={i}/>)
         }
+        return lifeBarDom
+    }
+    reduceLife = () =>{
+        this.state.lifeNumber !== 1
+            ? this.setState(state =>{
+                return {lifeNumber : state.lifeNumber -1}}
+                )
+            : alert("You're a loser GAMEOVER") // Component gameOver!!!!
+    }
+    addLife = () =>{
+        this.state.lifeNumber < this.state.lifeMax
+            && this.setState(state =>{
+                return {lifeNumber : state.lifeNumber +1}}
+            )
     }
     render(){
         return(
@@ -25,10 +43,13 @@ class HomerLife extends Component{
             flex:1,
             flexDirection : "column",
             position : "absolute",
-            x : "20px",
-            y : "100px"}}>
+            height:'100px',
+            width : '30px',
+            left : "30px",
+            top : "20px"
+            }}>
             {this.initializeLifeBar()}
-        </div>)
-    }
+        </div>
+        )}
 }
 export default HomerLife
