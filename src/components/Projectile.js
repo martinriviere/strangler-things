@@ -12,10 +12,10 @@ class Projectile extends Component {
 
   fallsDown = () => {
     const { y } = this.state;
+    // console.log(y);
     if (y < "62%") {
       this.setState({ y: `${parseInt(y.slice(0, y.length - 1)) + 1}%` });
     } else {
-      console.log("hide");
       this.setState({ display: "none" });
     }
   };
@@ -33,10 +33,20 @@ class Projectile extends Component {
 
   render() {
     const { y, display } = this.state;
+    const size =
+      40 *
+      (1 + (0.89 * (parseInt(y.slice(0, y.length - 1)) - 16.2)) / (62 - 16.2));
     return (
       <div
         ref={this.myRef}
-        style={{ ...styles.projectile, top: y, display: display }}
+        style={{
+          ...styles.projectile,
+          height: size,
+          width: size,
+          marginLeft: -size / 2,
+          top: y,
+          display: display
+        }}
       ></div>
     );
   }
@@ -44,13 +54,10 @@ class Projectile extends Component {
 
 const styles = {
   projectile: {
-    height: 50,
-    width: 50,
     borderRadius: "50%",
     backgroundColor: "red",
     position: "absolute",
-    left: "50%",
-    marginLeft: -25
+    left: "50%"
   }
 };
 
