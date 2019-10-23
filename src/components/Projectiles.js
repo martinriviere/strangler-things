@@ -44,8 +44,8 @@ class Projectiles extends Component {
         style={{
           position: "absolute",
           width: "100vw",
-          height: "83.8vh",
-          top: "16.2%"
+          height: "87vh",
+          top: "13%"
         }}
       >
         <div style={{ position: "relative", height: "100%" }}>

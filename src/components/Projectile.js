@@ -16,7 +16,7 @@ class Projectile extends Component {
   fallsDown = () => {
     const { y } = this.state;
     // console.log(y);
-    if (y < 62) {
+    if (y < 50) {
       this.setState({ y: y + 0.5 });
     } else {
       this.setState({ active: false });
@@ -37,7 +37,7 @@ class Projectile extends Component {
   render() {
     const { y, coef } = this.state;
     const { projectile } = this.props;
-    const size = 40 * (1 + (0.89 * (y - 16.2)) / (62 - 16.2));
+    const size = 40 * (1 + (0.89 * y) / 50);
     return (
       <img
         ref={this.myRef}
@@ -47,7 +47,7 @@ class Projectile extends Component {
           width: size,
           marginLeft: -size / 2,
           top: y + "%",
-          left: 50 + y * coef + "%"
+          left: 55 + y * coef + "%"
         }}
         alt=""
       />
