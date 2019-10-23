@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import HomerLife from "./components/HomerLife.js";
 import Projectile from "./components/Projectile";
 import Doughnut from "./Design/Projectiles/doughnut.png";
 import Duff from "./Design/Projectiles/duff.png";
@@ -37,6 +38,7 @@ class App extends Component {
     const { projectiles } = this.state;
     return (
       <div className="App">
+        <HomerLife />
         {projectiles.map(projectile => (
           <Projectile
             id={projectile}
