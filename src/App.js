@@ -1,12 +1,21 @@
-import React from 'react';
-import BackgroundImagePage from './components/background'
+import React, { Component } from "react";
+import "./App.css";
+import HomerLife from "./components/HomerLife.js";
+import Projectiles from "./components/Projectiles";
 
-function App() {
-  return (
-    <div className="App">
-        <BackgroundImagePage />
-    </div>
-  );
+class App extends Component {
+  // constructor() {
+  //   super();
+  // }
+
+  render() {
+    return (
+      <div className="App">
+        <HomerLife />
+        <Projectiles />
+      </div>
+    );
+  }
 }
 
 export default App;
