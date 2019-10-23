@@ -1,12 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import HomerLife from './components/HomerLife.js'
+import SwipeDetection from './components/SwipeDetection';
 
 function App() {
   return (
     <div className="App">
         <HomerLife/>
+        <SwipeDetection />
     </div>
   );
 }
