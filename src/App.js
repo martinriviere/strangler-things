@@ -9,11 +9,13 @@ class App extends Component {
   constructor() {
     super();
     this.state={
-      movLeft:false,
-      movRight:false,
-      movUp:false,
-      movDown:false
+      move: null
   } 
+  }
+
+  handleSwipe = event => {
+    this.setState({ move: event });
+    console.log(this.state.move)
   }
 
   render() {
@@ -21,7 +23,7 @@ class App extends Component {
       <div className="App">
         <HomerLife />
         <Projectiles />
-        <SwipeDetection />
+        <SwipeDetection handleSwipe={this.handleSwipe}/>
       </div>
     );
   }

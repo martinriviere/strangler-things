@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Swipe from 'react-easy-swipe';
+import { Swipeable } from 'react-swipeable'
+
 
 class SwipeDetection extends Component {
     constructor(props){
@@ -7,36 +8,21 @@ class SwipeDetection extends Component {
         this.state={
         }
     }
+ 
+    onSwipedLeft = (event) => {
+        if (event.absX < 30) this.props.handleSwipe("touch");
+        else this.props.handleSwipe("left");
+    }
 
-    
-    onSwipeMove(position, event) {
-        if (position.x < -30) console.log("left");
-        else if (position.x > 30)  console.log("right");
-        else console.log("touch");
+    onSwipedRight = (event) => {
+        if (event.absX < 30) this.props.handleSwipe("touch");
+        else this.props.handleSwipe("right");
     }
     
-    // onSwipeLeft(position, event) {
-    //     console.log(position.x)
-    //     if (position.x > -30) console.log("touch")
-    //     // this.setState({movX:true});
-    //     else console.log("left")
-    //     }
-
-    // onSwipeRight(event) {
-    //     console.log('Right');
-    //     }
-    
-    // // onSwipeDown(event) {
-    // //     console.log('Down')
-    // // }
-
-    // onSwipeUp(event){
-    //     console.log ('Up')
-    // }
-    
-    
-
-    
+    onClick = (event) => {
+        this.props.handleSwipe("touch");
+    }
+      
     render() {
     const boxStyle = {
         width: '100vw',
@@ -44,15 +30,12 @@ class SwipeDetection extends Component {
     };
     
     return (
-        <Swipe
-            onSwipeMove={this.onSwipeMove}
-            // onSwipeLeft={this.onSwipeLeft}
-            // onSwipeRight={this.onSwipeRight}
-            // onSwipeUp={this.onSwipeUp}
-            // onSwipeDown={this.onSwipeDown}
+        <Swipeable
+            onSwipedLeft={this.onSwipedLeft}
+            onSwipedRight={this.onSwipedRight}
         >
-            <div style={boxStyle}></div>
-        </Swipe>
+            <div onClick={this.onClick} style={boxStyle}></div>
+        </Swipeable>
     );
     }
 }
