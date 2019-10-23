@@ -8,11 +8,13 @@ const charactersStyle = {
 }
 const bartStyle = {
     height: "20vh",
-    top : "1vh"
+    top : "1vh",
+    zIndex : -1,
 }
 const homerStyle = {
-    bottom : 0,
+    bottom : "-5vh",
     height: "40vh",
+    zIndex: 2,
     }
 class Characters extends Component{
     // constructor(props){
@@ -27,8 +29,8 @@ class Characters extends Component{
             flexDirection: 'column',
             height: "100vh",
             width: "100vw"}}>
-                <img style={{...bartStyle, ...charactersStyle}} src={bart} key = 'bart' />
-                <img style={{...homerStyle, ...charactersStyle}} src ={homer} key = 'homer'></img>
+                <img style={{...bartStyle, ...charactersStyle}} src={bart} alt = 'bart' />
+                <img style={{...homerStyle, ...charactersStyle}} src ={homer} alt = 'homer'></img>
             </div>
         )
     }

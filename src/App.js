@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import HomerLife from "./components/HomerLife.js";
 import Projectiles from "./components/Projectiles";
+import Characters from "./components/Characters";
 
 class App extends Component {
   // constructor() {
@@ -12,6 +13,7 @@ class App extends Component {
     return (
       <div className="App">
         <HomerLife />
+        <Characters />
         <Projectiles />
       </div>
     );
