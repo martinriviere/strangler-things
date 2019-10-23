@@ -1,14 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import HomerLife from './components/HomerLife.js'
+import React, { Component } from "react";
+import "./App.css";
+import HomerLife from "./components/HomerLife.js";
+import Projectiles from "./components/Projectiles";
 
-function App() {
-  return (
-    <div className="App">
-        <HomerLife/>
-    </div>
-  );
+class App extends Component {
+  // constructor() {
+  //   super();
+  // }
+
+  render() {
+    return (
+      <div className="App">
+        <HomerLife />
+        <Projectiles />
+      </div>
+    );
+  }
 }
 
 export default App;
