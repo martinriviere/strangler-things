@@ -5,7 +5,7 @@ class Projectile extends Component {
     super(props);
     this.state = {
       y: "16.2%",
-      display: "block"
+      active: true
     };
     this.myRef = React.createRef();
     this.speed = 20;
@@ -17,7 +17,7 @@ class Projectile extends Component {
     if (y < "62%") {
       this.setState({ y: `${parseFloat(y.slice(0, y.length - 1)) + 0.5}%` });
     } else {
-      this.setState({ display: "none" });
+      this.setState({ active: false });
     }
   };
 
@@ -26,7 +26,7 @@ class Projectile extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.display === "none") {
+    if (!this.state.active) {
       this.props.onDelete(this.props.id);
       window.clearTimeout(this.interval);
     }
@@ -62,7 +62,8 @@ const styles = {
     // backgroundImage: Doughnut,
     // backgroundSize: "cover",
     position: "absolute",
-    left: "50%"
+    left: "50%",
+    filter: "drop-shadow(0 30px 2px rgba(0, 0, 0, 0.3))"
   }
 };
 
