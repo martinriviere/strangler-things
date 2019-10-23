@@ -8,20 +8,21 @@ class Projectile extends Component {
       display: "block"
     };
     this.myRef = React.createRef();
+    this.speed = 20;
   }
 
   fallsDown = () => {
     const { y } = this.state;
     // console.log(y);
     if (y < "62%") {
-      this.setState({ y: `${parseInt(y.slice(0, y.length - 1)) + 1}%` });
+      this.setState({ y: `${parseFloat(y.slice(0, y.length - 1)) + 0.5}%` });
     } else {
       this.setState({ display: "none" });
     }
   };
 
   componentDidMount() {
-    this.interval = setInterval(this.fallsDown, 20);
+    this.interval = setInterval(this.fallsDown, this.speed);
   }
 
   componentDidUpdate() {
@@ -33,29 +34,33 @@ class Projectile extends Component {
 
   render() {
     const { y, display } = this.state;
+    const { projectile } = this.props;
     const size =
       40 *
       (1 + (0.89 * (parseInt(y.slice(0, y.length - 1)) - 16.2)) / (62 - 16.2));
     return (
-      <div
+      <img
         ref={this.myRef}
+        src={projectile}
         style={{
           ...styles.projectile,
-          height: size,
           width: size,
           marginLeft: -size / 2,
           top: y,
           display: display
         }}
-      ></div>
+        alt=""
+      />
     );
   }
 }
 
 const styles = {
   projectile: {
-    borderRadius: "50%",
-    backgroundColor: "red",
+    // borderRadius: "50%",
+    // backgroundColor: "red",
+    // backgroundImage: Doughnut,
+    // backgroundSize: "cover",
     position: "absolute",
     left: "50%"
   }

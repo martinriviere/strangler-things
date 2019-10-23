@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
 import Projectile from "./components/Projectile";
+import Doughnut from "./Design/Projectiles/doughnut.png";
+import Duff from "./Design/Projectiles/duff.png";
+import Brocoli from "./Design/Projectiles/brocoli.png";
+import Flanders from "./Design/Projectiles/flanders.png";
 
 class App extends Component {
   constructor() {
@@ -19,7 +23,7 @@ class App extends Component {
         index: index + 1
       });
       // console.log(projectiles);
-    }, 1000);
+    }, 500);
   }
 
   handleDelete = projectileId => {
@@ -36,6 +40,7 @@ class App extends Component {
         {projectiles.map(projectile => (
           <Projectile
             id={projectile}
+            projectile={Doughnut}
             onDelete={this.handleDelete}
             key={projectile}
           />
