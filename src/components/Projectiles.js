@@ -24,7 +24,6 @@ class Projectiles extends Component {
         projectiles: [...projectiles, {id: index, image: images[randomOf(4)]}],
         index: index + 1
       });
-      console.log(projectiles);
     }, 500);
   }
 

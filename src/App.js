@@ -6,9 +6,15 @@ import SwipeDetection from './components/SwipeDetection';
 
 
 class App extends Component {
-  // constructor() {
-  //   super();
-  // }
+  constructor() {
+    super();
+    this.state={
+      movLeft:false,
+      movRight:false,
+      movUp:false,
+      movDown:false
+  } 
+  }
 
   render() {
     return (
@@ -19,7 +25,6 @@ class App extends Component {
       </div>
     );
   }
->>>>>>> dev
 }
 
 export default App;

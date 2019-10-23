@@ -5,61 +5,53 @@ class SwipeDetection extends Component {
     constructor(props){
         super(props)
         this.state={
-            movLeft:false,
-            movRight:false,
-            movUp:false,
-            movDown:false
         }
     }
 
     
-    onSwipeStart(event) {
-        console.log ('Start swiping...', event);
-      }
-     
     onSwipeMove(position, event) {
-        console.log(`Moved ${position.x} pixels horizontally`, event);
-        console.log(`Moved ${position.y} pixels vertically`, event);
+        if (position.x < -30) console.log("left");
+        else if (position.x > 30)  console.log("right");
+        else console.log("touch");
     }
     
-    onSwipeLeft(event) {
-        this.setState({movX:true});
-        console.log(this.state)
-        }
+    // onSwipeLeft(position, event) {
+    //     console.log(position.x)
+    //     if (position.x > -30) console.log("touch")
+    //     // this.setState({movX:true});
+    //     else console.log("left")
+    //     }
 
-    onSwipeRight(event) {
-        console.log('Right');
-        }
+    // onSwipeRight(event) {
+    //     console.log('Right');
+    //     }
     
-    onSwipeDown(event) {
-        console.log('Down')
-    }
+    // // onSwipeDown(event) {
+    // //     console.log('Down')
+    // // }
 
-    onSwipeUp(event){
-        console.log ('Up')
-    }
+    // onSwipeUp(event){
+    //     console.log ('Up')
+    // }
     
     
 
     
     render() {
     const boxStyle = {
-        width: '100%',
-        height: '300px',
-        border: '1px solid black',
-        background: '#ccc',
-        padding: '20px',
-        fontSize: '3em'
+        width: '100vw',
+        height: '100vh',
     };
     
     return (
         <Swipe
-            onSwipeLeft={this.onSwipeLeft}
-            onSwipeRight={this.onSwipeRight}
-            onSwipeUp={this.onSwipeUp}
-            onSwipeDown={this.onSwipeDown}
+            onSwipeMove={this.onSwipeMove}
+            // onSwipeLeft={this.onSwipeLeft}
+            // onSwipeRight={this.onSwipeRight}
+            // onSwipeUp={this.onSwipeUp}
+            // onSwipeDown={this.onSwipeDown}
         >
-            <div style={boxStyle}>Open the console and swipe me</div>
+            <div style={boxStyle}></div>
         </Swipe>
     );
     }
