@@ -17,9 +17,6 @@ const homerStyle = {
     zIndex: 2,
     }
 class Characters extends Component{
-    // constructor(props){
-    //     super(props)
-   // }
     render(){
         return(
             <div id='characters' 
