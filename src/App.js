@@ -3,7 +3,7 @@ import "./App.css";
 import HomerLife from "./components/HomerLife.js";
 import Projectiles from "./components/Projectiles";
 import SwipeDetection from './components/SwipeDetection';
-
+import Characters from "./components/Characters";
 
 class App extends Component {
   constructor() {
@@ -22,6 +22,7 @@ class App extends Component {
     return (
       <div className="App">
         <HomerLife />
+        <Characters />
         <Projectiles />
         <SwipeDetection handleSwipe={this.handleSwipe}/>
       </div>
