@@ -3,10 +3,9 @@ import heart from "../Design/Images/pixel-heart-2779422_960_720-1.png";
 
 const heartStyle = {
   backgroundImage: `url(${heart})`,
-  width: "50px",
-  height: "50px",
-  left: "50px",
-  backgroundSize: "cover"
+  width: "4vh",
+  height: "4vh",
+  backgroundSize: "100% 100%"
 };
 class HomerLife extends Component {
   constructor(props) {
@@ -44,8 +43,6 @@ class HomerLife extends Component {
           flex: 1,
           flexDirection: "column",
           position: "absolute",
-          height: "100px",
-          width: "30px",
           left: "30px",
           top: "20px"
         }}

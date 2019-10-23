@@ -1,8 +1,4 @@
 import React, { Component } from "react";
-import Doughnut from "../Design/Projectiles/doughnut.png";
-import Duff from "../Design/Projectiles/duff.png";
-import Brocoli from "../Design/Projectiles/brocoli.png";
-import Flanders from "../Design/Projectiles/flanders.png";
 
 class Projectile extends Component {
   constructor(props) {

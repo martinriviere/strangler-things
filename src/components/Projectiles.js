@@ -6,7 +6,7 @@ import Brocoli from "../Design/Projectiles/brocoli.png";
 import Flanders from "../Design/Projectiles/flanders.png";
 import { randomOf } from "./helpers";
 
-const images = [Doughnut, Duff, Brocoli, Flanders]
+const images = [Doughnut, Duff, Brocoli, Flanders];
 
 class Projectiles extends Component {
   constructor() {
@@ -21,10 +21,12 @@ class Projectiles extends Component {
     setInterval(() => {
       const { projectiles, index } = this.state;
       this.setState({
-        projectiles: [...projectiles, {id: index, image: images[randomOf(4)]}],
+        projectiles: [
+          ...projectiles,
+          { id: index, image: images[randomOf(4)] }
+        ],
         index: index + 1
       });
-      console.log(projectiles);
     }, 500);
   }
 
