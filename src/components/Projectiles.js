@@ -40,15 +40,24 @@ class Projectiles extends Component {
   render() {
     const { projectiles } = this.state;
     return (
-      <div>
-        {projectiles.map(projectile => (
-          <Projectile
-            id={projectile.id}
-            projectile={projectile.image}
-            onDelete={this.handleDelete}
-            key={projectile.id}
-          />
-        ))}
+      <div
+        style={{
+          position: "absolute",
+          width: "100vw",
+          height: "87vh",
+          top: "13%"
+        }}
+      >
+        <div style={{ position: "relative", height: "100%" }}>
+          {projectiles.map(projectile => (
+            <Projectile
+              id={projectile.id}
+              projectile={projectile.image}
+              onDelete={this.handleDelete}
+              key={projectile.id}
+            />
+          ))}
+        </div>
       </div>
     );
   }

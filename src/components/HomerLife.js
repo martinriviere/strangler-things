@@ -8,10 +8,6 @@ const heartStyle = {
   backgroundSize: "100% 100%"
 };
 class HomerLife extends Component {
-  constructor(props) {
-    super(props);
-
-  }
   initializeLifeBar = () => {
     const lifeBarDom = [];
     for (let i = 0; i < this.props.lifeNumber; i++) {

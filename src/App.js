@@ -2,24 +2,25 @@ import React, { Component } from "react";
 import "./App.css";
 import HomerLife from "./components/HomerLife.js";
 import Projectiles from "./components/Projectiles";
-import SwipeDetection from './components/SwipeDetection';
+import SwipeDetection from "./components/SwipeDetection";
 import Characters from "./components/Characters";
 
 class App extends Component {
   constructor() {
     super();
-    this.state={
+    this.state = {
       move: null,
       lifeNumber: 5,
       lifeMax: 5
-  } 
+    };
   }
 
   handleSwipe = event => {
     this.setState({ move: event });
-    console.log(this.state.move)
-  }
-  reduceLife = () => { // { e => this.reduceLife()} pour l'utiliser
+    console.log(this.state.move);
+  };
+  reduceLife = () => {
+    // { e => this.reduceLife()} pour l'utiliser
     this.state.lifeNumber > 1
       ? this.setState(state => {
           return { lifeNumber: state.lifeNumber - 1 };
@@ -35,10 +36,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <HomerLife lifeNumber = {this.state.lifeNumber} lifeMax = {this.state.lifeMax} />
+        <HomerLife
+          lifeNumber={this.state.lifeNumber}
+          lifeMax={this.state.lifeMax}
+        />
         <Characters />
-         <Projectiles /> 
-        <SwipeDetection handleSwipe={this.handleSwipe}/>
+        <Projectiles />
+        <SwipeDetection handleSwipe={this.handleSwipe} />
       </div>
     );
   }
