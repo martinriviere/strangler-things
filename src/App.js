@@ -29,14 +29,11 @@ class App extends Component {
       { name: "brocoli", image: Brocoli },
       { name: "duff", image: Duff },
       { name: "flanders", image: Flanders }
-    ]
+    ];
     setInterval(() => {
       const { projectiles, index } = this.state;
       this.setState({
-        projectiles: [
-          ...projectiles,
-          { id: index, type: items[randomOf(4)] }
-        ],
+        projectiles: [...projectiles, { id: index, type: items[randomOf(4)] }],
         index: index + 1
       });
     }, 1200);
@@ -52,17 +49,23 @@ class App extends Component {
   handleSwipe = event => {
     if (event === "right") {
       this.state.swipeZone.forEach(projectile => {
-        if (projectile.type.name === "duff") this.deleteProjectile(projectile.id)
+        if (projectile.type.name === "duff")
+          this.deleteProjectile(projectile.id);
       });
     }
     if (event === "left") {
       this.state.swipeZone.forEach(projectile => {
-        if (projectile.type.name === "doughnut") this.deleteProjectile(projectile.id)
+        if (projectile.type.name === "doughnut")
+          this.deleteProjectile(projectile.id);
       });
     }
     if (event === "touch") {
       this.state.swipeZone.forEach(projectile => {
-        if (projectile.type.name === "brocoli" || projectile.type.name === "flanders") this.deleteProjectile(projectile.id)
+        if (
+          projectile.type.name === "brocoli" ||
+          projectile.type.name === "flanders"
+        )
+          this.deleteProjectile(projectile.id);
       });
     }
   };
@@ -83,16 +86,16 @@ class App extends Component {
       });
   };
 
-  addProjectileToSwipeZone = (projectile) => {
-    this.setState({swipeZone:[...this.state.swipeZone, projectile] })
-  }
+  addProjectileToSwipeZone = projectile => {
+    this.setState({ swipeZone: [...this.state.swipeZone, projectile] });
+  };
 
-  removeProjectileFromSwipeZone = (projectileId) => {
+  removeProjectileFromSwipeZone = projectileId => {
     const projectiles = this.state.swipeZone.filter(
       projectileInSwipeZone => projectileInSwipeZone.id !== projectileId
     );
     this.setState({ swipeZone: projectiles });
-  }
+  };
 
   render() {
     return (
@@ -102,7 +105,13 @@ class App extends Component {
           lifeMax={this.state.lifeMax}
         />
         <Characters />
-        <Projectiles projectiles={this.state.projectiles} deleteProjectile={this.deleteProjectile} addProjectileToSwipeZone={this.addProjectileToSwipeZone} removeProjectileFromSwipeZone={this.removeProjectileFromSwipeZone} />
+        <Projectiles
+          projectiles={this.state.projectiles}
+          deleteProjectile={this.deleteProjectile}
+          addProjectileToSwipeZone={this.addProjectileToSwipeZone}
+          removeProjectileFromSwipeZone={this.removeProjectileFromSwipeZone}
+          reduceLife={this.reduceLife}
+        />
         <SwipeDetection handleSwipe={this.handleSwipe} />
       </div>
     );

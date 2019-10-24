@@ -1,7 +1,7 @@
 import React from "react";
 import Projectile from "./Projectile";
 
-function Projectiles({ projectiles, addProjectileToSwipeZone,removeProjectileFromSwipeZone, deleteProjectile }) {
+function Projectiles({ projectiles, addProjectileToSwipeZone,removeProjectileFromSwipeZone, deleteProjectile, reduceLife }) {
   return (
     <div
       style={{
@@ -19,6 +19,7 @@ function Projectiles({ projectiles, addProjectileToSwipeZone,removeProjectileFro
             projectile={projectile}
             onDelete={deleteProjectile}
             key={projectile.id}
+            reduceLife={reduceLife}
           />
         ))}
       </div>
