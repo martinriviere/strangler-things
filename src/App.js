@@ -4,6 +4,8 @@ import HomerLife from "./components/HomerLife.js";
 import Projectiles from "./components/Projectiles";
 import SwipeDetection from "./components/SwipeDetection";
 import Characters from "./components/Characters";
+import ModalWin from "./components/modalwin";
+import ModalLose from "./components/modallose";
 
 class App extends Component {
   constructor() {
@@ -41,8 +43,11 @@ class App extends Component {
           lifeMax={this.state.lifeMax}
         />
         <Characters />
+        <ModalWin />
+        <ModalLose />
         <Projectiles />
         <SwipeDetection handleSwipe={this.handleSwipe} />
+        
       </div>
     );
   }

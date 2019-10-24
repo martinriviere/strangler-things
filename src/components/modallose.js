@@ -2,9 +2,9 @@ import React from 'react';
 import Modal from 'react-responsive-modal';
 import '../index'
 
-class ModalWin extends React.Component {
+class ModalLose extends React.Component {
   state = {
-    open: false,
+    open: true,
   };
 
   onOpenModal = () => {
@@ -21,8 +21,8 @@ class ModalWin extends React.Component {
       <div className="modal-div">
         <button onClick={this.onOpenModal}>Open modal</button>
         <Modal open={open} onClose={this.onCloseModal} center styles={{ overlay: { background: "rgba(0, 0, 0, 0.47)" } }}>
-        <div id="modalWin">  
-          <p>YOU WIN ! !</p><br/>
+        <div id="modalLose">  
+          <p>YOU LOSE ! !</p><br/>
           <p>Continue</p>
           <p>Back to title</p>
         </div> 
@@ -32,4 +32,4 @@ class ModalWin extends React.Component {
   }
 }
 
-export default ModalWin;
+export default ModalLose;
