@@ -4,8 +4,9 @@ class Projectile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      y: "16.2%",
-      display: "block"
+      y: 0,
+      coef: Math.random() * 0.3 * (Math.random() < 0.5 ? -1 : 1),
+      active: true
     };
     this.myRef = React.createRef();
     this.speed = 20;
@@ -13,11 +14,11 @@ class Projectile extends Component {
 
   fallsDown = () => {
     const { y } = this.state;
-    // console.log(y);
-    if (y < "62%") {
-      this.setState({ y: `${parseFloat(y.slice(0, y.length - 1)) + 0.5}%` });
+    // const computedStyle = window.getComputedStyle(this.myRef.current);
+    if (y < 50) {
+      this.setState({ y: y + 0.5 });
     } else {
-      this.setState({ display: "none" });
+      this.setState({ active: false });
     }
   };
 
@@ -26,18 +27,16 @@ class Projectile extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.display === "none") {
+    if (!this.state.active) {
       this.props.onDelete(this.props.id);
       window.clearTimeout(this.interval);
     }
   }
 
   render() {
-    const { y, display } = this.state;
+    const { y, coef } = this.state;
     const { projectile } = this.props;
-    const size =
-      40 *
-      (1 + (0.89 * (parseInt(y.slice(0, y.length - 1)) - 16.2)) / (62 - 16.2));
+    const size = 40 * (1 + (0.89 * y) / 50);
     return (
       <img
         ref={this.myRef}
@@ -45,9 +44,8 @@ class Projectile extends Component {
         style={{
           ...styles.projectile,
           width: size,
-          marginLeft: -size / 2,
-          top: y,
-          display: display
+          top: y + "%",
+          left: 50 + y * coef + "%"
         }}
         alt=""
       />
@@ -62,7 +60,7 @@ const styles = {
     // backgroundImage: Doughnut,
     // backgroundSize: "cover",
     position: "absolute",
-    left: "50%"
+    filter: "drop-shadow(0 30px 2px rgba(0, 0, 0, 0.3))"
   }
 };
 
