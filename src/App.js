@@ -2,21 +2,21 @@ import React, { Component } from "react";
 import "./App.css";
 import HomerLife from "./components/HomerLife.js";
 import Projectiles from "./components/Projectiles";
-import SwipeDetection from './components/SwipeDetection';
+import SwipeDetection from "./components/SwipeDetection";
 import Characters from "./components/Characters";
 
 class App extends Component {
   constructor() {
     super();
-    this.state={
+    this.state = {
       move: null
-  } 
+    };
   }
 
   handleSwipe = event => {
     this.setState({ move: event });
-    console.log(this.state.move)
-  }
+    console.log(this.state.move);
+  };
 
   render() {
     return (
@@ -24,7 +24,7 @@ class App extends Component {
         <HomerLife />
         <Characters />
         <Projectiles />
-        <SwipeDetection handleSwipe={this.handleSwipe}/>
+        <SwipeDetection handleSwipe={this.handleSwipe} />
       </div>
     );
   }

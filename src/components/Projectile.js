@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import { randomOf } from "./helpers";
 
 class Projectile extends Component {
   constructor(props) {
     super(props);
     this.state = {
       y: 0,
-      coef: Math.random() * 1.5 * (Math.random() < 0.5 ? -1 : 1),
+      coef: Math.random() * 0.3 * (Math.random() < 0.5 ? -1 : 1),
       active: true
     };
     this.myRef = React.createRef();
@@ -15,7 +14,7 @@ class Projectile extends Component {
 
   fallsDown = () => {
     const { y } = this.state;
-    // console.log(y);
+    // const computedStyle = window.getComputedStyle(this.myRef.current);
     if (y < 50) {
       this.setState({ y: y + 0.5 });
     } else {
@@ -45,9 +44,8 @@ class Projectile extends Component {
         style={{
           ...styles.projectile,
           width: size,
-          marginLeft: -size / 2,
           top: y + "%",
-          left: 55 + y * coef + "%"
+          left: 50 + y * coef + "%"
         }}
         alt=""
       />
