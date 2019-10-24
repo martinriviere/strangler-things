@@ -21,8 +21,9 @@ class ModalWin extends React.Component {
       <div className="modal-div">
         <button onClick={this.onOpenModal}>Open modal</button>
         <Modal open={open} onClose={this.onCloseModal} center styles={{ overlay: { background: "rgba(0, 0, 0, 0.47)" } }}>
-        <div id="modalWin">  
+        <div id="modalLose">  
           <p>YOU WIN ! !</p><br/>
+          <img src='http://giphygifs.s3.amazonaws.com/media/A6aHBCFqlE0Rq/giphy.gif' />
           <p>Continue</p>
           <p>Back to title</p>
         </div> 

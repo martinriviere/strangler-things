@@ -23,6 +23,7 @@ class ModalLose extends React.Component {
         <Modal open={open} onClose={this.onCloseModal} center styles={{ overlay: { background: "rgba(0, 0, 0, 0.47)" } }}>
         <div id="modalLose">  
           <p>YOU LOSE ! !</p><br/>
+          <img src='https://media.giphy.com/media/a93jwI0wkWTQs/giphy.gif' />
           <p>Continue</p>
           <p>Back to title</p>
         </div> 

@@ -14,8 +14,7 @@ body, html {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 .bg {
@@ -30,7 +29,7 @@ code {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* background-color: rgba(2, 255, 23, 0.541); */
+  background-color: rgba(2, 255, 23, 0.541);
   background-color: rgba(255, 2, 2, 0.541);
   height: 60%;
   width: 90%;
@@ -53,6 +52,13 @@ code {
   text-align: center;
 }
 
+#modalLose img{
+  width: 230px;
+}
+
+#modalLose p{
+  margin: 0;
+}
 
 .styles_closeIcon__1QwbI {
   display: none;
