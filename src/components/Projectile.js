@@ -7,7 +7,7 @@ class Projectile extends Component {
       y: 0,
       coef: Math.random() * 0.3 * (Math.random() < 0.5 ? -1 : 1),
       active: true,
-      isInSwipeZone: false,
+      isInSwipeZone: false
     };
     this.myRef = React.createRef();
     this.speed = 20;
@@ -23,13 +23,14 @@ class Projectile extends Component {
     }
     if (y > 40 && y < 62 && !this.state.isInSwipeZone) {
       this.props.addProjectileToSwipeZone(this.props.projectile);
-      this.setState({ isInSwipeZone: !this.state.isInSwipeZone })
+      this.setState({ isInSwipeZone: !this.state.isInSwipeZone });
     }
     if (y > 62 && this.state.isInSwipeZone) {
       this.props.removeProjectileFromSwipeZone(this.props.projectile.id);
-      this.setState({ isInSwipeZone: !this.state.isInSwipeZone})
+      this.setState({ isInSwipeZone: !this.state.isInSwipeZone });
+      this.props.reduceLife();
     }
-  }
+  };
 
   componentDidMount() {
     this.interval = setInterval(this.fallsDown, this.speed);
