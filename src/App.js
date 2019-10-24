@@ -11,7 +11,8 @@ class App extends Component {
     this.state = {
       move: null,
       lifeNumber: 5,
-      lifeMax: 5
+      lifeMax: 5,
+      swipeZone: []
     };
   }
 
@@ -33,6 +34,18 @@ class App extends Component {
         return { lifeNumber: state.lifeNumber + 1 };
       });
   };
+
+  addProjectileToSwipeZone = (projectile) => {
+    this.setState({swipeZone:[...this.state.swipeZone, projectile] })
+  }
+
+  removeProjectileFromSwipeZone = (projectileId) => {
+    const projectiles = this.state.swipeZone.filter(
+      projectileInSwipeZone => projectileInSwipeZone.id !== projectileId
+    );
+    this.setState({ swipeZone: projectiles });
+  }
+
   render() {
     return (
       <div className="App">
@@ -41,8 +54,9 @@ class App extends Component {
           lifeMax={this.state.lifeMax}
         />
         <Characters />
-        <Projectiles />
+        <Projectiles addProjectileToSwipeZone={this.addProjectileToSwipeZone} removeProjectileFromSwipeZone={this.removeProjectileFromSwipeZone} />
         <SwipeDetection handleSwipe={this.handleSwipe} />
+        {console.log(this.state.swipeZone)}
       </div>
     );
   }

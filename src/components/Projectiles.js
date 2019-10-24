@@ -27,7 +27,7 @@ class Projectiles extends Component {
         ],
         index: index + 1
       });
-    }, 500);
+    }, 1200);
   }
 
   handleDelete = projectileId => {
@@ -51,6 +51,8 @@ class Projectiles extends Component {
         <div style={{ position: "relative", height: "100%" }}>
           {projectiles.map(projectile => (
             <Projectile
+              addProjectileToSwipeZone={this.props.addProjectileToSwipeZone}
+              removeProjectileFromSwipeZone={this.props.removeProjectileFromSwipeZone}
               id={projectile.id}
               projectile={projectile.image}
               onDelete={this.handleDelete}
