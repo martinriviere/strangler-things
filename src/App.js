@@ -9,7 +9,9 @@ class App extends Component {
   constructor() {
     super();
     this.state={
-      move: null
+      move: null,
+      lifeNumber: 5,
+      lifeMax: 5
   } 
   }
 
@@ -17,13 +19,25 @@ class App extends Component {
     this.setState({ move: event });
     console.log(this.state.move)
   }
-
+  reduceLife = () => { // { e => this.reduceLife()} pour l'utiliser
+    this.state.lifeNumber > 1
+      ? this.setState(state => {
+          return { lifeNumber: state.lifeNumber - 1 };
+        })
+      : alert("You're a loser GAMEOVER"); // Component gameOver?
+  };
+  addLife = () => {
+    this.state.lifeNumber < this.state.lifeMax &&
+      this.setState(state => {
+        return { lifeNumber: state.lifeNumber + 1 };
+      });
+  };
   render() {
     return (
       <div className="App">
-        <HomerLife />
+        <HomerLife lifeNumber = {this.state.lifeNumber} lifeMax = {this.state.lifeMax} />
         <Characters />
-        <Projectiles />
+         <Projectiles /> 
         <SwipeDetection handleSwipe={this.handleSwipe}/>
       </div>
     );
