@@ -21,12 +21,12 @@ class Projectile extends Component {
     } else {
       this.setState({ active: false });
     }
-    if (y > 45 && y < 62 && !this.state.isInSwipeZone) {
-      this.props.addProjectileToSwipeZone({id: this.props.id, projectile: this.props.projectile});
+    if (y > 40 && y < 62 && !this.state.isInSwipeZone) {
+      this.props.addProjectileToSwipeZone(this.props.projectile);
       this.setState({ isInSwipeZone: !this.state.isInSwipeZone })
     }
     if (y > 62 && this.state.isInSwipeZone) {
-      this.props.removeProjectileFromSwipeZone(this.props.id);
+      this.props.removeProjectileFromSwipeZone(this.props.projectile.id);
       this.setState({ isInSwipeZone: !this.state.isInSwipeZone})
     }
   }
@@ -35,9 +35,13 @@ class Projectile extends Component {
     this.interval = setInterval(this.fallsDown, this.speed);
   }
 
+  componentWillUnmount() {
+    window.clearTimeout(this.interval);
+  }
+
   componentDidUpdate() {
     if (!this.state.active) {
-      this.props.onDelete(this.props.id);
+      this.props.onDelete(this.props.projectile.id);
       window.clearTimeout(this.interval);
     }
   }
@@ -49,7 +53,7 @@ class Projectile extends Component {
     return (
       <img
         ref={this.myRef}
-        src={projectile}
+        src={projectile.type.image}
         style={{
           ...styles.projectile,
           width: size,
