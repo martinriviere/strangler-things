@@ -4,6 +4,7 @@ import HomerLife from "./components/HomerLife.js";
 import Projectiles from "./components/Projectiles";
 import SwipeDetection from "./components/SwipeDetection";
 import Characters from "./components/Characters";
+import GameRules from "./components/GameRules";
 
 class App extends Component {
   constructor() {
@@ -41,6 +42,7 @@ class App extends Component {
           lifeMax={this.state.lifeMax}
         />
         <Characters />
+        <GameRules />
         <Projectiles />
         <SwipeDetection handleSwipe={this.handleSwipe} />
       </div>

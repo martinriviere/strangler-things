@@ -1,0 +1,24 @@
+#GameRules-background {
+    background-image: url("../Design/Images/Wiki-background.jpg");
+    background-repeat: no-repeat;
+    height: 80vh;
+    width: 80vw;
+    border-radius : 5vh;
+    top : 10%;
+    left: 10%;
+    z-index: 10;
+    /* margin: 40vh 0 0 40vw; */
+    position: absolute;
+    display : flex;
+    justify-content : center ;
+    align-items: center;
+}
+#opacity {
+    height: 100vh;
+    width: 100vw;
+    background-color: #73a5ce;
+    position: absolute;
+    opacity: 60%;
+    top: 0;
+    z-index: 9;
+}
