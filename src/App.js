@@ -4,6 +4,11 @@ import HomerLife from "./components/HomerLife.js";
 import Projectiles from "./components/Projectiles";
 import SwipeDetection from "./components/SwipeDetection";
 import Characters from "./components/Characters";
+import { randomOf } from "./components/helpers";
+import Doughnut from "./Design/Projectiles/doughnut.png";
+import Duff from "./Design/Projectiles/duff.png";
+import Brocoli from "./Design/Projectiles/brocoli.png";
+import Flanders from "./Design/Projectiles/flanders.png";
 
 class App extends Component {
   constructor() {
@@ -12,14 +17,56 @@ class App extends Component {
       move: null,
       lifeNumber: 5,
       lifeMax: 5,
-      swipeZone: []
+      swipeZone: [],
+      projectiles: [],
+      index: 0
     };
   }
 
-  handleSwipe = event => {
-    this.setState({ move: event });
-    console.log(this.state.move);
+  componentDidMount() {
+    const items = [
+      { name: "doughnut", image: Doughnut },
+      { name: "brocoli", image: Brocoli },
+      { name: "duff", image: Duff },
+      { name: "flanders", image: Flanders }
+    ]
+    setInterval(() => {
+      const { projectiles, index } = this.state;
+      this.setState({
+        projectiles: [
+          ...projectiles,
+          { id: index, type: items[randomOf(4)] }
+        ],
+        index: index + 1
+      });
+    }, 1200);
+  }
+
+  deleteProjectile = projectileId => {
+    const projectiles = this.state.projectiles.filter(
+      projectile => projectile.id !== projectileId
+    );
+    this.setState({ projectiles: projectiles });
   };
+
+  handleSwipe = event => {
+    if (event === "right") {
+      this.state.swipeZone.forEach(projectile => {
+        if (projectile.type.name === "duff") this.deleteProjectile(projectile.id)
+      });
+    }
+    if (event === "left") {
+      this.state.swipeZone.forEach(projectile => {
+        if (projectile.type.name === "doughnut") this.deleteProjectile(projectile.id)
+      });
+    }
+    if (event === "touch") {
+      this.state.swipeZone.forEach(projectile => {
+        if (projectile.type.name === "brocoli" || projectile.type.name === "flanders") this.deleteProjectile(projectile.id)
+      });
+    }
+  };
+
   reduceLife = () => {
     // { e => this.reduceLife()} pour l'utiliser
     this.state.lifeNumber > 1
@@ -28,6 +75,7 @@ class App extends Component {
         })
       : alert("You're a loser GAMEOVER"); // Component gameOver?
   };
+
   addLife = () => {
     this.state.lifeNumber < this.state.lifeMax &&
       this.setState(state => {
@@ -54,9 +102,8 @@ class App extends Component {
           lifeMax={this.state.lifeMax}
         />
         <Characters />
-        <Projectiles addProjectileToSwipeZone={this.addProjectileToSwipeZone} removeProjectileFromSwipeZone={this.removeProjectileFromSwipeZone} />
+        <Projectiles projectiles={this.state.projectiles} deleteProjectile={this.deleteProjectile} addProjectileToSwipeZone={this.addProjectileToSwipeZone} removeProjectileFromSwipeZone={this.removeProjectileFromSwipeZone} />
         <SwipeDetection handleSwipe={this.handleSwipe} />
-        {console.log(this.state.swipeZone)}
       </div>
     );
   }
