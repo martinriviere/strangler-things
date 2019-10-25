@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
-import Modal from 'react-responsive-modal';
-import '../index'
+import React from "react";
+import Modal from "react-responsive-modal";
+import "../index";
 
 class ModalWin extends Component {
   state = {
-    open: true,
+    open: true
   };
 
   onOpenModal = () => {
@@ -19,13 +19,23 @@ class ModalWin extends Component {
     const { open } = this.state;
     return (
       <div className="modal-div">
-        <Modal open={open} onClose={this.onCloseModal} center styles={{ overlay: { background: "rgba(0, 0, 0, 0.47)" } }}>
-        <div id="modalLose">  
-          <p>YOU WIN ! !</p><br/>
-          <img src='http://giphygifs.s3.amazonaws.com/media/A6aHBCFqlE0Rq/giphy.gif' />
-          <p>Continue</p>
-          <p>Back to title</p>
-        </div> 
+        <button onClick={this.onOpenModal}>Open modal</button>
+        <Modal
+          open={open}
+          onClose={this.onCloseModal}
+          center
+          styles={{ overlay: { background: "rgba(0, 0, 0, 0.47)" } }}
+        >
+          <div id="modalLose">
+            <p>YOU WIN ! !</p>
+            <br />
+            <img
+              src="http://giphygifs.s3.amazonaws.com/media/A6aHBCFqlE0Rq/giphy.gif"
+              alt="winner"
+            />
+            <p>Continue</p>
+            <p>Back to title</p>
+          </div>
         </Modal>
       </div>
     );

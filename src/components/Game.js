@@ -4,6 +4,8 @@ import HomerLife from "./HomerLife.js";
 import Projectiles from "./Projectiles";
 import SwipeDetection from "./SwipeDetection";
 import Characters from "./Characters";
+import ModalWin from "./modalwin";
+import ModalLose from "./modallose";
 import { randomOf } from "./helpers";
 import Doughnut from "../Design/Projectiles/doughnut.png";
 import Duff from "../Design/Projectiles/duff.png";
@@ -17,27 +19,42 @@ class Game extends Component {
       move: null,
       lifeNumber: 5,
       lifeMax: 5,
+      items: [
+        { name: "doughnut", image: Doughnut },
+        { name: "brocoli", image: Brocoli },
+        { name: "duff", image: Duff },
+        { name: "flanders", image: Flanders }
+      ],
       swipeZone: [],
       projectiles: [],
-      index: 0
+      index: 0,
+      win: false,
+      lose: false,
+      pause: false,
+      resume: false
     };
   }
 
   componentDidMount() {
-    const items = [
-      { name: "doughnut", image: Doughnut },
-      { name: "brocoli", image: Brocoli },
-      { name: "duff", image: Duff },
-      { name: "flanders", image: Flanders }
-    ];
-    setInterval(() => {
+    this.launchGame();
+  }
+
+  launchGame = () => {
+    this.interval = setInterval(() => {
       const { projectiles, index } = this.state;
       this.setState({
-        projectiles: [...projectiles, { id: index, type: items[randomOf(4)] }],
+        projectiles: [
+          ...projectiles,
+          { id: index, type: this.state.items[randomOf(4)] }
+        ],
         index: index + 1
       });
+      if (index > 19) {
+        this.setState({ win: true });
+        this.pauseGame();
+      }
     }, 1200);
-  }
+  };
 
   deleteProjectile = projectileId => {
     const projectiles = this.state.projectiles.filter(
@@ -72,11 +89,14 @@ class Game extends Component {
 
   reduceLife = () => {
     // { e => this.reduceLife()} pour l'utiliser
-    this.state.lifeNumber > 1
-      ? this.setState(state => {
-          return { lifeNumber: state.lifeNumber - 1 };
-        })
-      : alert("You're a loser GAMEOVER"); // Component gameOver?
+    if (this.state.lifeNumber > 1) {
+      this.setState(state => {
+        return { lifeNumber: state.lifeNumber - 1 };
+      });
+    } else {
+      this.setState({ lose: true });
+      this.pauseGame();
+    }
   };
 
   addLife = () => {
@@ -97,6 +117,20 @@ class Game extends Component {
     this.setState({ swipeZone: projectiles });
   };
 
+  pauseGame = () => {
+    window.clearInterval(this.interval);
+    this.setState({ pause: true });
+  };
+
+  resumeGame = () => {
+    this.launchGame();
+    this.setState({ pause: false, resume: true });
+  };
+
+  componentDidUpdate() {
+    if (this.state.resume) this.setState({ resume: false });
+  }
+
   render() {
     return (
       <div className="App">
@@ -111,8 +145,23 @@ class Game extends Component {
           addProjectileToSwipeZone={this.addProjectileToSwipeZone}
           removeProjectileFromSwipeZone={this.removeProjectileFromSwipeZone}
           reduceLife={this.reduceLife}
+          pause={this.state.pause}
+          resume={this.state.resume}
         />
         <SwipeDetection handleSwipe={this.handleSwipe} />
+        {this.state.win && <ModalWin />}
+        {this.state.lose && <ModalLose />}
+        {/* <button
+          style={{
+            position: "absolute",
+            top: "50px",
+            left: "5Opx",
+            zIndex: 1022
+          }}
+          onClick={!this.state.pause ? this.pauseGame : this.resumeGame}
+        >
+          {!this.state.pause ? "Pause" : "Resume"}
+        </button> */}
       </div>
     );
   }

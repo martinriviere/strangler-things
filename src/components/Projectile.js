@@ -21,7 +21,7 @@ class Projectile extends Component {
     } else {
       this.setState({ active: false });
     }
-    if (y > 40 && y < 62 && !this.state.isInSwipeZone) {
+    if (y > 45 && y < 55 && !this.state.isInSwipeZone) {
       this.props.addProjectileToSwipeZone(this.props.projectile);
       this.setState({ isInSwipeZone: !this.state.isInSwipeZone });
     }
@@ -33,18 +33,24 @@ class Projectile extends Component {
   };
 
   componentDidMount() {
-    this.interval = setInterval(this.fallsDown, this.speed);
+    this.launchGame();
   }
 
+  launchGame = () => {
+    this.interval = setInterval(this.fallsDown, this.speed);
+  };
+
   componentWillUnmount() {
-    window.clearTimeout(this.interval);
+    window.clearInterval(this.interval);
   }
 
   componentDidUpdate() {
     if (!this.state.active) {
       this.props.onDelete(this.props.projectile.id);
-      window.clearTimeout(this.interval);
+      window.clearInterval(this.interval);
     }
+    if (this.props.pause) window.clearInterval(this.interval);
+    if (this.props.resume) this.launchGame();
   }
 
   render() {
