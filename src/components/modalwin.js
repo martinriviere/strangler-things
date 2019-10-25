@@ -28,7 +28,6 @@ class ModalWin extends Component {
         >
           <div id="modalLose">
             <p>YOU WIN ! !</p>
-            <br />
             <img
               src="http://giphygifs.s3.amazonaws.com/media/A6aHBCFqlE0Rq/giphy.gif"
               alt="winner"
