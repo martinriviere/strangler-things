@@ -1,6 +1,6 @@
 @font-face {
   font-family: "SimpsonFont";
-  src: url("/Design/Font/Simpsonfont.otf") format("otf");
+  src: url("./Design/Font/Simpsonfont.otf") format("opentype");
  }
 
 body, html {
