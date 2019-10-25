@@ -31,7 +31,7 @@ class SwipeDetection extends Component {
       <Swipeable
         onSwipedLeft={this.onSwipedLeft}
         onSwipedRight={this.onSwipedRight}
-        style={{ position: "absolute", top: 0 }}
+        style={{ position: "absolute", top: 0, zIndex: 1021 }}
       >
         <div onClick={this.onClick} style={boxStyle}></div>
       </Swipeable>
