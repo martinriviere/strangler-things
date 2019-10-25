@@ -4,6 +4,8 @@ import HomerLife from "./HomerLife.js";
 import Projectiles from "./Projectiles";
 import SwipeDetection from "./SwipeDetection";
 import Characters from "./Characters";
+import ModalWin from "./modalwin";
+import ModalLose from "./modallose";
 import { randomOf } from "./helpers";
 import Doughnut from "../Design/Projectiles/doughnut.png";
 import Duff from "../Design/Projectiles/duff.png";
@@ -29,6 +31,8 @@ class Game extends Component {
       swipeZone: [],
       projectiles: [],
       index: 0,
+      win: false,
+      lose: false,
       pause: false,
       resume: false
     };
@@ -52,6 +56,10 @@ class Game extends Component {
         ],
         index: index + 1
       });
+      if (index > 19) {
+        this.setState({ win: true });
+        this.pauseGame();
+      }
     }, 1200);
   };
 
@@ -88,11 +96,14 @@ class Game extends Component {
 
   reduceLife = () => {
     // { e => this.reduceLife()} pour l'utiliser
-    this.state.lifeNumber > 1
-      ? this.setState(state => {
-          return { lifeNumber: state.lifeNumber - 1 };
-        })
-      : alert("You're a loser GAMEOVER"); // Component gameOver?
+    if (this.state.lifeNumber > 1) {
+      this.setState(state => {
+        return { lifeNumber: state.lifeNumber - 1 };
+      });
+    } else {
+      this.setState({ lose: true });
+      this.pauseGame();
+    }
   };
 
   addLife = () => {
@@ -150,6 +161,9 @@ class Game extends Component {
         style = {{position: "fixed", left : "72vw", top : "2vh",zIndex : 1400}}>
         {this.state.gameRuleDisplay? "Resume" : "Rules"}</Button>       
         {this.state.gameRuleDisplay && <GameRules ruleModalDisplay = {this.ruleModalDisplay}/>}
+        {this.state.win && <ModalWin />}
+        {this.state.lose && <ModalLose />}
+
       </div>
     );
   }
