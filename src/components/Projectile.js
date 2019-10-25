@@ -33,18 +33,24 @@ class Projectile extends Component {
   };
 
   componentDidMount() {
-    this.interval = setInterval(this.fallsDown, this.speed);
+    this.launchGame();
   }
 
+  launchGame = () => {
+    this.interval = setInterval(this.fallsDown, this.speed);
+  };
+
   componentWillUnmount() {
-    window.clearTimeout(this.interval);
+    window.clearInterval(this.interval);
   }
 
   componentDidUpdate() {
     if (!this.state.active) {
       this.props.onDelete(this.props.projectile.id);
-      window.clearTimeout(this.interval);
+      window.clearInterval(this.interval);
     }
+    if (this.props.pause) window.clearInterval(this.interval);
+    if (this.props.resume) this.launchGame();
   }
 
   render() {
