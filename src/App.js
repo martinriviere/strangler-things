@@ -44,7 +44,7 @@ class App extends Component {
         />
         <Characters />
         <ModalWin />
-        <ModalLose />
+        {/* <ModalLose /> */}
         <Projectiles />
         <SwipeDetection handleSwipe={this.handleSwipe} />
         

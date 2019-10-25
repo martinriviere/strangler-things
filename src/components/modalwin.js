@@ -4,7 +4,7 @@ import '../index'
 
 class ModalWin extends React.Component {
   state = {
-    open: false,
+    open: true,
   };
 
   onOpenModal = () => {
