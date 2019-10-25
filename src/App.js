@@ -5,16 +5,25 @@ import Projectiles from "./components/Projectiles";
 import SwipeDetection from "./components/SwipeDetection";
 import Characters from "./components/Characters";
 import GameRules from "./components/GameRules";
+import { Button } from 'reactstrap';
+
 
 class App extends Component {
   constructor() {
     super();
+    this.ruleModalDisplay = this.ruleModalDisplay.bind(this)
     this.state = {
       move: null,
       lifeNumber: 5,
-      lifeMax: 5
+      lifeMax: 5,
+      gameRuleDisplay: false,
     };
   }
+  ruleModalDisplay = () => {
+      this.setState(state => {
+        return { gameRuleDisplay: !state.gameRuleDisplay};
+      });
+  };
 
   handleSwipe = event => {
     this.setState({ move: event });
@@ -37,12 +46,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Button outline color="warning" 
+        onClick = {e => this.ruleModalDisplay()}
+        style = {{position: "fixed", left : "72vw", top : "2vh",zIndex : 1000}}>
+        {this.state.gameRuleDisplay? "Resume" : "Rules"}</Button>       
         <HomerLife
           lifeNumber={this.state.lifeNumber}
           lifeMax={this.state.lifeMax}
         />
         <Characters />
-        <GameRules />
+        {this.state.gameRuleDisplay && <GameRules ruleModalDisplay = {this.ruleModalDisplay}/>}
         <Projectiles />
         <SwipeDetection handleSwipe={this.handleSwipe} />
       </div>

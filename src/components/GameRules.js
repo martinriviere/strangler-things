@@ -5,35 +5,38 @@ import flanders from "../Design/Projectiles/flanders.png"
 import doughnut from "../Design/Projectiles/doughnut.png"
 import duff from "../Design/Projectiles/duff.png"
 import homerRules from "../Design/GameRules/homerRule.gif"
+import tapRule from "../Design/GameRules/tapRule.png"
 import "./GameRules.css"
 
 
 const homerStyle = {
     width: "50vw",
-    //position: "absolute",
     //left: "50%",
     //marginLeft: "-25vw",
-    marginTop: "-30vh"
-
 }
 const itemsStyle ={
-    //position: "absolute",
     width: "10vw",
-    marginTop: "-30vh"
+    top: "20vh"
 }
 
-function GameRules(props){
-    return <div>
-        <div id= "opacity"></div>
+class GameRules extends Component{
+    constructor(props){
+        super(props)
+
+    }
+render(){
+    return <div id= "ruleModalOpacity">
         <div id="GameRules-background">
-            {/* <div style ={{ flex : 1, flexDirection : "row", justifyContent: "center"}}> */}
+            <div id = "swipe">
                 <img src={doughnut} style = {itemsStyle} alt=""></img>
                 <img src={homerRules} style = {homerStyle} alt = ""></img>
                 <img src={duff} style = {itemsStyle} alt = ""></img>
-            {/* </div> */}
+            </div>
+            <img src={tapRule} style = {{width: "60vw", left: "20vw", position: "fixed", top : "50vh"}} alt = ""></img>
         </div>
-    </div>    
-    
+    </div> 
+       
+    }
 }
 
 
