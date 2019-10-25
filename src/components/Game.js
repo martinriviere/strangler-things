@@ -49,10 +49,6 @@ class Game extends Component {
         ],
         index: index + 1
       });
-      if (index > 19) {
-        this.setState({ win: true });
-        this.pauseGame();
-      }
     }, 1200);
   };
 
@@ -66,14 +62,24 @@ class Game extends Component {
   handleSwipe = event => {
     if (event === "right") {
       this.state.swipeZone.forEach(projectile => {
-        if (projectile.type.name === "duff")
+        if (projectile.type.name === "duff") {
           this.deleteProjectile(projectile.id);
+          if (this.state.index > 19) {
+            this.setState({ win: true });
+            this.pauseGame();
+          }
+        }
       });
     }
     if (event === "left") {
       this.state.swipeZone.forEach(projectile => {
-        if (projectile.type.name === "doughnut")
+        if (projectile.type.name === "doughnut") {
           this.deleteProjectile(projectile.id);
+          if (this.state.index > 19) {
+            this.setState({ win: true });
+            this.pauseGame();
+          }
+        }
       });
     }
     if (event === "touch") {
@@ -81,8 +87,13 @@ class Game extends Component {
         if (
           projectile.type.name === "brocoli" ||
           projectile.type.name === "flanders"
-        )
+        ) {
           this.deleteProjectile(projectile.id);
+          if (this.state.index > 19) {
+            this.setState({ win: true });
+            this.pauseGame();
+          }
+        }
       });
     }
   };
