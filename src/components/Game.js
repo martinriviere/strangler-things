@@ -4,6 +4,8 @@ import HomerLife from "./HomerLife.js";
 import Projectiles from "./Projectiles";
 import SwipeDetection from "./SwipeDetection";
 import Characters from "./Characters";
+import ModalWin from "./modalwin";
+import ModalLose from "./modallose";
 import { randomOf } from "./helpers";
 import Doughnut from "../Design/Projectiles/doughnut.png";
 import Duff from "../Design/Projectiles/duff.png";
@@ -19,7 +21,9 @@ class Game extends Component {
       lifeMax: 5,
       swipeZone: [],
       projectiles: [],
-      index: 0
+      index: 0,
+      win: false,
+      lose: false
     };
   }
 
@@ -30,12 +34,15 @@ class Game extends Component {
       { name: "duff", image: Duff },
       { name: "flanders", image: Flanders }
     ];
-    setInterval(() => {
+    this.interval = setInterval(() => {
       const { projectiles, index } = this.state;
       this.setState({
         projectiles: [...projectiles, { id: index, type: items[randomOf(4)] }],
         index: index + 1
       });
+      if (index > 19) {
+        this.setState({ win: true });
+      }
     }, 1200);
   }
 
@@ -72,11 +79,13 @@ class Game extends Component {
 
   reduceLife = () => {
     // { e => this.reduceLife()} pour l'utiliser
-    this.state.lifeNumber > 1
-      ? this.setState(state => {
-          return { lifeNumber: state.lifeNumber - 1 };
-        })
-      : alert("You're a loser GAMEOVER"); // Component gameOver?
+    if (this.state.lifeNumber > 1) {
+      this.setState(state => {
+        return { lifeNumber: state.lifeNumber - 1 };
+      });
+    } else this.setState({ lose: true });
+    // : alert("You're a loser GAMEOVER");
+    // Component gameOver?
   };
 
   addLife = () => {
@@ -113,6 +122,8 @@ class Game extends Component {
           reduceLife={this.reduceLife}
         />
         <SwipeDetection handleSwipe={this.handleSwipe} />
+        {this.state.win && <ModalWin />}
+        {this.state.lose && <ModalLose />}
       </div>
     );
   }
