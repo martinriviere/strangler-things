@@ -6,11 +6,7 @@ import tapRule from "../Design/GameRules/tapRule.png"
 import "./GameRules.css"
 
 
-const homerStyle = {
-    width: "50vw",
-    //left: "50%",
-    //marginLeft: "-25vw",
-}
+
 const itemsStyle ={
     width: "10vw",
     top: "20vh"
@@ -22,10 +18,13 @@ render(){
         <div id="GameRules-background">
             <div id = "swipe">
                 <img src={doughnut} style = {itemsStyle} alt=""></img>
-                <img src={homerRules} style = {homerStyle} alt = ""></img>
+                <img src={homerRules} style = {{width : "50vw"}} alt = ""></img>
                 <img src={duff} style = {itemsStyle} alt = ""></img>
             </div>
-            <img src={tapRule} style = {{width: "60vw", left: "20vw", position: "fixed", top : "50vh"}} alt = ""></img>
+            <img src={tapRule} 
+            style = {{width: "60vw",
+             left: "20vw", position: "fixed",
+              top : "50vh"}} alt = ""></img>
         </div>
     </div> 
        
