@@ -26,27 +26,23 @@ code {
 }
 
 .styles_modal__gNwvD {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: rgba(2, 255, 23, 0.541);
+  /* background-color: rgba(2, 255, 23, 0.541); */
   background-color: rgba(255, 2, 2, 0.541);
   height: 60%;
   width: 90%;
   border-radius: 8px;
   border: 4px solid white;
-  
 }
 
 #modalWin {
-  font-size: 2.5em;
+  font-size: 1.5em;
   font-family: "SimpsonFont";
   color: rgb(255, 230, 0);
   text-align: center;
 }
 
 #modalLose {
-  font-size: 2.5em;
+  font-size: 1.5em;
   font-family: "SimpsonFont";
   color: rgb(255, 230, 0);
   text-align: center;
@@ -54,10 +50,11 @@ code {
 
 #modalLose img{
   width: 230px;
+  margin-bottom: 20px;
 }
 
-#modalLose p{
-  margin: 0;
+p {
+  font-size: 0.7em;
 }
 
 .styles_closeIcon__1QwbI {

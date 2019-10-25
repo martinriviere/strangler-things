@@ -29,7 +29,6 @@ class ModalLose extends Component {
         >
           <div id="modalLose">
           <p>YOU LOSE ! !</p>
-              <br />
               <img
                 src="https://media.giphy.com/media/a93jwI0wkWTQs/giphy.gif"
                 alt="loser"
