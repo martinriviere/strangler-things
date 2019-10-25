@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-import heart from "../Design/Images/pixel-heart-2779422_960_720-1.png";
-import brocoli from "../Design/Projectiles/brocoli.png"
-import flanders from "../Design/Projectiles/flanders.png"
 import doughnut from "../Design/Projectiles/doughnut.png"
 import duff from "../Design/Projectiles/duff.png"
 import homerRules from "../Design/GameRules/homerRule.gif"
@@ -20,10 +17,6 @@ const itemsStyle ={
 }
 
 class GameRules extends Component{
-    constructor(props){
-        super(props)
-
-    }
 render(){
     return <div id= "ruleModalOpacity">
         <div id="GameRules-background">

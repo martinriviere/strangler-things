@@ -6,7 +6,8 @@ class Projectile extends Component {
     this.state = {
       y: 0,
       coef: Math.random() * 0.3 * (Math.random() < 0.5 ? -1 : 1),
-      active: true
+      active: true,
+      isInSwipeZone: false
     };
     this.myRef = React.createRef();
     this.speed = 20;
@@ -15,22 +16,41 @@ class Projectile extends Component {
   fallsDown = () => {
     const { y } = this.state;
     // const computedStyle = window.getComputedStyle(this.myRef.current);
-    if (y < 50) {
-      this.setState({ y: y + 0.5 });
+    if (y < 100) {
+      this.setState({ y: y + 0.6 });
     } else {
       this.setState({ active: false });
+    }
+    if (y > 40 && y < 62 && !this.state.isInSwipeZone) {
+      this.props.addProjectileToSwipeZone(this.props.projectile);
+      this.setState({ isInSwipeZone: !this.state.isInSwipeZone });
+    }
+    if (y > 62 && this.state.isInSwipeZone) {
+      this.props.removeProjectileFromSwipeZone(this.props.projectile.id);
+      this.setState({ isInSwipeZone: !this.state.isInSwipeZone });
+      this.props.reduceLife();
     }
   };
 
   componentDidMount() {
+    this.launchGame();
+  }
+
+  launchGame = () => {
     this.interval = setInterval(this.fallsDown, this.speed);
+  };
+
+  componentWillUnmount() {
+    window.clearInterval(this.interval);
   }
 
   componentDidUpdate() {
     if (!this.state.active) {
-      this.props.onDelete(this.props.id);
-      window.clearTimeout(this.interval);
+      this.props.onDelete(this.props.projectile.id);
+      window.clearInterval(this.interval);
     }
+    if (this.props.pause) window.clearInterval(this.interval);
+    if (this.props.resume) this.launchGame();
   }
 
   render() {
@@ -40,7 +60,7 @@ class Projectile extends Component {
     return (
       <img
         ref={this.myRef}
-        src={projectile}
+        src={projectile.type.image}
         style={{
           ...styles.projectile,
           width: size,
