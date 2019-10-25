@@ -17,27 +17,36 @@ class Game extends Component {
       move: null,
       lifeNumber: 5,
       lifeMax: 5,
+      items: [
+        { name: "doughnut", image: Doughnut },
+        { name: "brocoli", image: Brocoli },
+        { name: "duff", image: Duff },
+        { name: "flanders", image: Flanders }
+      ],
       swipeZone: [],
       projectiles: [],
-      index: 0
+      index: 0,
+      pause: false,
+      resume: false
     };
   }
 
   componentDidMount() {
-    const items = [
-      { name: "doughnut", image: Doughnut },
-      { name: "brocoli", image: Brocoli },
-      { name: "duff", image: Duff },
-      { name: "flanders", image: Flanders }
-    ];
-    setInterval(() => {
+    this.launchGame();
+  }
+
+  launchGame = () => {
+    this.interval = setInterval(() => {
       const { projectiles, index } = this.state;
       this.setState({
-        projectiles: [...projectiles, { id: index, type: items[randomOf(4)] }],
+        projectiles: [
+          ...projectiles,
+          { id: index, type: this.state.items[randomOf(4)] }
+        ],
         index: index + 1
       });
     }, 1200);
-  }
+  };
 
   deleteProjectile = projectileId => {
     const projectiles = this.state.projectiles.filter(
@@ -97,6 +106,20 @@ class Game extends Component {
     this.setState({ swipeZone: projectiles });
   };
 
+  pauseGame = () => {
+    window.clearInterval(this.interval);
+    this.setState({ pause: true });
+  };
+
+  resumeGame = () => {
+    this.launchGame();
+    this.setState({ pause: false, resume: true });
+  };
+
+  componentDidUpdate() {
+    if (this.state.resume) this.setState({ resume: false });
+  }
+
   render() {
     return (
       <div className="App">
@@ -111,8 +134,21 @@ class Game extends Component {
           addProjectileToSwipeZone={this.addProjectileToSwipeZone}
           removeProjectileFromSwipeZone={this.removeProjectileFromSwipeZone}
           reduceLife={this.reduceLife}
+          pause={this.state.pause}
+          resume={this.state.resume}
         />
         <SwipeDetection handleSwipe={this.handleSwipe} />
+        <button
+          style={{
+            position: "absolute",
+            top: "50px",
+            left: "5Opx",
+            zIndex: 1022
+          }}
+          onClick={!this.state.pause ? this.pauseGame : this.resumeGame}
+        >
+          {!this.state.pause ? "Pause" : "Resume"}
+        </button>
       </div>
     );
   }
