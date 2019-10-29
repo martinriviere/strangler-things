@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../App.css";
 import HomerLife from "./HomerLife.js";
+import Counter from "./Counter.js"
 import Projectiles from "./Projectiles";
 import SwipeDetection from "./SwipeDetection";
 import Characters from "./Characters";
@@ -36,16 +37,19 @@ class Game extends Component {
       pause: false,
       resume: false,
       level: 1,
+      count:0,
     };
   }
 
   componentDidMount() {
     this.launchGame();
   }
+
   ruleModalDisplay = () => {
     this.setState({ gameRuleDisplay: !this.state.gameRuleDisplay });
     this.state.gameRuleDisplay ? this.resumeGame() : this.pauseGame();
   };
+
   launchGame = () => {
     this.interval = setInterval(() => {
       const { projectiles, index } = this.state;
@@ -74,11 +78,14 @@ class Game extends Component {
   };
 
   handleSwipe = event => {
+    let points = 0;
     if (event === "right") {
       this.state.swipeZone.forEach(projectile => {
         if (projectile.type.name === "duff") {
           this.checkWin();
           this.deleteProjectile(projectile.id);
+          points+=50;
+          this.setState({count:points});
           this.removeProjectileFromSwipeZone(projectile.id);
         }
       });
@@ -88,6 +95,8 @@ class Game extends Component {
         if (projectile.type.name === "doughnut") {
           this.checkWin();
           this.deleteProjectile(projectile.id);
+          points+=50;
+          this.setState({count:points})
           this.removeProjectileFromSwipeZone(projectile.id);
         }
       });
@@ -100,6 +109,8 @@ class Game extends Component {
         ) {
           this.checkWin();
           this.deleteProjectile(projectile.id);
+          points+=50;
+          this.setState({count:points});
           this.removeProjectileFromSwipeZone(projectile.id);
         }
       });
@@ -157,6 +168,7 @@ class Game extends Component {
           lifeNumber={this.state.lifeNumber}
           lifeMax={this.state.lifeMax}
         />
+        <Counter count={this.state.count} />
         <Characters />
         <Projectiles
           projectiles={this.state.projectiles}
