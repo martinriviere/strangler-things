@@ -12,7 +12,7 @@ class Projectile extends Component {
       isInSwipeZone: false
     };
     this.myRef = React.createRef();
-    this.speed = 20;
+    this.speed = 30;
   }
 
   fallsDown = () => {
