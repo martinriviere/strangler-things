@@ -32,7 +32,7 @@ class ModalWin extends Component {
               src="http://giphygifs.s3.amazonaws.com/media/A6aHBCFqlE0Rq/giphy.gif"
               alt="winner"
             />
-            <p>Continue</p>
+            <p>Next Level</p>
             <p>Back to title</p>
           </div>
         </Modal>
