@@ -1,24 +1,26 @@
 import React, { Component } from "react";
-import { Route, Link } from "react-router-dom";
 import "./modal.css";
+// import { Route, Link } from "react-router-dom";
 // import Modal from "react-responsive-modal";
 
 class ModalWin extends Component {
 
   render() {
     return (
-      <div id="ModalWin">
-        <p>YOU WIN !!</p>
-        <img 
-          src="http://giphygifs.s3.amazonaws.com/media/jUwpNzg9IcyrK/giphy.gif"
-          alt="winner"
-        />
-        <p>Continue</p>
-        <p>Back to title</p>
-        {/* <Link to="/level/2"><p>Continue</p></Link>
-        <Route path="/level/2" exact component={LevelTwo} />
-        <Link to="/"><p>Back to title</p></Link>
-        <Route path="/" exact component={Home} /> */}
+      <div id="containerWin">
+        <div id="ModalWin">
+          <p>YOU WIN !!</p>
+          <img 
+            src="http://giphygifs.s3.amazonaws.com/media/jUwpNzg9IcyrK/giphy.gif"
+            alt="winner"
+          />
+          <p>Continue</p>
+          <p>Back to title</p>
+          {/* <Link to="/level/2"><p>Continue</p></Link>
+          <Route path="/level/2" exact component={LevelTwo} />
+          <Link to="/"><p>Back to title</p></Link>
+          <Route path="/" exact component={Home} /> */}
+        </div>
       </div>
     );
   }

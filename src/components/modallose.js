@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../index.css";
+import "./modal.css";
 // import { Route, Link } from "react-router-dom";
 // import Modal from "react-responsive-modal";
 
@@ -7,7 +7,7 @@ class ModalLose extends Component {
   
   render() {
     return (
-      <div id="containerWin">
+      <div id="containerLose">
         <div id="ModalLose">
           <p>YOU LOSE !!</p>
           <img 
