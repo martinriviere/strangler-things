@@ -36,6 +36,7 @@ class Game extends Component {
       lose: false,
       pause: false,
       resume: false,
+      level: 1,
       count:0
     };
   }
@@ -70,8 +71,8 @@ class Game extends Component {
   };
 
   checkWin = () => {
-    if (this.state.index > 19) {
-      this.setState({ win: true });
+    if (this.state.index > this.state.level * 15) {
+      this.setState({ win: true, level: this.state.level + 1 });
       this.pauseGame();
     }
   };
@@ -174,10 +175,7 @@ class Game extends Component {
           pause={this.state.pause}
           resume={this.state.resume}
         />
-        <SwipeDetection
-          handleSwipe={this.handleSwipe}
-          swipeZone={this.state.swipeZone}
-        />
+        <SwipeDetection handleSwipe={this.handleSwipe} />
         <Button
           outline
           color="warning"
