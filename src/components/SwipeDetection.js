@@ -1,43 +1,40 @@
 import React, { Component } from "react";
-import { Swipeable } from "react-swipeable";
 
 class SwipeDetection extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.startPosition = null;
   }
 
-  onSwipedLeft = event => {
-    if (event.absX < 30) this.props.handleSwipe("touch");
-    else this.props.handleSwipe("left");
-  };
-
-  onSwipedRight = event => {
-    if (event.absX < 30) this.props.handleSwipe("touch");
-    else this.props.handleSwipe("right");
-  };
-
-  onClick = event => {
-    console.log(this.props.swipeZone);
-    this.props.handleSwipe("touch");
+  handleTouch = event => {
+    const endPosition = event.changedTouches[0].screenX;
+    const positionChange = endPosition - this.startPosition;
+    if (positionChange < -30) {
+      this.props.handleSwipe("left");
+    } else if (positionChange > 30) {
+      this.props.handleSwipe("right");
+    } else {
+      this.props.handleSwipe("touch");
+    }
   };
 
   render() {
     const boxStyle = {
       width: "100vw",
-      height: "100vh"
+      height: "100vh",
+      position: "absolute",
+      top: 0,
+      zIndex: 1021
     };
 
     return (
-      <Swipeable
-        onSwipedLeft={this.onSwipedLeft}
-        onSwipedRight={this.onSwipedRight}
-        style={{ position: "absolute", top: 0, zIndex: 1021 }}
-      >
-        {this.props.swipeZone.length !== 0 && (
-          <div onClick={this.onClick} style={boxStyle}></div>
-        )}
-      </Swipeable>
+      <div
+        style={boxStyle}
+        onTouchStart={event =>
+          (this.startPosition = event.changedTouches["0"].screenX)
+        }
+        onTouchEnd={this.handleTouch}
+      ></div>
     );
   }
 }
