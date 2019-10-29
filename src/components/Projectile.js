@@ -5,19 +5,35 @@ class Projectile extends Component {
     super(props);
     this.state = {
       y: 0,
-      coef: Math.random() * 0.3 * (Math.random() < 0.5 ? -1 : 1),
+      x: 50,
+      size: 40,
+      coef: 100,
       active: true,
       isInSwipeZone: false
     };
     this.myRef = React.createRef();
-    this.speed = 20;
+    this.speed = 10;
   }
 
   fallsDown = () => {
-    const { y } = this.state;
-    // const computedStyle = window.getComputedStyle(this.myRef.current);
+    const { y, coef, x, size } = this.state;
+    const step = this.speed / Math.sqrt(1 + coef * coef) / 5;
+    console.log(step);
+    const computedSize = (size / window.innerWidth) * 100;
     if (y < 100) {
-      this.setState({ y: y + 0.6 });
+      if (x + computedSize > 0.31 * y + 70 || x < -0.31 * y + 30) {
+        this.setState({
+          y: y + step,
+          x: x + step * -coef,
+          size: 40 * (1 + (0.89 * y) / 50),
+          coef: -coef
+        });
+      } else
+        this.setState({
+          y: y + step,
+          x: x + step * coef,
+          size: 40 * (1 + (0.89 * y) / 50)
+        });
     } else {
       this.setState({ active: false });
     }
@@ -28,7 +44,7 @@ class Projectile extends Component {
     if (y > 62 && this.state.isInSwipeZone) {
       this.props.removeProjectileFromSwipeZone(this.props.projectile.id);
       this.setState({ isInSwipeZone: !this.state.isInSwipeZone });
-      this.props.reduceLife();
+      // this.props.reduceLife();
     }
   };
 
@@ -54,9 +70,8 @@ class Projectile extends Component {
   }
 
   render() {
-    const { y, coef } = this.state;
+    const { y, x, size } = this.state;
     const { projectile } = this.props;
-    const size = 40 * (1 + (0.89 * y) / 50);
     return (
       <img
         ref={this.myRef}
@@ -65,7 +80,7 @@ class Projectile extends Component {
           ...styles.projectile,
           width: size,
           top: y + "%",
-          left: 50 + y * coef + "%"
+          left: x + "%"
         }}
         alt=""
       />

@@ -12,7 +12,7 @@ import Duff from "../Design/Projectiles/duff.png";
 import Brocoli from "../Design/Projectiles/brocoli.png";
 import Flanders from "../Design/Projectiles/flanders.png";
 import GameRules from "./GameRules.js";
-import { Button } from 'reactstrap';
+import { Button } from "reactstrap";
 
 class Game extends Component {
   constructor() {
@@ -42,9 +42,8 @@ class Game extends Component {
     this.launchGame();
   }
   ruleModalDisplay = () => {
-    this.setState({ gameRuleDisplay: !this.state.gameRuleDisplay});
-    this.state.gameRuleDisplay? this.resumeGame() : this.pauseGame()
-    ;
+    this.setState({ gameRuleDisplay: !this.state.gameRuleDisplay });
+    this.state.gameRuleDisplay ? this.resumeGame() : this.pauseGame();
   };
   launchGame = () => {
     this.interval = setInterval(() => {
@@ -71,7 +70,7 @@ class Game extends Component {
       this.state.swipeZone.forEach(projectile => {
         if (projectile.type.name === "duff") {
           this.deleteProjectile(projectile.id);
-          if (this.state.index > 19) {
+          if (this.state.index > 29) {
             this.setState({ win: true });
             this.pauseGame();
           }
@@ -96,7 +95,7 @@ class Game extends Component {
           projectile.type.name === "flanders"
         ) {
           this.deleteProjectile(projectile.id);
-          if (this.state.index > 19) {
+          if (this.state.index > 100) {
             this.setState({ win: true });
             this.pauseGame();
           }
@@ -167,14 +166,19 @@ class Game extends Component {
           resume={this.state.resume}
         />
         <SwipeDetection handleSwipe={this.handleSwipe} />
-        <Button outline color="warning" 
-        onClick = {e => this.ruleModalDisplay()}
-        style = {{position: "fixed", left : "72vw", top : "2vh",zIndex : 1400}}>
-        {this.state.gameRuleDisplay? "Resume" : "Rules"}</Button>       
-        {this.state.gameRuleDisplay && <GameRules ruleModalDisplay = {this.ruleModalDisplay}/>}
+        <Button
+          outline
+          color="warning"
+          onClick={e => this.ruleModalDisplay()}
+          style={{ position: "fixed", left: "72vw", top: "2vh", zIndex: 1400 }}
+        >
+          {this.state.gameRuleDisplay ? "Resume" : "Rules"}
+        </Button>
+        {this.state.gameRuleDisplay && (
+          <GameRules ruleModalDisplay={this.ruleModalDisplay} />
+        )}
         {this.state.win && <ModalWin />}
         {this.state.lose && <ModalLose />}
-
       </div>
     );
   }
