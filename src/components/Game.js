@@ -20,7 +20,7 @@ class Game extends Component {
     super();
     this.state = {
       move: null,
-      lifeNumber: 2,
+      lifeNumber: 5,
       lifeMax: 5,
       gameRuleDisplay: false,
       items: [
@@ -201,4 +201,4 @@ class Game extends Component {
   }
 }
 
-export default Game;
+export default Game;  
