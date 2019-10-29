@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import { Route, Link } from "react-router-dom";
 import "../index.css";
+// import { Route, Link } from "react-router-dom";
 // import Modal from "react-responsive-modal";
 
 class ModalLose extends Component {
   
   render() {
     return (
-      <div id="container">
+      <div id="containerWin">
         <div id="ModalLose">
           <p>YOU LOSE !!</p>
           <img 

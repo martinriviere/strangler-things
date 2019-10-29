@@ -19,7 +19,7 @@ class Game extends Component {
     super();
     this.state = {
       move: null,
-      lifeNumber: 5,
+      lifeNumber: 2,
       lifeMax: 5,
       gameRuleDisplay: false,
       items: [
@@ -141,6 +141,7 @@ class Game extends Component {
   render() {
     return (
       <div className="App">
+        <ModalLose />
         <HomerLife
           lifeNumber={this.state.lifeNumber}
           lifeMax={this.state.lifeMax}
@@ -161,8 +162,8 @@ class Game extends Component {
         style = {{position: "fixed", left : "72vw", top : "2vh",zIndex : 1400}}>
         {this.state.gameRuleDisplay? "Resume" : "Rules"}</Button>       
         {this.state.gameRuleDisplay && <GameRules ruleModalDisplay = {this.ruleModalDisplay}/>}
-        {this.state.win && <ModalWin />}
-        {this.state.lose && <ModalLose />}
+        {/* {this.state.win && <ModalWin />}
+        {this.state.lose && <ModalLose />} */}
 
       </div>
     );
