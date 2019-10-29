@@ -1,0 +1,54 @@
+.containerLose {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+}
+
+.containerWin {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+}
+
+#ModalLose {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(255, 2, 2, 0.678);
+    margin: 10%;
+    border-radius: 8px;
+    border: 4px solid rgb(0, 0, 0);
+    font-size: 1.5em;
+    font-family: "SimpsonFont";
+    color: rgb(255, 230, 0);
+    text-shadow: rgba(0, 0, 0, 0.678) 3px 3px 5px;
+}
+
+#ModalWin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(81, 255, 0, 0.829);
+    height: auto;
+    margin: 10%;
+    border-radius: 8px;
+    border: 4px solid white;
+    font-size: 1.5em;
+    font-family: "SimpsonFont";
+    color: rgb(255, 230, 0);
+    text-shadow: rgba(0, 0, 0, 0.678) 3px 3px 5px;
+}
+
+#ModalLose img {
+    align-self: center;
+    width: 60%;
+}
+
+#ModalWin img {
+    align-self: center;
+    width: 60%;
+}
+
+p {
+    font-size: 2em;
+}
