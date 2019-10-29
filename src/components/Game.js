@@ -165,7 +165,10 @@ class Game extends Component {
           pause={this.state.pause}
           resume={this.state.resume}
         />
-        <SwipeDetection handleSwipe={this.handleSwipe} />
+        <SwipeDetection
+          handleSwipe={this.handleSwipe}
+          swipeZone={this.state.swipeZone}
+        />
         <Button
           outline
           color="warning"
