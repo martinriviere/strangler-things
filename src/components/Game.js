@@ -36,7 +36,7 @@ class Game extends Component {
       lose: false,
       pause: false,
       resume: false,
-      count:0,
+      count:0
     };
   }
 
@@ -77,14 +77,12 @@ class Game extends Component {
   };
 
   handleSwipe = event => {
-    let points = 0;
     if (event === "right") {
       this.state.swipeZone.forEach(projectile => {
         if (projectile.type.name === "duff") {
           this.checkWin();
           this.deleteProjectile(projectile.id);
-          points+=50;
-          this.setState({count:points});
+          this.setState({count:this.state.count+50});
           this.removeProjectileFromSwipeZone(projectile.id);
         }
       });
@@ -94,8 +92,7 @@ class Game extends Component {
         if (projectile.type.name === "doughnut") {
           this.checkWin();
           this.deleteProjectile(projectile.id);
-          points+=50;
-          this.setState({count:points})
+          this.setState({count:this.state.count+50})
           this.removeProjectileFromSwipeZone(projectile.id);
         }
       });
@@ -108,8 +105,7 @@ class Game extends Component {
         ) {
           this.checkWin();
           this.deleteProjectile(projectile.id);
-          points+=50;
-          this.setState({count:points});
+          this.setState({count:this.state.count+50});
           this.removeProjectileFromSwipeZone(projectile.id);
         }
       });
