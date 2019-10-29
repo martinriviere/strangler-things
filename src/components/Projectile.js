@@ -7,18 +7,17 @@ class Projectile extends Component {
       y: 0,
       x: 50,
       size: 40,
-      coef: 100,
+      coef: Math.random() * 3 * (Math.random() < 0.5 ? -1 : 1),
       active: true,
       isInSwipeZone: false
     };
     this.myRef = React.createRef();
-    this.speed = 10;
+    this.speed = 20;
   }
 
   fallsDown = () => {
     const { y, coef, x, size } = this.state;
-    const step = this.speed / Math.sqrt(1 + coef * coef) / 5;
-    console.log(step);
+    const step = this.speed / Math.sqrt(1 + coef * coef) / 30;
     const computedSize = (size / window.innerWidth) * 100;
     if (y < 100) {
       if (x + computedSize > 0.31 * y + 70 || x < -0.31 * y + 30) {
@@ -44,7 +43,7 @@ class Projectile extends Component {
     if (y > 62 && this.state.isInSwipeZone) {
       this.props.removeProjectileFromSwipeZone(this.props.projectile.id);
       this.setState({ isInSwipeZone: !this.state.isInSwipeZone });
-      // this.props.reduceLife();
+      this.props.reduceLife();
     }
   };
 

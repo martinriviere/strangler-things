@@ -70,7 +70,7 @@ class Game extends Component {
       this.state.swipeZone.forEach(projectile => {
         if (projectile.type.name === "duff") {
           this.deleteProjectile(projectile.id);
-          if (this.state.index > 29) {
+          if (this.state.index > 19) {
             this.setState({ win: true });
             this.pauseGame();
           }
