@@ -67,6 +67,9 @@ class Game extends Component {
       projectile => projectile.id !== projectileId
     );
     this.setState({ projectiles: projectiles });
+  };
+
+  checkWin = () => {
     if (this.state.index > 19) {
       this.setState({ win: true });
       this.pauseGame();
@@ -77,18 +80,24 @@ class Game extends Component {
     let points = 0;
     if (event === "right") {
       this.state.swipeZone.forEach(projectile => {
-        if (projectile.type.name === "duff")
+        if (projectile.type.name === "duff") {
+          this.checkWin();
           this.deleteProjectile(projectile.id);
           points+=50;
           this.setState({count:points});
+          this.removeProjectileFromSwipeZone(projectile.id);
+        }
       });
     }
     if (event === "left") {
       this.state.swipeZone.forEach(projectile => {
-        if (projectile.type.name === "doughnut")
+        if (projectile.type.name === "doughnut") {
+          this.checkWin();
           this.deleteProjectile(projectile.id);
           points+=50;
           this.setState({count:points})
+          this.removeProjectileFromSwipeZone(projectile.id);
+        }
       });
     }
     if (event === "touch") {
@@ -96,10 +105,13 @@ class Game extends Component {
         if (
           projectile.type.name === "brocoli" ||
           projectile.type.name === "flanders"
-        )
+        ) {
+          this.checkWin();
           this.deleteProjectile(projectile.id);
           points+=50;
           this.setState({count:points});
+          this.removeProjectileFromSwipeZone(projectile.id);
+        }
       });
     }
   };
@@ -166,7 +178,10 @@ class Game extends Component {
           pause={this.state.pause}
           resume={this.state.resume}
         />
-        <SwipeDetection handleSwipe={this.handleSwipe} />
+        <SwipeDetection
+          handleSwipe={this.handleSwipe}
+          swipeZone={this.state.swipeZone}
+        />
         <Button
           outline
           color="warning"

@@ -18,6 +18,7 @@ class SwipeDetection extends Component {
   };
 
   onClick = event => {
+    console.log(this.props.swipeZone);
     this.props.handleSwipe("touch");
   };
 
@@ -33,7 +34,9 @@ class SwipeDetection extends Component {
         onSwipedRight={this.onSwipedRight}
         style={{ position: "absolute", top: 0, zIndex: 1021 }}
       >
-        <div onClick={this.onClick} style={boxStyle}></div>
+        {this.props.swipeZone.length !== 0 && (
+          <div onClick={this.onClick} style={boxStyle}></div>
+        )}
       </Swipeable>
     );
   }
