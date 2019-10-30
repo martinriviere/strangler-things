@@ -11,7 +11,7 @@ class ModalLose extends Component {
         <div id="ModalLose">
           <p>YOU LOSE !!</p>
           <img 
-            src="http://giphygifs.s3.amazonaws.com/media/A6aHBCFqlE0Rq/giphy.gif"
+            src="https://media.giphy.com/media/3ohs7KViF6rA4aan5u/giphy.gif"
             alt="winner"
           />
           <p>Continue</p>
