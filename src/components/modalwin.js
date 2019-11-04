@@ -4,18 +4,21 @@ import { Link } from "react-router-dom";
 // import Modal from "react-responsive-modal";
 
 class ModalWin extends Component {
-
   render() {
     return (
-      <div id="containerWin">
+      <div className="container">
         <div id="ModalWin">
           <p>YOU WIN !!</p>
-          <img 
+          <img
             src="http://giphygifs.s3.amazonaws.com/media/jUwpNzg9IcyrK/giphy.gif"
             alt="winner"
           />
-          <p><Link to="/level/2">Continue</Link></p>
-          <p><Link to="/">Back to title</Link></p>
+          <p>
+            <Link to="/game">Continue</Link>
+          </p>
+          <p>
+            <Link to="/">Back to title</Link>
+          </p>
         </div>
       </div>
     );
