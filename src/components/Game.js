@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../App.css";
 import HomerLife from "./HomerLife.js";
+import Counter from "./Counter.js"
 import Projectiles from "./Projectiles";
 import SwipeDetection from "./SwipeDetection";
 import Characters from "./Characters";
@@ -12,7 +13,7 @@ import Duff from "../Design/Projectiles/duff.png";
 import Brocoli from "../Design/Projectiles/brocoli.png";
 import Flanders from "../Design/Projectiles/flanders.png";
 import GameRules from "./GameRules.js";
-import { Button } from 'reactstrap';
+import { Button } from "reactstrap";
 
 class Game extends Component {
   constructor() {
@@ -34,18 +35,21 @@ class Game extends Component {
       win: false,
       lose: false,
       pause: false,
-      resume: false
+      resume: false,
+      level: 1,
+      count:0
     };
   }
 
   componentDidMount() {
     this.launchGame();
   }
+
   ruleModalDisplay = () => {
-    this.setState({ gameRuleDisplay: !this.state.gameRuleDisplay});
-    this.state.gameRuleDisplay? this.resumeGame() : this.pauseGame()
-    ;
+    this.setState({ gameRuleDisplay: !this.state.gameRuleDisplay });
+    this.state.gameRuleDisplay ? this.resumeGame() : this.pauseGame();
   };
+
   launchGame = () => {
     this.interval = setInterval(() => {
       const { projectiles, index } = this.state;
@@ -66,26 +70,31 @@ class Game extends Component {
     this.setState({ projectiles: projectiles });
   };
 
+  checkWin = () => {
+    if (this.state.index > this.state.level * 15) {
+      this.setState({ win: true, level: this.state.level + 1 });
+      this.pauseGame();
+    }
+  };
+
   handleSwipe = event => {
     if (event === "right") {
       this.state.swipeZone.forEach(projectile => {
         if (projectile.type.name === "duff") {
+          this.checkWin();
           this.deleteProjectile(projectile.id);
-          if (this.state.index > 19) {
-            this.setState({ win: true });
-            this.pauseGame();
-          }
+          this.setState({count:this.state.count+50});
+          this.removeProjectileFromSwipeZone(projectile.id);
         }
       });
     }
     if (event === "left") {
       this.state.swipeZone.forEach(projectile => {
         if (projectile.type.name === "doughnut") {
+          this.checkWin();
           this.deleteProjectile(projectile.id);
-          if (this.state.index > 19) {
-            this.setState({ win: true });
-            this.pauseGame();
-          }
+          this.setState({count:this.state.count+50})
+          this.removeProjectileFromSwipeZone(projectile.id);
         }
       });
     }
@@ -95,11 +104,10 @@ class Game extends Component {
           projectile.type.name === "brocoli" ||
           projectile.type.name === "flanders"
         ) {
+          this.checkWin();
           this.deleteProjectile(projectile.id);
-          if (this.state.index > 19) {
-            this.setState({ win: true });
-            this.pauseGame();
-          }
+          this.setState({count:this.state.count+50});
+          this.removeProjectileFromSwipeZone(projectile.id);
         }
       });
     }
@@ -156,6 +164,7 @@ class Game extends Component {
           lifeNumber={this.state.lifeNumber}
           lifeMax={this.state.lifeMax}
         />
+        <Counter count={this.state.count} />
         <Characters />
         <Projectiles
           projectiles={this.state.projectiles}
@@ -167,17 +176,22 @@ class Game extends Component {
           resume={this.state.resume}
         />
         <SwipeDetection handleSwipe={this.handleSwipe} />
-        <Button outline color="warning" 
-        onClick = {e => this.ruleModalDisplay()}
-        style = {{position: "fixed", left : "72vw", top : "2vh",zIndex : 1400}}>
-        {this.state.gameRuleDisplay? "Resume" : "Rules"}</Button>       
-        {this.state.gameRuleDisplay && <GameRules ruleModalDisplay = {this.ruleModalDisplay}/>}
+        <Button
+          outline
+          color="warning"
+          onClick={e => this.ruleModalDisplay()}
+          style={{ position: "fixed", left: "72vw", top: "2vh", zIndex: 1400 }}
+        >
+          {this.state.gameRuleDisplay ? "Resume" : "Rules"}
+        </Button>
+        {this.state.gameRuleDisplay && (
+          <GameRules ruleModalDisplay={this.ruleModalDisplay} />
+        )}
         {this.state.win && <ModalWin />}
         {this.state.lose && <ModalLose />}
-
       </div>
     );
   }
 }
 
-export default Game;
+export default Game;  
