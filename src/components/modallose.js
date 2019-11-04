@@ -4,18 +4,21 @@ import { Link } from "react-router-dom";
 // import Modal from "react-responsive-modal";
 
 class ModalLose extends Component {
-  
   render() {
     return (
-      <div id="containerLose">
+      <div className="container">
         <div id="ModalLose">
           <p>YOU LOSE !!</p>
-          <img 
+          <img
             src="http://giphygifs.s3.amazonaws.com/media/A6aHBCFqlE0Rq/giphy.gif"
             alt="winner"
           />
-          <p><Link to="/level/2"><p>Continue</p></Link></p>
-          <p><Link to="/">Back to title</Link></p>
+          <p>
+            <Link to="/game">Continue</Link>
+          </p>
+          <p>
+            <Link to="/">Back to title</Link>
+          </p>
         </div>
       </div>
     );
@@ -23,7 +26,6 @@ class ModalLose extends Component {
 }
 
 export default ModalLose;
-
 
 // class ModalLose extends Component {
 //   state = {

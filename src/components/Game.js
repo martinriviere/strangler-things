@@ -184,7 +184,7 @@ class Game extends Component {
           outline
           color="warning"
           onClick={e => this.ruleModalDisplay()}
-          style={{ position: "fixed", left: "72vw", top: "2vh", zIndex: 1400 }}
+          style={{ position: "fixed", left: "72vw", top: "2vh", zIndex: 11 }}
         >
           {this.state.gameRuleDisplay ? "Resume" : "Rules"}
         </Button>
