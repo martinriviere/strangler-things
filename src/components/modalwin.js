@@ -11,7 +11,7 @@ class ModalWin extends Component {
         <div id="ModalWin">
           <p>YOU WIN !!</p>
           <img 
-            src="http://giphygifs.s3.amazonaws.com/media/jUwpNzg9IcyrK/giphy.gif"
+            src="http://giphygifs.s3.amazonaws.com/media/A6aHBCFqlE0Rq/giphy.gif"
             alt="winner"
           />
           <p>Continue</p>
