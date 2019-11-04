@@ -39,6 +39,7 @@ class Game extends Component {
       resume: false,
       count: 0
     };
+    this.baseState = this.state;
   }
 
   static contextType = GameContext;
@@ -47,6 +48,12 @@ class Game extends Component {
     this.launchGame();
     console.log(this.context.level);
   }
+
+  initializeGame = () => {
+    this.setState(this.baseState);
+    this.launchGame();
+    console.log(this.context.level);
+  };
 
   ruleModalDisplay = () => {
     this.setState({ gameRuleDisplay: !this.state.gameRuleDisplay });
@@ -74,9 +81,9 @@ class Game extends Component {
   };
 
   checkWin = () => {
-    if (this.state.index > this.context.level * 15) {
+    if (this.state.index > this.context.level * 10) {
       this.setState({ win: true });
-      this.context.levelInc();
+      this.context.setLevel(this.context.level + 1);
       this.pauseGame();
     }
   };
@@ -191,8 +198,8 @@ class Game extends Component {
         {this.state.gameRuleDisplay && (
           <GameRules ruleModalDisplay={this.ruleModalDisplay} />
         )}
-        {this.state.win && <ModalWin />}
-        {this.state.lose && <ModalLose />}
+        {this.state.win && <ModalWin initializeGame={this.initializeGame} />}
+        {this.state.lose && <ModalLose initializeGame={this.initializeGame} />}
       </div>
     );
   }

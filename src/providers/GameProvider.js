@@ -1,12 +1,11 @@
-import React, { createContext } from "react";
+import React, { createContext, useState } from "react";
 
 export const GameContext = createContext();
 
 function GameProvider(props) {
-  let level = 1;
-  const levelInc = () => level++;
+  const [level, setLevel] = useState(1);
   return (
-    <GameContext.Provider value={{ level: level, levelInc: levelInc }}>
+    <GameContext.Provider value={{ level: level, setLevel: setLevel }}>
       {props.children}
     </GameContext.Provider>
   );
