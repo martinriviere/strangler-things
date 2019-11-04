@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../App.css";
 import HomerLife from "./HomerLife.js";
-import Counter from "./Counter.js"
+import Counter from "./Counter.js";
 import Projectiles from "./Projectiles";
 import SwipeDetection from "./SwipeDetection";
 import Characters from "./Characters";
@@ -14,6 +14,7 @@ import Brocoli from "../Design/Projectiles/brocoli.png";
 import Flanders from "../Design/Projectiles/flanders.png";
 import GameRules from "./GameRules.js";
 import { Button } from "reactstrap";
+import { GameContext } from "../providers/GameProvider";
 
 class Game extends Component {
   constructor() {
@@ -36,13 +37,15 @@ class Game extends Component {
       lose: false,
       pause: false,
       resume: false,
-      level: 1,
-      count:0
+      count: 0
     };
   }
 
+  static contextType = GameContext;
+
   componentDidMount() {
     this.launchGame();
+    console.log(this.context.level);
   }
 
   ruleModalDisplay = () => {
@@ -71,8 +74,9 @@ class Game extends Component {
   };
 
   checkWin = () => {
-    if (this.state.index > this.state.level * 15) {
-      this.setState({ win: true, level: this.state.level + 1 });
+    if (this.state.index > this.context.level * 15) {
+      this.setState({ win: true });
+      this.context.levelInc();
       this.pauseGame();
     }
   };
@@ -83,7 +87,7 @@ class Game extends Component {
         if (projectile.type.name === "duff") {
           this.checkWin();
           this.deleteProjectile(projectile.id);
-          this.setState({count:this.state.count+50});
+          this.setState({ count: this.state.count + 50 });
           this.removeProjectileFromSwipeZone(projectile.id);
         }
       });
@@ -93,7 +97,7 @@ class Game extends Component {
         if (projectile.type.name === "doughnut") {
           this.checkWin();
           this.deleteProjectile(projectile.id);
-          this.setState({count:this.state.count+50})
+          this.setState({ count: this.state.count + 50 });
           this.removeProjectileFromSwipeZone(projectile.id);
         }
       });
@@ -106,7 +110,7 @@ class Game extends Component {
         ) {
           this.checkWin();
           this.deleteProjectile(projectile.id);
-          this.setState({count:this.state.count+50});
+          this.setState({ count: this.state.count + 50 });
           this.removeProjectileFromSwipeZone(projectile.id);
         }
       });
@@ -194,4 +198,4 @@ class Game extends Component {
   }
 }
 
-export default Game;  
+export default Game;
