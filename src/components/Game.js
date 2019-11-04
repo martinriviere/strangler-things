@@ -77,6 +77,13 @@ class Game extends Component {
     }
   };
 
+  checkLose = () => {
+    if (this.state.lifeNumber < 1) {
+      this.setState({ lose: true });
+      this.pauseGame();
+    }
+  };
+
   handleSwipe = event => {
     let points = 0;
     if (event === "right") {
@@ -164,6 +171,13 @@ class Game extends Component {
   render() {
     return (
       <div className="App">
+
+        {this.state.lose && (
+          <ModalLose />
+        )}
+        {this.state.win && (
+          <ModalWin />
+        )}
         <HomerLife
           lifeNumber={this.state.lifeNumber}
           lifeMax={this.state.lifeMax}
@@ -189,13 +203,12 @@ class Game extends Component {
           onClick={e => this.ruleModalDisplay()}
           style={{ position: "fixed", left: "72vw", top: "2vh", zIndex: 1400 }}
         >
-          {this.state.gameRuleDisplay ? "Resume" : "Rules"}
+        {this.state.gameRuleDisplay ? "Resume" : "Rules"}
         </Button>
         {this.state.gameRuleDisplay && (
           <GameRules ruleModalDisplay={this.ruleModalDisplay} />
         )}
-        {this.state.win && <ModalWin />}
-        {this.state.lose && <ModalLose />}
+
       </div>
     );
   }
