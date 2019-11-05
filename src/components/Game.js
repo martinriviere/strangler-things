@@ -39,14 +39,19 @@ class Game extends Component {
       resume: false,
       count: 0
     };
+    this.baseState = this.state;
   }
 
   static contextType = GameContext;
 
   componentDidMount() {
     this.launchGame();
-    console.log(this.context.level);
   }
+
+  initializeGame = () => {
+    this.setState(this.baseState);
+    this.launchGame();
+  };
 
   ruleModalDisplay = () => {
     this.setState({ gameRuleDisplay: !this.state.gameRuleDisplay });
@@ -74,9 +79,10 @@ class Game extends Component {
   };
 
   checkWin = () => {
-    if (this.state.index > this.context.level * 15) {
+    const { level, nextLevel } = this.context;
+    if (this.state.index > level * 2) {
       this.setState({ win: true });
-      this.context.levelInc();
+      nextLevel();
       this.pauseGame();
     }
   };
@@ -171,12 +177,6 @@ class Game extends Component {
   render() {
     return (
       <div className="App">
-        {this.state.lose && (
-          <ModalLose />
-        )}
-        {this.state.win && (
-          <ModalWin />
-        )}
         <HomerLife
           lifeNumber={this.state.lifeNumber}
           lifeMax={this.state.lifeMax}
@@ -199,12 +199,13 @@ class Game extends Component {
           onClick={e => this.ruleModalDisplay()}
           style={{ position: "fixed", left: "72vw", top: "2vh", zIndex: 11 }}
         >
-        {this.state.gameRuleDisplay ? "Resume" : "Rules"}
+          {this.state.gameRuleDisplay ? "Resume" : "Rules"}
         </Button>
         {this.state.gameRuleDisplay && (
           <GameRules ruleModalDisplay={this.ruleModalDisplay} />
         )}
-
+        {this.state.win && <ModalWin initializeGame={this.initializeGame} />}
+        {this.state.lose && <ModalLose initializeGame={this.initializeGame} />}
       </div>
     );
   }
