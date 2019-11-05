@@ -15,6 +15,7 @@ import Flanders from "../Design/Projectiles/flanders.png";
 import GameRules from "./GameRules.js";
 import { Button } from "reactstrap";
 import { GameContext } from "../providers/GameProvider";
+import Doh from "../Design/Sounds/homer-doh.mp3";
 
 class Game extends Component {
   constructor() {
@@ -39,14 +40,20 @@ class Game extends Component {
       resume: false,
       count: 0
     };
+    this.baseState = this.state;
+    this.doh = new Audio(Doh);
   }
 
   static contextType = GameContext;
 
   componentDidMount() {
     this.launchGame();
-    console.log(this.context.level);
   }
+
+  initializeGame = () => {
+    this.setState(this.baseState);
+    this.launchGame();
+  };
 
   ruleModalDisplay = () => {
     this.setState({ gameRuleDisplay: !this.state.gameRuleDisplay });
@@ -74,9 +81,10 @@ class Game extends Component {
   };
 
   checkWin = () => {
-    if (this.state.index > this.context.level * 15) {
+    const { level, nextLevel } = this.context;
+    if (this.state.index > level * 2) {
       this.setState({ win: true });
-      this.context.levelInc();
+      nextLevel();
       this.pauseGame();
     }
   };
@@ -128,9 +136,11 @@ class Game extends Component {
     // { e => this.reduceLife()} pour l'utiliser
     if (this.state.lifeNumber > 1) {
       this.setState(state => {
+        this.doh.play();
         return { lifeNumber: state.lifeNumber - 1 };
       });
     } else {
+      this.doh.play();
       this.setState({ lose: true });
       this.pauseGame();
     }
@@ -171,12 +181,6 @@ class Game extends Component {
   render() {
     return (
       <div className="App">
-        {this.state.lose && (
-          <ModalLose />
-        )}
-        {this.state.win && (
-          <ModalWin />
-        )}
         <HomerLife
           lifeNumber={this.state.lifeNumber}
           lifeMax={this.state.lifeMax}
@@ -199,12 +203,13 @@ class Game extends Component {
           onClick={e => this.ruleModalDisplay()}
           style={{ position: "fixed", left: "72vw", top: "2vh", zIndex: 11 }}
         >
-        {this.state.gameRuleDisplay ? "Resume" : "Rules"}
+          {this.state.gameRuleDisplay ? "Resume" : "Rules"}
         </Button>
         {this.state.gameRuleDisplay && (
           <GameRules ruleModalDisplay={this.ruleModalDisplay} />
         )}
-
+        {this.state.win && <ModalWin initializeGame={this.initializeGame} />}
+        {this.state.lose && <ModalLose initializeGame={this.initializeGame} />}
       </div>
     );
   }

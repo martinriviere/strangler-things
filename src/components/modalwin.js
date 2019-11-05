@@ -13,9 +13,7 @@ class ModalWin extends Component {
             src="http://giphygifs.s3.amazonaws.com/media/A6aHBCFqlE0Rq/giphy.gif"
             alt="winner"
           />
-          <p>
-            <Link to="/game">Continue</Link>
-          </p>
+          <p onClick={this.props.initializeGame}>Continue</p>
           <p>
             <Link to="/">Back to title</Link>
           </p>
