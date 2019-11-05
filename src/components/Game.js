@@ -16,6 +16,9 @@ import GameRules from "./GameRules.js";
 import { Button } from "reactstrap";
 import { GameContext } from "../providers/GameProvider";
 import Doh from "../Design/Sounds/homer-doh.mp3";
+import Bgsound from "../Design/Sounds/game-generique.mp3";
+import Haha from "../Design/Sounds/nelson-haha.mp3";
+import Champions from "../Design/Sounds/homer-champions.mp3";
 
 class Game extends Component {
   constructor() {
@@ -42,6 +45,9 @@ class Game extends Component {
     };
     this.baseState = this.state;
     this.doh = new Audio(Doh);
+    this.bgsound = new Audio(Bgsound);
+    this.haha= new Audio(Haha);
+    this.champions = new Audio(Champions);
   }
 
   static contextType = GameContext;
@@ -71,6 +77,7 @@ class Game extends Component {
         index: index + 1
       });
     }, 1200);
+    this.bgsound.play()
   };
 
   deleteProjectile = projectileId => {
@@ -84,6 +91,7 @@ class Game extends Component {
     const { level, nextLevel } = this.context;
     if (this.state.index > level * 2) {
       this.setState({ win: true });
+      this.champions.play()
       nextLevel();
       this.pauseGame();
     }
@@ -141,6 +149,7 @@ class Game extends Component {
       });
     } else {
       this.doh.play();
+      this.haha.play();
       this.setState({ lose: true });
       this.pauseGame();
     }
@@ -167,11 +176,14 @@ class Game extends Component {
   pauseGame = () => {
     window.clearInterval(this.interval);
     this.setState({ pause: true });
+    this.bgsound.pause();
+
   };
 
   resumeGame = () => {
     this.launchGame();
     this.setState({ pause: false, resume: true });
+    this.bgsound.play();
   };
 
   componentDidUpdate() {
