@@ -88,6 +88,13 @@ class Game extends Component {
     }
   };
 
+  checkLose = () => {
+    if (this.state.lifeNumber < 1) {
+      this.setState({ lose: true });
+      this.pauseGame();
+    }
+  };
+
   handleSwipe = event => {
     if (event === "right") {
       this.state.swipeZone.forEach(projectile => {

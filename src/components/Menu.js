@@ -5,19 +5,13 @@ import { Link } from "react-router-dom";
 import { GameContext } from "../providers/GameProvider";
 
 let divStyle = {
-  backgroundImage: `url(${TitleScreen})`,
-  backgroundSize: "cover",
-  top: 0,
-  left: 0,
-  position: "fixed",
-  width: "100%",
-  height: "100%",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "middle",
-  justifyContent: "center",
-  zIndex: 2
-};
+    backgroundImage: `url(${TitleScreen})`,
+    backgroundSize: 'cover',
+    position: 'fixed',
+    width: '100vw',
+    height: '100vh',
+    zIndex: 2,
+}
 
 function Menu() {
   const { level, setLevel } = useContext(GameContext);
