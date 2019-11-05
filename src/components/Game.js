@@ -46,7 +46,7 @@ class Game extends Component {
     this.baseState = this.state;
     this.doh = new Audio(Doh);
     this.bgsound = new Audio(Bgsound);
-    this.haha= new Audio(Haha);
+    this.haha = new Audio(Haha);
     this.champions = new Audio(Champions);
   }
 
@@ -77,7 +77,7 @@ class Game extends Component {
         index: index + 1
       });
     }, 1200);
-    this.bgsound.play()
+    this.bgsound.play();
   };
 
   deleteProjectile = projectileId => {
@@ -91,7 +91,7 @@ class Game extends Component {
     const { level, nextLevel } = this.context;
     if (this.state.index > level * 2) {
       this.setState({ win: true });
-      this.champions.play()
+      this.champions.play();
       nextLevel();
       this.pauseGame();
     }
@@ -177,7 +177,6 @@ class Game extends Component {
     window.clearInterval(this.interval);
     this.setState({ pause: true });
     this.bgsound.pause();
-
   };
 
   resumeGame = () => {
