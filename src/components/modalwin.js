@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./modal.css";
 import { Link } from "react-router-dom";
-// import Modal from "react-responsive-modal";
 
 class ModalWin extends Component {
   render() {
