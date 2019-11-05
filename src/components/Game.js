@@ -46,13 +46,11 @@ class Game extends Component {
 
   componentDidMount() {
     this.launchGame();
-    console.log(this.context.level);
   }
 
   initializeGame = () => {
     this.setState(this.baseState);
     this.launchGame();
-    console.log(this.context.level);
   };
 
   ruleModalDisplay = () => {
@@ -81,9 +79,11 @@ class Game extends Component {
   };
 
   checkWin = () => {
-    if (this.state.index > this.context.level * 10) {
+    const { level } = this.context;
+    if (this.state.index > level * 10) {
       this.setState({ win: true });
-      this.context.setLevel(this.context.level + 1);
+      this.context.setLevel(level + 1);
+      localStorage.setItem("level", level + 1);
       this.pauseGame();
     }
   };
