@@ -78,6 +78,7 @@ class Game extends Component {
 
   componentWillUnmount() {
     window.clearInterval(this.interval);
+    this.bgsound.pause();
   }
 
   deleteProjectile = projectileId => {
