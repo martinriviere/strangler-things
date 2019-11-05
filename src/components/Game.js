@@ -79,11 +79,10 @@ class Game extends Component {
   };
 
   checkWin = () => {
-    const { level } = this.context;
-    if (this.state.index > level * 10) {
+    const { level, nextLevel } = this.context;
+    if (this.state.index > level * 2) {
       this.setState({ win: true });
-      this.context.setLevel(level + 1);
-      localStorage.setItem("level", level + 1);
+      nextLevel();
       this.pauseGame();
     }
   };

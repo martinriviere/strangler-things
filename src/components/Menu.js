@@ -5,22 +5,22 @@ import { Link } from "react-router-dom";
 import { GameContext } from "../providers/GameProvider";
 
 let divStyle = {
-    backgroundImage: `url(${TitleScreen})`,
-    backgroundSize: 'cover',
-    position: 'fixed',
-    width: '100vw',
-    height: '100vh',
-    zIndex: 2,
-}
+  backgroundImage: `url(${TitleScreen})`,
+  backgroundSize: "cover",
+  position: "fixed",
+  width: "100vw",
+  height: "100vh",
+  zIndex: 2
+};
 
 function Menu() {
-  const { level, setLevel } = useContext(GameContext);
+  const { level, resetLevel } = useContext(GameContext);
 
   return (
     <div className="Menu" style={divStyle}>
       <nav>
         <ul>
-          <li onClick={() => setLevel(1)}>
+          <li onClick={() => resetLevel()}>
             <Link to="/game">NEW GAME</Link>
           </li>
           {level > 1 && (
