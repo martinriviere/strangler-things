@@ -1,0 +1,13 @@
+.projectile {
+  animation: apparition 0.5s;
+}
+
+@keyframes apparition {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

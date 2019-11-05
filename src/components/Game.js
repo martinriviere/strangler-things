@@ -76,6 +76,10 @@ class Game extends Component {
     this.bgsound.play();
   };
 
+  componentWillUnmount() {
+    window.clearInterval(this.interval);
+  }
+
   deleteProjectile = projectileId => {
     const projectiles = this.state.projectiles.filter(
       projectile => projectile.id !== projectileId
@@ -202,14 +206,21 @@ class Game extends Component {
           resume={this.state.resume}
         />
         <SwipeDetection handleSwipe={this.handleSwipe} />
-        <Button
-          outline
-          color="warning"
-          onClick={e => this.ruleModalDisplay()}
-          style={{ position: "fixed", left: "72vw", top: "2vh", zIndex: 11 }}
-        >
-          {this.state.gameRuleDisplay ? "Resume" : "Rules"}
-        </Button>
+        {!this.state.win && !this.state.lose && (
+          <Button
+            outline
+            color="warning"
+            onClick={e => this.ruleModalDisplay()}
+            style={{
+              position: "fixed",
+              left: "72vw",
+              top: "2vh",
+              zIndex: 1500
+            }}
+          >
+            {this.state.gameRuleDisplay ? "Resume" : "Pause"}
+          </Button>
+        )}
         {this.state.gameRuleDisplay && (
           <GameRules ruleModalDisplay={this.ruleModalDisplay} />
         )}
