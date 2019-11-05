@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./modal.css";
 import { Link } from "react-router-dom";
+import Haha from "../Design/Sounds/nelson-haha.mp3";
 
 class ModalLose extends Component {
   render() {
@@ -17,6 +18,13 @@ class ModalLose extends Component {
             <Link to="/">Back to menu</Link>
           </p>
         </div>
+        <iframe
+        title="son-haha"
+        src={Haha}
+        allow="autoplay"
+        id="audio"
+        style={{ visibility: "hidden" }}
+      ></iframe>
       </div>
     );
   }

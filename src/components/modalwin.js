@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./modal.css";
 import { Link } from "react-router-dom";
+import Champions from "../Design/Sounds/homer-champions.mp3"
 
 class ModalWin extends Component {
   render() {
@@ -17,6 +18,13 @@ class ModalWin extends Component {
             <Link to="/">Back to menu</Link>
           </p>
         </div>
+        <iframe
+        title="son-champions"
+        src={Champions}
+        allow="autoplay"
+        id="audio"
+        style={{ visibility: "hidden" }}
+      ></iframe>
       </div>
     );
   }

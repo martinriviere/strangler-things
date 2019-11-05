@@ -15,7 +15,6 @@ class GameProvider extends Component {
   resetLevel = () => {
     this.setState({ level: 1 });
     localStorage.setItem("level", 1);
-    console.log("reset");
   };
 
   nextLevel = () => {
