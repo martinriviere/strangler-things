@@ -14,7 +14,7 @@ class ModalWin extends Component {
           />
           <p onClick={this.props.initializeGame}>Continue</p>
           <p>
-            <Link to="/">Back to title</Link>
+            <Link to="/">Back to menu</Link>
           </p>
         </div>
       </div>

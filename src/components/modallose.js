@@ -12,7 +12,7 @@ class ModalLose extends Component {
             src="http://giphygifs.s3.amazonaws.com/media/jUwpNzg9IcyrK/giphy.gif"
             alt="winner"
           />
-          <p onClick={this.props.initializeGame}>Continue</p>
+          <p onClick={this.props.initializeGame}>Try again</p>
           <p>
             <Link to="/">Back to menu</Link>
           </p>
