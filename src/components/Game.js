@@ -78,6 +78,8 @@ class Game extends Component {
       });
     }, 1200);
     this.bgsound.play();
+    this.champions.pause();
+    this.haha.pause();
   };
 
   deleteProjectile = projectileId => {
