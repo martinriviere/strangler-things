@@ -3,7 +3,7 @@ import TitleScreen from "../Design/Images/TitleScreenMenu.jpg";
 import "./Menu.css";
 import { Link } from "react-router-dom";
 import { GameContext } from "../providers/GameProvider";
-import Accueil from "../Design/Sounds/accueil.mp3"
+import Accueil from "../Design/Sounds/accueil.mp3";
 
 let divStyle = {
   backgroundImage: `url(${TitleScreen})`,
@@ -16,12 +16,10 @@ let divStyle = {
 
 function Menu() {
   const { level, resetLevel } = useContext(GameContext);
-  const accueil = new Audio(Accueil);
-  accueil.play();
 
   return (
     <div className="Menu" style={divStyle}>
-      <nav>
+       <nav>
         <ul>
           <li onClick={() => resetLevel()}>
             <Link to="/game">NEW GAME</Link>
@@ -37,6 +35,13 @@ function Menu() {
           <li>CREDITS</li>
         </ul>
       </nav>
+      <iframe
+        title="son-accueil"
+        src={Accueil}
+        allow="autoplay"
+        id="audio"
+        style={{ visibility: "hidden" }}
+      ></iframe>
     </div>
   );
 }

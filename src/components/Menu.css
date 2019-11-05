@@ -4,17 +4,22 @@
 }
 nav ul li {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     text-align: center;
     list-style: none;
     font-family: 'Homer_Simpson';
-    font-size: 3em;
+    font-size: 4em;
     font-weight: 600;
     color: #FEDE2B;
-    cursor: pointer;
     text-shadow: 2px 2px 2px 3px black;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+ul {
+    padding-left: 0;
 }
 
 nav {
-    margin-top: 50%;
+    margin-top: 70%;
 }
