@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Projectile.css";
 
 class Projectile extends Component {
   constructor(props) {
@@ -48,7 +49,7 @@ class Projectile extends Component {
   };
 
   componentDidMount() {
-    this.launchGame();
+    setTimeout(this.launchGame, 500);
   }
 
   launchGame = () => {
@@ -82,6 +83,7 @@ class Projectile extends Component {
           left: x + "%"
         }}
         alt=""
+        className="projectile"
       />
     );
   }
@@ -89,12 +91,9 @@ class Projectile extends Component {
 
 const styles = {
   projectile: {
-    // borderRadius: "50%",
-    // backgroundColor: "red",
-    // backgroundImage: Doughnut,
-    // backgroundSize: "cover",
     position: "absolute",
-    filter: "drop-shadow(-20px 30px 2px rgba(0, 0, 0, 0.3))"
+    filter: "drop-shadow(-20px 30px 2px rgba(0, 0, 0, 0.3))",
+    transition: "opacity 1s"
   }
 };
 
