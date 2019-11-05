@@ -15,7 +15,7 @@ import Flanders from "../Design/Projectiles/flanders.png";
 import GameRules from "./GameRules.js";
 import { Button } from "reactstrap";
 import { GameContext } from "../providers/GameProvider";
-import Doh from "../Design/Sounds/homer-doh.mp3"
+import Doh from "../Design/Sounds/homer-doh.mp3";
 
 class Game extends Component {
   constructor() {
@@ -41,6 +41,7 @@ class Game extends Component {
       count: 0
     };
     this.baseState = this.state;
+    this.doh = new Audio(Doh);
   }
 
   static contextType = GameContext;
@@ -135,13 +136,11 @@ class Game extends Component {
     // { e => this.reduceLife()} pour l'utiliser
     if (this.state.lifeNumber > 1) {
       this.setState(state => {
-        const doh = new Audio(Doh);
-        doh.play();
+        this.doh.play();
         return { lifeNumber: state.lifeNumber - 1 };
       });
     } else {
-      const doh = new Audio(Doh);
-      doh.play();
+      this.doh.play();
       this.setState({ lose: true });
       this.pauseGame();
     }
