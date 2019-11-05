@@ -4,6 +4,7 @@
 }
 nav ul li {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     text-align: center;
     list-style: none;
@@ -11,10 +12,14 @@ nav ul li {
     font-size: 3em;
     font-weight: 600;
     color: #FEDE2B;
-    cursor: pointer;
     text-shadow: 2px 2px 2px 3px black;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+ul {
+    padding-left: 0;
 }
 
 nav {
-    margin-top: 50%;
+    margin-top: 70%;
 }

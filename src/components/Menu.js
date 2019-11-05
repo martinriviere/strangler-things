@@ -1,7 +1,7 @@
 import React from 'react';
 import TitleScreen from "../Design/Images/TitleScreenMenu.jpg"
-import './Menu.css';
 import { Link } from "react-router-dom";
+import './Menu.css';
 
 let divStyle = {
     backgroundImage: `url(${TitleScreen})`,
