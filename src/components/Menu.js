@@ -30,7 +30,7 @@ function Menu() {
             </li>
           )}
           <li>
-            <Link to="/options">OPTIONS</Link>
+            <Link to="/MenuOptions">OPTIONS</Link>
           </li>
           <li>CREDITS</li>
         </ul>
