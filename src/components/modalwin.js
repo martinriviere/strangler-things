@@ -10,7 +10,7 @@ class ModalWin extends Component {
         <div id="ModalWin">
           <p>YOU WIN !!</p>
           <img
-            src="http://giphygifs.s3.amazonaws.com/media/jUwpNzg9IcyrK/giphy.gif"
+            src="http://giphygifs.s3.amazonaws.com/media/A6aHBCFqlE0Rq/giphy.gif"
             alt="winner"
           />
           <p onClick={this.props.initializeGame}>Continue</p>
@@ -24,44 +24,3 @@ class ModalWin extends Component {
 }
 
 export default ModalWin;
-
-// class ModalWin extends Component {
-//   state = {
-//     open: true
-//   };
-
-//   onOpenModal = () => {
-//     this.setState({ open: true });
-//   };
-
-//   onCloseModal = () => {
-//     this.setState({ open: false });
-//   };
-
-//   render() {
-//     const { open } = this.state;
-//     return (
-//       <div className="modal-div">
-//         <button onClick={this.onOpenModal}>Open modal</button>
-//         <Modal
-//           open={open}
-//           onClose={this.onCloseModal}
-//           center
-//           styles={{ overlay: { background: "rgba(0, 0, 0, 0.47)" } }}
-//         >
-//           <div id="modalLose">
-//           <p>YOU WIN ! !</p>
-//             <img
-//               src="http://giphygifs.s3.amazonaws.com/media/A6aHBCFqlE0Rq/giphy.gif"
-//               alt="winner"
-//             />
-//             <p>Continue</p>
-//             <p>Back to title</p>
-//           </div>
-//         </Modal>
-//       </div>
-//     );
-//   }
-// }
-
-// export default ModalWin;
