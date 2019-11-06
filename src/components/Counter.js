@@ -1,23 +1,21 @@
 import React, { Component } from "react";
-import CountUp from 'react-countup';
+import CountUp from "react-countup";
 
 const counterStyle = {
   fontSize: "30px",
   fontFamily: "SimpsonFont",
   color: "white",
-  textShadow: "0 0 10px #000000"}
-  ;
-
+  textShadow: "0 0 10px #000000"
+};
 class Counter extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
-    this.prevCount=0;
+    this.state = {};
+    this.prevCount = 0;
   }
 
   componentDidUpdate() {
-    this.prevCount = this.props.count
+    this.prevCount = this.props.count;
   }
 
   render() {
@@ -29,10 +27,14 @@ class Counter extends Component {
           flexDirection: "column",
           position: "absolute",
           right: "5vw",
-          top: "20vh"
+          top: "40vh"
         }}
       >
-        <CountUp style={counterStyle} start={this.prevCount} end={this.props.count} />
+        <CountUp
+          style={counterStyle}
+          start={this.prevCount}
+          end={this.props.count}
+        />
       </div>
     );
   }
