@@ -19,6 +19,7 @@ import { GameContext } from "../providers/GameProvider";
 import Doh from "../Design/Sounds/homer-doh.mp3";
 import Bgsound from "../Design/Sounds/game-generique.mp3";
 import Barriere from "./Barriere";
+import Level from "./Level";
 
 class Game extends Component {
   constructor() {
@@ -210,8 +211,9 @@ class Game extends Component {
   render() {
     return (
       <div className="App">
+        <Level />
         <Barriere />
-        <Barriere right pancarte />
+        <Barriere right />
         <HomerLife
           lifeNumber={this.state.lifeNumber}
           lifeMax={this.state.lifeMax}
