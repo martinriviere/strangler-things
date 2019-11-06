@@ -42,7 +42,8 @@ class Game extends Component {
       pause: false,
       resume: false,
       streak: [],
-      count: 0
+      count: 0,
+      drunkMode: false,
     };
     this.baseState = this.state;
     this.doh = new Audio(Doh);
@@ -106,6 +107,16 @@ class Game extends Component {
     }
   };
 
+  isDrunk = () => {
+    const { streak } = this.state;
+      if (streak[streak.length] === "duff" && streak[streak.length - 1] === "duff") {
+        this.setState({ drunkMode: true })
+      }
+      if (this.state.drunkMode === true) {
+        console.log('Homer is drunk')
+      }
+  }
+
   handleSwipe = event => {
     if (event === "right") {
       this.state.swipeZone.forEach(projectile => {
@@ -115,6 +126,7 @@ class Game extends Component {
           this.setState({ streak: [...this.state.streak, projectile] });
           this.removeProjectileFromSwipeZone(projectile.id);
           this.addPoints();
+          this.isDrunk()
         }
       });
     }
@@ -227,7 +239,7 @@ class Game extends Component {
           pause={this.state.pause}
           resume={this.state.resume}
         />
-        <SwipeDetection handleSwipe={this.handleSwipe} />
+        <SwipeDetection handleSwipe={this.handleSwipe} drunkMode={this.state.drunkMode}/>
         {!this.state.win && !this.state.lose && (
           <Button
             outline
