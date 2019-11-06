@@ -17,6 +17,7 @@ import { Button } from "reactstrap";
 import { GameContext } from "../providers/GameProvider";
 import Doh from "../Design/Sounds/homer-doh.mp3";
 import Bgsound from "../Design/Sounds/game-generique.mp3";
+import Barriere from "./Barriere";
 
 class Game extends Component {
   constructor() {
@@ -191,6 +192,8 @@ class Game extends Component {
   render() {
     return (
       <div className="App">
+        <Barriere />
+        <Barriere right pancarte />
         <HomerLife
           lifeNumber={this.state.lifeNumber}
           lifeMax={this.state.lifeMax}
