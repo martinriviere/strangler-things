@@ -16,8 +16,8 @@ function ModalWin(props) {
         />
         <p
           onClick={() => {
-            props.initializeGame();
             nextLevel();
+            props.initializeGame();
           }}
         >
           Continue

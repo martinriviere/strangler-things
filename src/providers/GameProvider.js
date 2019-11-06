@@ -8,8 +8,19 @@ class GameProvider extends Component {
     this.state = {
       level: localStorage.getItem("level") || 1,
       nextLevel: this.nextLevel,
-      resetLevel: this.resetLevel
+      resetLevel: this.resetLevel,
+      nbProjectiles: 5
     };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.level !== prevState.level) {
+      this.setState({
+        nbProjectiles: 5 * this.state.level,
+        remainingProjectiles: 5 * this.state.level
+      });
+      console.log("nextLevel");
+    }
   }
 
   resetLevel = () => {
