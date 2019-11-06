@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import TitleScreen from "../Design/Images/TitleScreenMenu.jpg";
-import "./Menu.css";
 import { Link } from "react-router-dom";
 import { GameContext } from "../providers/GameProvider";
 import Accueil from "../Design/Sounds/accueil.mp3";
+import "./Menu.css";
 
 let divStyle = {
   backgroundImage: `url(${TitleScreen})`,
