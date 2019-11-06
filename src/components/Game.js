@@ -245,7 +245,7 @@ class Game extends Component {
             {this.state.gameRuleDisplay ? "Resume" : "Pause"}
           </Button>
         )}
-        {this.state.streak.length > 0 && this.state.streak.length % 5 === 0 && (
+        {this.state.streak.length > 0 && this.state.streak.length % 5 === 0 && !this.state.win && !this.state.lose && (
           <ModalStreak streak={this.state.streak.length} />
         )}
 
