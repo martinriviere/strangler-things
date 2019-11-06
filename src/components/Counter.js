@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import CountUp from 'react-countup';
 
 const counterStyle = {
   fontSize: "30px",
@@ -8,10 +9,15 @@ const counterStyle = {
   ;
 
 class Counter extends Component {
-  constructor(count) {
-    super(count);
+  constructor(props) {
+    super(props);
     this.state = {
     };
+    this.prevCount=0;
+  }
+
+  componentDidUpdate() {
+    this.prevCount = this.props.count
   }
 
   render() {
@@ -26,7 +32,7 @@ class Counter extends Component {
           top: "20vh"
         }}
       >
-        <h3 style={counterStyle}>{this.props.count}</h3>
+        <CountUp style={counterStyle} start={this.prevCount} end={this.props.count} />
       </div>
     );
   }
