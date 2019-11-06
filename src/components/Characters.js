@@ -9,12 +9,12 @@ const charactersStyle = {
 const bartStyle = {
   height: "20vh",
   top: "1vh",
-  zIndex: -1
+  zIndex: -3
 };
 const homerStyle = {
   bottom: "-5vh",
   height: "40vh",
-  zIndex: 2
+  zIndex: -1
 };
 class Characters extends Component {
   render() {

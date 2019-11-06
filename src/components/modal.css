@@ -10,6 +10,15 @@
     z-index: 2000;
 }
 
+.containerRules {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.781);
+}
+
 .container-streak {
     display: flex;
     justify-content: center;
@@ -21,6 +30,7 @@
     width: 100vw;
     z-index: 1020;
 }
+
 
 #ModalLose {
     width: 90%;
