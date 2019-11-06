@@ -3,12 +3,10 @@
     src: url('../Design/Font/Homer_Simpson.ttf');
 }
 
-
-
 nav ul li {
     display: flex;
     flex-direction: column;
-    justify-content: left;
+    justify-content: center;
     list-style: none;
     font-family: 'Homer_Simpson';
     font-size: 3.5em;
@@ -19,13 +17,10 @@ nav ul li {
     margin-right: 50px;
 }
 
-ul {
-    padding-left: 0;
-}
-
 nav {
     margin-top: 65%;
 }
+
 
 a {
     color: rgb(255, 230, 0);
