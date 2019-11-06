@@ -100,8 +100,8 @@ class Game extends Component {
 
   checkLose = () => {
     if (this.state.lifeNumber < 1) {
-      this.setState({ lose: true });
       this.pauseGame();
+      setTimeout(() => this.setState({ lose: true }), 10);
     }
   };
 
