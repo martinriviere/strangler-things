@@ -4,14 +4,12 @@ const counterStyle = {
   fontSize: "30px",
   fontFamily: "SimpsonFont",
   color: "white",
-  textShadow: "0 0 10px #000000"}
-  ;
-
+  textShadow: "0 0 10px #000000"
+};
 class Counter extends Component {
   constructor(count) {
     super(count);
-    this.state = {
-    };
+    this.state = {};
   }
 
   render() {
@@ -23,7 +21,7 @@ class Counter extends Component {
           flexDirection: "column",
           position: "absolute",
           right: "5vw",
-          top: "20vh"
+          top: "25vh"
         }}
       >
         <h3 style={counterStyle}>{this.props.count}</h3>
