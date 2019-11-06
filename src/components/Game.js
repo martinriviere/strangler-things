@@ -17,6 +17,7 @@ import { Button } from "reactstrap";
 import { GameContext } from "../providers/GameProvider";
 import Doh from "../Design/Sounds/homer-doh.mp3";
 import Bgsound from "../Design/Sounds/game-generique.mp3";
+import Barriere from "./Barriere";
 
 class Game extends Component {
   constructor() {
@@ -89,18 +90,17 @@ class Game extends Component {
   };
 
   checkWin = () => {
-    const { level, nextLevel } = this.context;
-    if (this.state.index > level * 2) {
-      this.setState({ win: true });
-      nextLevel();
+    const { level } = this.context;
+    if (this.state.index >= level * 5) {
       this.pauseGame();
+      setTimeout(() => this.setState({ win: true }), 10);
     }
   };
 
   checkLose = () => {
     if (this.state.lifeNumber < 1) {
-      this.setState({ lose: true });
       this.pauseGame();
+      setTimeout(() => this.setState({ lose: true }), 10);
     }
   };
 
@@ -191,6 +191,8 @@ class Game extends Component {
   render() {
     return (
       <div className="App">
+        <Barriere />
+        <Barriere right pancarte />
         <HomerLife
           lifeNumber={this.state.lifeNumber}
           lifeMax={this.state.lifeMax}
