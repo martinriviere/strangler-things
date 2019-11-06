@@ -1,33 +1,42 @@
-import React, { Component } from "react";
+import React, { useContext } from "react";
 import "./modal.css";
 import { Link } from "react-router-dom";
-import Champions from "../Design/Sounds/homer-champions.mp3"
+import Champions from "../Design/Sounds/homer-champions.mp3";
+import { GameContext } from "../providers/GameProvider";
 
-class ModalWin extends Component {
-  render() {
-    return (
-      <div className="container">
-        <div id="ModalWin">
-          <p>YOU WIN !!</p>
-          <img
-            src="http://giphygifs.s3.amazonaws.com/media/A6aHBCFqlE0Rq/giphy.gif"
-            alt="winner"
-          />
-          <p onClick={this.props.initializeGame}>Continue</p>
-          <p>
-            <Link to="/">Back to menu</Link>
-          </p>
-        </div>
-        <iframe
+function ModalWin(props) {
+  const { nextLevel } = useContext(GameContext);
+  return (
+    <div className="container">
+      <div id="ModalWin">
+        <p>YOU WIN !!</p>
+        <img
+          src="http://giphygifs.s3.amazonaws.com/media/A6aHBCFqlE0Rq/giphy.gif"
+          alt="winner"
+        />
+        <p
+          onClick={() => {
+            props.initializeGame();
+            nextLevel();
+          }}
+        >
+          Continue
+        </p>
+        <p>
+          <Link onClick={nextLevel} to="/">
+            Back to menu
+          </Link>
+        </p>
+      </div>
+      <iframe
         title="son-champions"
         src={Champions}
         allow="autoplay"
         id="audio"
         style={{ visibility: "hidden" }}
       ></iframe>
-      </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default ModalWin;

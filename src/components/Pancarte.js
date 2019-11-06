@@ -7,7 +7,7 @@ function Pancarte() {
 
   return (
     <div style={styles.div}>
-      <span style={styles.span}>{level}</span>
+      <div style={styles.span}>{level}</div>
     </div>
   );
 }
@@ -18,20 +18,23 @@ const styles = {
   div: {
     position: "relative",
     backgroundImage: `url(${PancarteUrl})`,
-    width: "100%",
-    height: "100%",
-    backgroundSize: "60%",
+    width: "20vw",
+    height: "14vw",
+    backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "55% 85%",
     transform: "rotate(7deg)",
-    textAlign: "center"
+    textAlign: "center",
+    top: "22%",
+    left: "15%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
   },
   span: {
-    position: "absolute",
-    bottom: "12%",
     fontSize: 24,
-    left: "47%",
     fontWeight: "bold",
-    color: "white"
+    color: "white",
+    fontFamily: "SimpsonFont"
   }
 };

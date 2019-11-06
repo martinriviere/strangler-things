@@ -15,7 +15,7 @@ export default Barriere;
 const style = {
   backgroundImage: `url(${BarriereUrl})`,
   width: "28.6vw",
-  height: "20vh",
+  height: "22.97vw",
   backgroundSize: "100%",
   backgroundRepeat: "no-repeat",
   backgroundPosition: "bottom",
