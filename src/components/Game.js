@@ -48,23 +48,21 @@ class Game extends Component {
     this.baseState = this.state;
     this.doh = new Audio(Doh);
     this.bgsound = new Audio(Bgsound);
+    this.newGameHasBeenInitialized = false;
   }
 
   static contextType = GameContext;
 
   componentDidMount() {
-    const { nbProjectiles } = this.context;
-    this.remainingProjectiles = nbProjectiles;
-    this.projectilesToLaunch = nbProjectiles;
-    this.launchGame();
+    // const { nbProjectiles } = this.context;
+    // this.remainingProjectiles = nbProjectiles;
+    // this.projectilesToLaunch = nbProjectiles;
+    // this.launchGame();
   }
 
   initializeGame = () => {
-    const { nbProjectiles } = this.context;
+    this.newGameHasBeenInitialized = true;
     this.setState({ ...this.baseState, count: this.state.count });
-    this.remainingProjectiles = nbProjectiles;
-    this.projectilesToLaunch = nbProjectiles;
-    this.launchGame();
   };
 
   ruleModalDisplay = () => {
@@ -218,6 +216,14 @@ class Game extends Component {
 
   componentDidUpdate() {
     if (this.state.resume) this.setState({ resume: false });
+    const { newLevel, setNewLevelToFalse, nbProjectiles } = this.context;
+    while (!newLevel) {
+      this.forceUpdate();
+    }
+    this.remainingProjectiles = nbProjectiles;
+    this.projectilesToLaunch = nbProjectiles;
+    this.launchGame();
+    setNewLevelToFalse();
   }
 
   render() {
