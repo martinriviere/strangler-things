@@ -7,6 +7,7 @@ import SwipeDetection from "./SwipeDetection";
 import Characters from "./Characters";
 import ModalWin from "./modalwin";
 import ModalLose from "./modallose";
+import ModalStreak from "./ModalStreak";
 import { randomOf } from "./helpers";
 import Doughnut from "../Design/Projectiles/doughnut.png";
 import Duff from "../Design/Projectiles/duff.png";
@@ -39,6 +40,7 @@ class Game extends Component {
       lose: false,
       pause: false,
       resume: false,
+      streak: [],
       count: 0
     };
     this.baseState = this.state;
@@ -53,7 +55,7 @@ class Game extends Component {
   }
 
   initializeGame = () => {
-    this.setState(this.baseState);
+    this.setState({ ...this.baseState, count: this.state.count });
     this.launchGame();
   };
 
@@ -110,8 +112,9 @@ class Game extends Component {
         if (projectile.type.name === "duff") {
           this.checkWin();
           this.deleteProjectile(projectile.id);
-          this.setState({ count: this.state.count + 50 });
+          this.setState({ streak: [...this.state.streak, projectile] });
           this.removeProjectileFromSwipeZone(projectile.id);
+          this.addPoints();
         }
       });
     }
@@ -120,8 +123,9 @@ class Game extends Component {
         if (projectile.type.name === "doughnut") {
           this.checkWin();
           this.deleteProjectile(projectile.id);
-          this.setState({ count: this.state.count + 50 });
+          this.setState({ streak: [...this.state.streak, projectile] });
           this.removeProjectileFromSwipeZone(projectile.id);
+          this.addPoints();
         }
       });
     }
@@ -133,10 +137,25 @@ class Game extends Component {
         ) {
           this.checkWin();
           this.deleteProjectile(projectile.id);
-          this.setState({ count: this.state.count + 50 });
+          this.setState({ streak: [...this.state.streak, projectile] });
           this.removeProjectileFromSwipeZone(projectile.id);
+          this.addPoints();
         }
       });
+    }
+  };
+
+  addPoints = () => {
+    if (this.state.streak.length < 5) {
+      this.setState({ count: this.state.count + 50 });
+    } else if (this.state.streak.length < 10) {
+      this.setState({ count: this.state.count + 75 });
+    } else if (this.state.streak.length < 15) {
+      this.setState({ count: this.state.count + 100 });
+    } else if (this.state.streak.length < 20) {
+      this.setState({ count: this.state.count + 150 });
+    } else {
+      this.setState({ count: this.state.count + 200 });
     }
   };
 
@@ -145,7 +164,7 @@ class Game extends Component {
     if (this.state.lifeNumber > 1) {
       this.setState(state => {
         this.doh.play();
-        return { lifeNumber: state.lifeNumber - 1 };
+        return { lifeNumber: state.lifeNumber - 1, streak: [] };
       });
     } else {
       this.doh.play();
@@ -222,6 +241,10 @@ class Game extends Component {
             {this.state.gameRuleDisplay ? "Resume" : "Pause"}
           </Button>
         )}
+        {this.state.streak.length > 0 && this.state.streak.length % 5 === 0 && (
+          <ModalStreak streak={this.state.streak.length} />
+        )}
+
         {this.state.gameRuleDisplay && (
           <GameRules ruleModalDisplay={this.ruleModalDisplay} />
         )}
