@@ -1,0 +1,45 @@
+.counter-container{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    margin-top: 130px;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1020;
+}
+
+
+.counter-display {
+    width: 90%;
+    display: flex;
+    position: absolute;
+    top:70vh;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    border-radius: 8px;
+    border: 3px solid white;
+    font-size: 3em;
+    font-family: "SimpsonFont";
+    color: rgb(255, 230, 0);
+    background-color: rgba(112, 105, 2, 0.8);
+    text-shadow: rgba(0, 0, 0, 0.678) 3px 3px 3px;
+    padding: 2vh 0 0 0;
+}
+
+
+.counter-container p {
+    width: 70%;
+    display: flex;
+    position: absolute;
+    top:71vh;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1em;
+    font-family: "SimpsonFont";
+    color: rgb(255, 230, 0);
+    text-shadow: rgba(0, 0, 0, 0.678) 3px 3px 3px;
+
+}
