@@ -92,9 +92,9 @@ class Game extends Component {
   checkWin = () => {
     const { level, nextLevel } = this.context;
     if (this.state.index > level * 2) {
-      this.setState({ win: true });
       nextLevel();
       this.pauseGame();
+      setTimeout(() => this.setState({ win: true }), 10);
     }
   };
 
