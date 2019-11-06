@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Menu from "./components/Menu";
-import Options from "./components/Options";
+import MenuOptions from "./components/MenuOptions.js";
 import Game from "./components/Game";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import GameProvider from "./providers/GameProvider";
@@ -15,7 +15,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Menu} />
               <Route path="/game" component={Game} />
-              <Route path="/options" component={Options} />
+              <Route path="/MenuOptions" component={MenuOptions} />
             </Switch>
           </>
         </Router>
