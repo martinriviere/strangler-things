@@ -40,6 +40,7 @@ class Projectile extends Component {
     if (y > 45 && y < 55 && !this.state.isInSwipeZone) {
       this.props.addProjectileToSwipeZone(this.props.projectile);
       this.setState({ isInSwipeZone: !this.state.isInSwipeZone });
+      this.props.removeRemainingProjectile();
     }
     if (y > 62 && this.state.isInSwipeZone) {
       this.props.removeProjectileFromSwipeZone(this.props.projectile.id);
@@ -93,7 +94,8 @@ const styles = {
   projectile: {
     position: "absolute",
     filter: "drop-shadow(-20px 30px 4px rgba(0, 0, 0, 0.3))",
-    transition: "opacity 1s"
+    transition: "opacity 1s",
+    zIndex: -2
   }
 };
 

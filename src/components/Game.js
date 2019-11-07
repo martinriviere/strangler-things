@@ -19,6 +19,8 @@ import { GameContext } from "../providers/GameProvider";
 import Doh from "../Design/Sounds/homer-doh.mp3";
 import Bgsound from "../Design/Sounds/game-generique.mp3";
 import Barriere from "./Barriere";
+import Level from "./Level";
+import ModalDrunk from "./ModalDrunk";
 
 class Game extends Component {
   constructor() {
@@ -42,22 +44,31 @@ class Game extends Component {
       pause: false,
       resume: false,
       streak: [],
-      count: 0,
+      count: parseInt(localStorage.getItem("count")) || 0,
       drunkMode: false,
+      displayModalDrunk: false,
     };
     this.baseState = this.state;
     this.doh = new Audio(Doh);
     this.bgsound = new Audio(Bgsound);
+    this.newGameHasBeenInitialized = false;
   }
 
   static contextType = GameContext;
 
   componentDidMount() {
+    const { nbProjectiles } = this.context;
+    this.remainingProjectiles = nbProjectiles;
+    this.projectilesToLaunch = nbProjectiles;
     this.launchGame();
   }
 
   initializeGame = () => {
     this.setState({ ...this.baseState, count: this.state.count });
+    const { nbProjectiles } = this.context;
+    this.remainingProjectiles = nbProjectiles;
+    this.projectilesToLaunch = nbProjectiles;
+    // console.log(nbProjectiles);
     this.launchGame();
   };
 
@@ -68,49 +79,64 @@ class Game extends Component {
 
   launchGame = () => {
     this.interval = setInterval(() => {
-      const { projectiles, index } = this.state;
-      this.setState({
-        projectiles: [
-          ...projectiles,
-          { id: index, type: this.state.items[randomOf(4)] }
-        ],
-        index: index + 1
-      });
+      if (this.projectilesToLaunch > 0) {
+        const { projectiles, index } = this.state;
+        this.setState({
+          projectiles: [
+            ...projectiles,
+            { id: index, type: this.state.items[randomOf(3)] }
+          ],
+          index: index + 1
+        });
+        this.projectilesToLaunch--;
+      }
     }, 1200);
     this.bgsound.play();
+  };
+
+  removeRemainingProjectile = () => {
+    this.remainingProjectiles--;
+    console.log(this.remainingProjectiles);
   };
 
   componentWillUnmount() {
     window.clearInterval(this.interval);
     this.bgsound.pause();
+    localStorage.setItem("count", this.state.count);
   }
+
+  winFunc = () => {
+    this.pauseGame();
+    setTimeout(() => this.setState({ win: true }), 10);
+  };
 
   deleteProjectile = projectileId => {
     const projectiles = this.state.projectiles.filter(
       projectile => projectile.id !== projectileId
     );
     this.setState({ projectiles: projectiles });
+    if (this.remainingProjectiles === 0) this.winFunc();
   };
 
-  checkWin = () => {
-    const { level } = this.context;
-    if (this.state.index >= level * 5) {
-      this.pauseGame();
-      setTimeout(() => this.setState({ win: true }), 10);
-    }
-  };
-
-  checkLose = () => {
-    if (this.state.lifeNumber < 1) {
-      this.pauseGame();
-      setTimeout(() => this.setState({ lose: true }), 10);
-    }
-  };
+  // checkLose = () => {
+  //   if (this.state.lifeNumber < 1) {
+  //     this.pauseGame();
+  //     setTimeout(() => this.setState({ lose: true }), 10);
+  //   }
+  // };
 
   isDrunk = () => {
     const { streak } = this.state;
     if (streak[streak.length - 2].type.name === "duff" && streak[streak.length - 3].type.name === "duff") {
-      this.setState({ drunkMode: true })
+      this.setState({ drunkMode: true, displayModalDrunk: true })
+      setTimeout(this.setState({displayModalDrunk: false}), 3000)
+      }
+  }
+
+  isSober = () => {
+    const { streak } = this.state;
+    if (this.state.drunkMode && streak[streak.length - 2].type.name !== "duff" && streak[streak.length - 3].type.name !== "duff") {
+      this.setState({ drunkMode: false })
       }
   }
 
@@ -118,7 +144,7 @@ class Game extends Component {
     if (event === "right") {
       this.state.swipeZone.forEach(projectile => {
         if (projectile.type.name === "duff") {
-          this.checkWin();
+          // this.checkWin();
           this.deleteProjectile(projectile.id);
           this.setState({ streak: [...this.state.streak, projectile] });
           this.removeProjectileFromSwipeZone(projectile.id);
@@ -130,7 +156,7 @@ class Game extends Component {
     if (event === "left") {
       this.state.swipeZone.forEach(projectile => {
         if (projectile.type.name === "doughnut") {
-          this.checkWin();
+          // this.checkWin();
           this.deleteProjectile(projectile.id);
           this.setState({ streak: [...this.state.streak, projectile] });
           this.removeProjectileFromSwipeZone(projectile.id);
@@ -144,7 +170,7 @@ class Game extends Component {
           projectile.type.name === "brocoli" ||
           projectile.type.name === "flanders"
         ) {
-          this.checkWin();
+          // this.checkWin();
           this.deleteProjectile(projectile.id);
           this.setState({ streak: [...this.state.streak, projectile] });
           this.removeProjectileFromSwipeZone(projectile.id);
@@ -177,7 +203,7 @@ class Game extends Component {
       });
     } else {
       this.doh.play();
-      this.setState({ lose: true });
+      setTimeout(() => this.setState({ lose: true }), 10);
       this.pauseGame();
     }
   };
@@ -218,24 +244,33 @@ class Game extends Component {
     if (streak !== prevState.streak && streak.length >= 3 && streak[streak.length - 1].type.name === "duff" )  {
       this.isDrunk();
     }
+    if (streak !== prevState.streak && streak.length >= 3 && streak[streak.length - 1].type.name !== "duff") {
+      this.isSober();
+    }
   }
 
   render() {
     return (
       <div className="App">
+        {!this.state.win && !this.state.lose && <Level />}
         <Barriere />
-        <Barriere right pancarte />
-        <HomerLife
-          lifeNumber={this.state.lifeNumber}
-          lifeMax={this.state.lifeMax}
-        />
-        <Counter count={this.state.count} />
+        <Barriere right />
+        {!this.state.win && !this.state.lose && (
+          <HomerLife
+            lifeNumber={this.state.lifeNumber}
+            lifeMax={this.state.lifeMax}
+          />
+        )}
+        {!this.state.win && !this.state.lose && (
+          <Counter count={this.state.count} />
+        )}
         <Characters />
         <Projectiles
           projectiles={this.state.projectiles}
           deleteProjectile={this.deleteProjectile}
           addProjectileToSwipeZone={this.addProjectileToSwipeZone}
           removeProjectileFromSwipeZone={this.removeProjectileFromSwipeZone}
+          removeRemainingProjectile={this.removeRemainingProjectile}
           reduceLife={this.reduceLife}
           pause={this.state.pause}
           resume={this.state.resume}
@@ -244,27 +279,29 @@ class Game extends Component {
         {!this.state.win && !this.state.lose && (
           <Button
             outline
-            color="warning"
+            color="primary"
             onClick={e => this.ruleModalDisplay()}
             style={{
               position: "fixed",
-              left: "72vw",
-              top: "2vh",
+              left: "2vw",
+              top: "1vh",
               zIndex: 1500
             }}
           >
             {this.state.gameRuleDisplay ? "Resume" : "Pause"}
           </Button>
         )}
-        {this.state.streak.length > 0 && this.state.streak.length % 5 === 0 && (
-          <ModalStreak streak={this.state.streak.length} />
-        )}
+        {this.state.streak.length > 0 &&
+          this.state.streak.length % 5 === 0 &&
+          !this.state.win &&
+          !this.state.lose && <ModalStreak streak={this.state.streak.length} />}
 
         {this.state.gameRuleDisplay && (
           <GameRules ruleModalDisplay={this.ruleModalDisplay} />
         )}
         {this.state.win && <ModalWin initializeGame={this.initializeGame} />}
         {this.state.lose && <ModalLose initializeGame={this.initializeGame} />}
+        {this.state.displayModalDrunk && !this.state.win && !this.state.lose && <ModalDrunk />}
       </div>
     );
   }
