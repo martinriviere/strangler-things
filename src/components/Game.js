@@ -233,12 +233,12 @@ class Game extends Component {
         {!this.state.win && !this.state.lose && (
           <Button
             outline
-            color="warning"
+            color="primary"
             onClick={e => this.ruleModalDisplay()}
             style={{
               position: "fixed",
-              left: "72vw",
-              top: "2vh",
+              left: "2vw",
+              top: "1vh",
               zIndex: 1500
             }}
           >
