@@ -43,7 +43,7 @@ class Game extends Component {
       pause: false,
       resume: false,
       streak: [],
-      count: 0
+      count: parseInt(localStorage.getItem("count")) || 0
     };
     this.baseState = this.state;
     this.doh = new Audio(Doh);
@@ -99,6 +99,7 @@ class Game extends Component {
   componentWillUnmount() {
     window.clearInterval(this.interval);
     this.bgsound.pause();
+    localStorage.setItem("count", this.state.count);
   }
 
   winFunc = () => {
