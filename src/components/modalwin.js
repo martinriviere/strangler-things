@@ -16,8 +16,9 @@ function ModalWin(props) {
         />
         <p
           onClick={() => {
-            props.initializeGame();
             nextLevel();
+            setTimeout(props.initializeGame, 10);
+            // props.initializeGame();
           }}
         >
           Continue

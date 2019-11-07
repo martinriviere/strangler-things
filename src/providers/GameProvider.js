@@ -8,9 +8,18 @@ class GameProvider extends Component {
     this.state = {
       level: localStorage.getItem("level") || 1,
       nextLevel: this.nextLevel,
-      resetLevel: this.resetLevel
+      resetLevel: this.resetLevel,
+      nbProjectiles: 5
     };
   }
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (this.state.level !== prevState.level) {
+  //     this.setState({
+  //       nbProjectiles: 5 * this.state.level
+  //     });
+  //   }
+  // }
 
   resetLevel = () => {
     this.setState({ level: 1 });
@@ -18,7 +27,10 @@ class GameProvider extends Component {
   };
 
   nextLevel = () => {
-    this.setState({ level: parseInt(this.state.level) + 1 });
+    this.setState({
+      level: parseInt(this.state.level) + 1,
+      nbProjectiles: 5 * (parseInt(this.state.level) + 1)
+    });
     localStorage.setItem("level", parseInt(this.state.level) + 1);
   };
 
