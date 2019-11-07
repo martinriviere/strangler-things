@@ -259,7 +259,7 @@ class Game extends Component {
               position: "fixed",
               left: "2vw",
               top: "1vh",
-              zIndex: 1500
+              zIndex: 3000
             }}
           >
             {this.state.gameRuleDisplay ? "Resume" : "Pause"}
