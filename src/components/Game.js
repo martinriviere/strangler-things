@@ -109,11 +109,8 @@ class Game extends Component {
 
   isDrunk = () => {
     const { streak } = this.state;
-      if (streak[streak.length] === "duff" && streak[streak.length - 1] === "duff") {
-        this.setState({ drunkMode: true })
-      }
-      if (this.state.drunkMode === true) {
-        console.log('Homer is drunk')
+    if (streak[streak.length - 2].type.name === "duff" && streak[streak.length - 3].type.name === "duff") {
+      this.setState({ drunkMode: true })
       }
   }
 
@@ -126,7 +123,7 @@ class Game extends Component {
           this.setState({ streak: [...this.state.streak, projectile] });
           this.removeProjectileFromSwipeZone(projectile.id);
           this.addPoints();
-          this.isDrunk()
+          // this.isDrunk()
         }
       });
     }
@@ -215,8 +212,12 @@ class Game extends Component {
     this.bgsound.play();
   };
 
-  componentDidUpdate() {
-    if (this.state.resume) this.setState({ resume: false });
+  componentDidUpdate(prevProps, prevState) {
+    const { streak, resume } = this.state
+    if (resume) this.setState({ resume: false });
+    if (streak !== prevState.streak && streak.length >= 3 && streak[streak.length - 1].type.name === "duff" )  {
+      this.isDrunk();
+    }
   }
 
   render() {
