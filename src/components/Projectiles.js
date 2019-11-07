@@ -27,7 +27,7 @@ function Projectiles({
             removeProjectileFromSwipeZone={removeProjectileFromSwipeZone}
             projectile={projectile}
             onDelete={deleteProjectile}
-            removeRemainingProjectile={removeRemainingProjectile}
+            // removeRemainingProjectile={removeRemainingProjectile}
             key={projectile.id}
             reduceLife={reduceLife}
             pause={pause}

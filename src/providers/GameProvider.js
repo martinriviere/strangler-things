@@ -11,6 +11,7 @@ class GameProvider extends Component {
       resetLevel: this.resetLevel,
       nbProjectiles: parseInt(localStorage.getItem("level")) * 5 || 5
     };
+    this.baseCount = parseInt(localStorage.getItem("count")) || 0;
   }
 
   // componentDidUpdate(prevProps, prevState) {
