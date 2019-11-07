@@ -85,7 +85,7 @@ class Game extends Component {
         this.setState({
           projectiles: [
             ...projectiles,
-            { id: index, type: this.state.items[randomOf(3)] }
+            { id: index, type: this.state.items[2] }
           ],
           index: index + 1
         });
@@ -131,7 +131,7 @@ class Game extends Component {
     const { streak } = this.state;
     if (streak[streak.length - 2].type.name === "duff" && streak[streak.length - 3].type.name === "duff") {
       this.setState({ drunkMode: true, displayModalDrunk: true })
-      setTimeout(this.setState({displayModalDrunk: false}), 3000)
+      setTimeout(() => this.setState({displayModalDrunk: false}), 3000)
       }
   }
 
