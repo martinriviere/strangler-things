@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import "./modal.css";
+import "../App.css";
 import { Link } from "react-router-dom";
 import Haha from "../Design/Sounds/nelson-haha.mp3";
 
 class ModalLose extends Component {
   render() {
     return (
-      <div className="container">
+      <div className="container-modal">
         <div className="ModalLose">
           <h2 className="you-lose">YOU LOSE !!</h2>
           <img
