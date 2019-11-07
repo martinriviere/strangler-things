@@ -65,7 +65,6 @@ class Game extends Component {
     const { nbProjectiles } = this.context;
     this.remainingProjectiles = nbProjectiles;
     this.projectilesToLaunch = nbProjectiles;
-    // console.log(nbProjectiles);
     this.launchGame();
   };
 
@@ -93,7 +92,6 @@ class Game extends Component {
 
   removeRemainingProjectile = () => {
     this.remainingProjectiles--;
-    console.log(this.remainingProjectiles);
   };
 
   componentWillUnmount() {
@@ -130,7 +128,7 @@ class Game extends Component {
           this.deleteProjectile(projectile.id);
           this.setState({ streak: [...this.state.streak, projectile] });
           this.removeProjectileFromSwipeZone(projectile.id);
-          this.addPoints();
+          this.addPoints(projectile.coeff);
         }
       });
     }
@@ -141,7 +139,7 @@ class Game extends Component {
           this.deleteProjectile(projectile.id);
           this.setState({ streak: [...this.state.streak, projectile] });
           this.removeProjectileFromSwipeZone(projectile.id);
-          this.addPoints();
+          this.addPoints(projectile.coeff);
         }
       });
     }
@@ -155,24 +153,25 @@ class Game extends Component {
           this.deleteProjectile(projectile.id);
           this.setState({ streak: [...this.state.streak, projectile] });
           this.removeProjectileFromSwipeZone(projectile.id);
-          this.addPoints();
+          this.addPoints(projectile.coeff);
         }
       });
     }
   };
 
-  addPoints = () => {
+  addPoints = coeff => {
     if (this.state.streak.length < 5) {
-      this.setState({ count: this.state.count + 50 });
+      this.setState({ count: this.state.count + 50 * coeff });
     } else if (this.state.streak.length < 10) {
-      this.setState({ count: this.state.count + 75 });
+      this.setState({ count: this.state.count + 75 * coeff });
     } else if (this.state.streak.length < 15) {
-      this.setState({ count: this.state.count + 100 });
+      this.setState({ count: this.state.count + 100 * coeff });
     } else if (this.state.streak.length < 20) {
-      this.setState({ count: this.state.count + 150 });
+      this.setState({ count: this.state.count + 150 * coeff });
     } else {
-      this.setState({ count: this.state.count + 200 });
+      this.setState({ count: this.state.count + 200 * coeff });
     }
+    console.log(coeff);
   };
 
   reduceLife = () => {
@@ -248,6 +247,7 @@ class Game extends Component {
           reduceLife={this.reduceLife}
           pause={this.state.pause}
           resume={this.state.resume}
+          getCoeff={this.getCoeff}
         />
         <SwipeDetection handleSwipe={this.handleSwipe} />
         {!this.state.win && !this.state.lose && (
