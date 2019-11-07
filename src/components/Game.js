@@ -62,7 +62,7 @@ class Game extends Component {
     !justMount &&
       this.setState({
         ...this.baseState,
-        count: parseInt(localStorage.getItem("count")) || 0
+        count: parseInt(localStorage.getItem("count"))
       });
     const { nbProjectiles } = this.context;
     this.remainingProjectiles = nbProjectiles;
