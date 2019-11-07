@@ -54,15 +54,19 @@ class Game extends Component {
   static contextType = GameContext;
 
   componentDidMount() {
-    // const { nbProjectiles } = this.context;
-    // this.remainingProjectiles = nbProjectiles;
-    // this.projectilesToLaunch = nbProjectiles;
-    // this.launchGame();
+    const { nbProjectiles } = this.context;
+    this.remainingProjectiles = nbProjectiles;
+    this.projectilesToLaunch = nbProjectiles;
+    this.launchGame();
   }
 
   initializeGame = () => {
-    this.newGameHasBeenInitialized = true;
     this.setState({ ...this.baseState, count: this.state.count });
+    const { nbProjectiles } = this.context;
+    this.remainingProjectiles = nbProjectiles;
+    this.projectilesToLaunch = nbProjectiles;
+    // console.log(nbProjectiles);
+    this.launchGame();
   };
 
   ruleModalDisplay = () => {
@@ -216,14 +220,6 @@ class Game extends Component {
 
   componentDidUpdate() {
     if (this.state.resume) this.setState({ resume: false });
-    const { newLevel, setNewLevelToFalse, nbProjectiles } = this.context;
-    while (!newLevel) {
-      this.forceUpdate();
-    }
-    this.remainingProjectiles = nbProjectiles;
-    this.projectilesToLaunch = nbProjectiles;
-    this.launchGame();
-    setNewLevelToFalse();
   }
 
   render() {
