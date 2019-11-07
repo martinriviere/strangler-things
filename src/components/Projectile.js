@@ -93,7 +93,8 @@ const styles = {
   projectile: {
     position: "absolute",
     filter: "drop-shadow(-20px 30px 4px rgba(0, 0, 0, 0.3))",
-    transition: "opacity 1s"
+    transition: "opacity 1s",
+    zIndex: -2
   }
 };
 
