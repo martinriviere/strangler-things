@@ -9,7 +9,7 @@ class GameProvider extends Component {
       level: parseInt(localStorage.getItem("level")) || 1,
       nextLevel: this.nextLevel,
       resetLevel: this.resetLevel,
-      nbProjectiles: 5
+      nbProjectiles: parseInt(localStorage.getItem("level")) * 5 || 5
     };
   }
 
@@ -22,7 +22,7 @@ class GameProvider extends Component {
   // }
 
   resetLevel = () => {
-    this.setState({ level: 1 });
+    this.setState({ level: 1, nbProjectiles: 5 });
     localStorage.setItem("level", 1);
     localStorage.setItem("count", 0);
   };
