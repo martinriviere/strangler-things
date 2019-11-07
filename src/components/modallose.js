@@ -7,8 +7,8 @@ class ModalLose extends Component {
   render() {
     return (
       <div className="container">
-        <div id="ModalLose">
-          <p>YOU LOSE !!</p>
+        <div className="ModalLose">
+          <h2 className="you-lose">YOU LOSE !!</h2>
           <img
             src="http://giphygifs.s3.amazonaws.com/media/jUwpNzg9IcyrK/giphy.gif"
             alt="winner"

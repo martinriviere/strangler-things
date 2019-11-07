@@ -5,7 +5,7 @@ class ModalStreak extends Component {
   render() {
     return (
       <div className="container-streak">
-        <div id="ModalStreak">
+        <div className="ModalStreak">
           <p>COMBO x {this.props.streak}</p>
       </div>
       </div>

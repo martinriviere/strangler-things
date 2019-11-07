@@ -225,14 +225,14 @@ class Game extends Component {
   render() {
     return (
       <div className="App">
-        <Level />
+        {!this.state.win && !this.state.lose && <Level />}
         <Barriere />
         <Barriere right />
-        <HomerLife
+        {!this.state.win && !this.state.lose && <HomerLife
           lifeNumber={this.state.lifeNumber}
           lifeMax={this.state.lifeMax}
-        />
-        <Counter count={this.state.count} />
+        />}
+        {!this.state.win && !this.state.lose && <Counter count={this.state.count} />}
         <Characters />
         <Projectiles
           projectiles={this.state.projectiles}
@@ -248,19 +248,19 @@ class Game extends Component {
         {!this.state.win && !this.state.lose && (
           <Button
             outline
-            color="warning"
+            color="primary"
             onClick={e => this.ruleModalDisplay()}
             style={{
               position: "fixed",
-              left: "72vw",
-              top: "2vh",
+              left: "2vw",
+              top: "1vh",
               zIndex: 1500
             }}
           >
             {this.state.gameRuleDisplay ? "Resume" : "Pause"}
           </Button>
         )}
-        {this.state.streak.length > 0 && this.state.streak.length % 5 === 0 && (
+        {this.state.streak.length > 0 && this.state.streak.length % 5 === 0 && !this.state.win && !this.state.lose && (
           <ModalStreak streak={this.state.streak.length} />
         )}
 
