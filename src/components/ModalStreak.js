@@ -7,7 +7,7 @@ class ModalStreak extends Component {
       <div className="container-streak">
         <div className="ModalStreak">
           <p>COMBO x {this.props.streak}</p>
-      </div>
+        </div>
       </div>
     );
   }

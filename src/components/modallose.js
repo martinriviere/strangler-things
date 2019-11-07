@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "../App.css";
 import { Link } from "react-router-dom";
 import Haha from "../Design/Sounds/nelson-haha.mp3";
+import "../App.css";
 
 class ModalLose extends Component {
   render() {
