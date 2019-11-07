@@ -214,11 +214,15 @@ class Game extends Component {
         {!this.state.win && !this.state.lose && <Level />}
         <Barriere />
         <Barriere right />
-        {!this.state.win && !this.state.lose && <HomerLife
-          lifeNumber={this.state.lifeNumber}
-          lifeMax={this.state.lifeMax}
-        />}
-        {!this.state.win && !this.state.lose && <Counter count={this.state.count} />}
+        {!this.state.win && !this.state.lose && (
+          <HomerLife
+            lifeNumber={this.state.lifeNumber}
+            lifeMax={this.state.lifeMax}
+          />
+        )}
+        {!this.state.win && !this.state.lose && (
+          <Counter count={this.state.count} />
+        )}
         <Characters />
         <Projectiles
           projectiles={this.state.projectiles}
@@ -245,9 +249,10 @@ class Game extends Component {
             {this.state.gameRuleDisplay ? "Resume" : "Pause"}
           </Button>
         )}
-        {this.state.streak.length > 0 && this.state.streak.length % 5 === 0 && !this.state.win && !this.state.lose && (
-          <ModalStreak streak={this.state.streak.length} />
-        )}
+        {this.state.streak.length > 0 &&
+          this.state.streak.length % 5 === 0 &&
+          !this.state.win &&
+          !this.state.lose && <ModalStreak streak={this.state.streak.length} />}
 
         {this.state.gameRuleDisplay && (
           <GameRules ruleModalDisplay={this.ruleModalDisplay} />

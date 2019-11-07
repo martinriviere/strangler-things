@@ -7,6 +7,7 @@ class SwipeDetection extends Component {
   }
 
   handleTouch = event => {
+    event.preventDefault();
     const endPosition = event.changedTouches[0].screenX;
     const positionChange = endPosition - this.startPosition;
     if (positionChange < -30) {

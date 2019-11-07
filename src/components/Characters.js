@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import bart from "../Design/Personnages/bart-lance-pierres.png";
 import homer from "../Design/Personnages/homer-dos.png";
+
 const charactersStyle = {
   position: "absolute",
   backgroundSize: "100% 100%",
