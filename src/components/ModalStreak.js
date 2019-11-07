@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./modal.css";
+import "../App.css";
 
 class ModalStreak extends Component {
   render() {

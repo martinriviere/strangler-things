@@ -1,13 +1,7 @@
 import React, { Component } from "react";
 import CountUp from "react-countup";
-import "./counter.css";
+import "../App.css";
 
-// const counterStyle = {
-//   fontSize: "30px",
-//   fontFamily: "SimpsonFont",
-//   color: "white",
-//   textShadow: "0 0 10px #000000"
-// };
 class Counter extends Component {
   constructor(props) {
     super(props);
@@ -21,18 +15,8 @@ class Counter extends Component {
 
   render() {
     return (
-      <div
-        className="counter-container"
-        // style={{
-        //   flex: 1,
-        //   flexDirection: "column",
-        //   position: "absolute",
-        //   right: "5vw",
-        //   top: "20vh"
-        // }}
-      >
+      <div className="counter-container">
         <CountUp
-          // style={counterStyle}
           className="counter-display"
           start={this.prevCount}
           end={this.props.count}

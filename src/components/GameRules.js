@@ -3,7 +3,7 @@ import doughnut from "../Design/Projectiles/doughnut.png"
 import duff from "../Design/Projectiles/duff.png"
 import homerRules from "../Design/GameRules/homerRule.gif"
 import tapRule from "../Design/GameRules/tapRule.png"
-import "./modal.css"
+import "./GameRules.css"
 
 
 class GameRules extends Component{

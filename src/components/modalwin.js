@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import "./modal.css";
+import "../App.css";
 import { Link } from "react-router-dom";
 import Champions from "../Design/Sounds/homer-champions.mp3";
 import { GameContext } from "../providers/GameProvider";
@@ -7,7 +7,7 @@ import { GameContext } from "../providers/GameProvider";
 function ModalWin(props) {
   const { nextLevel } = useContext(GameContext);
   return (
-    <div className="container">
+    <div className="container-modal">
       <div className="ModalWin">
         <h2 className="you-win">YOU WIN !!</h2>
         <img
