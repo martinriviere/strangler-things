@@ -94,6 +94,7 @@ class Game extends Component {
   };
 
   removeRemainingProjectile = () => {
+    console.log(this.remainingProjectiles);
     this.remainingProjectiles--;
   };
 
@@ -125,7 +126,6 @@ class Game extends Component {
   // };
 
   handleSwipe = event => {
-    console.log(this.remainingProjectiles);
     if (event === "right") {
       const projectileToRemove = this.state.swipeZone.find(
         projectile => projectile.type.name === "duff"
@@ -135,7 +135,6 @@ class Game extends Component {
         this.removeProjectileFromSwipeZone(projectileToRemove.id);
         this.deleteProjectile(projectileToRemove.id);
         this.setState({ streak: [...this.state.streak, projectileToRemove] });
-        this.removeProjectileFromSwipeZone(projectileToRemove.id);
         this.addPoints(projectileToRemove.coeff);
       }
     }
@@ -148,7 +147,6 @@ class Game extends Component {
         this.removeProjectileFromSwipeZone(projectileToRemove.id);
         this.deleteProjectile(projectileToRemove.id);
         this.setState({ streak: [...this.state.streak, projectileToRemove] });
-        this.removeProjectileFromSwipeZone(projectileToRemove.id);
         this.addPoints(projectileToRemove.coeff);
       }
     }
@@ -163,7 +161,6 @@ class Game extends Component {
         this.removeProjectileFromSwipeZone(projectileToRemove.id);
         this.deleteProjectile(projectileToRemove.id);
         this.setState({ streak: [...this.state.streak, projectileToRemove] });
-        this.removeProjectileFromSwipeZone(projectileToRemove.id);
         this.addPoints(projectileToRemove.coeff);
       }
     }
