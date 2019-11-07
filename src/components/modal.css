@@ -1,12 +1,37 @@
 .container {
-    width: 100vw;
-    height: 100vh;
     display: flex;
     justify-content: center;
+    width: 100vw;
+    height: 100vh;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 2000;
+}
+
+.containerRules {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(70, 69, 67, 0.7);
+    z-index: 2000;
+}
+
+.modalRules {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    border:1px solid white;
+    background-color: rgba(255, 230, 0, 0.493);
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .container-streak {

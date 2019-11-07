@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Projectile.css";
+import "../App.css";
 
 class Projectile extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class Projectile extends Component {
       isInSwipeZone: false
     };
     this.myRef = React.createRef();
-    this.speed = 30;
+    this.speed = 100;
   }
 
   fallsDown = () => {
@@ -40,12 +40,11 @@ class Projectile extends Component {
     if (y > 45 && y < 55 && !this.state.isInSwipeZone) {
       this.props.addProjectileToSwipeZone(this.props.projectile);
       this.setState({ isInSwipeZone: !this.state.isInSwipeZone });
-      this.props.removeRemainingProjectile();
     }
     if (y > 62 && this.state.isInSwipeZone) {
+      this.props.reduceLife();
       this.props.removeProjectileFromSwipeZone(this.props.projectile.id);
       this.setState({ isInSwipeZone: !this.state.isInSwipeZone });
-      this.props.reduceLife();
     }
   };
 
@@ -81,7 +80,8 @@ class Projectile extends Component {
           ...styles.projectile,
           width: size,
           top: y + "%",
-          left: x + "%"
+          left: x + "%",
+          transition: `all linear ${this.speed}ms`
         }}
         alt=""
         className="projectile"
@@ -94,7 +94,6 @@ const styles = {
   projectile: {
     position: "absolute",
     filter: "drop-shadow(-20px 30px 4px rgba(0, 0, 0, 0.3))",
-    transition: "opacity 1s",
     zIndex: -2
   }
 };

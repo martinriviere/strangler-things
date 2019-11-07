@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import bart from "../Design/Personnages/bart-lance-pierres.png";
 import homer from "../Design/Personnages/homer-dos.png";
+
 const charactersStyle = {
   position: "absolute",
   backgroundSize: "100% 100%",
@@ -13,7 +14,7 @@ const bartStyle = {
 };
 const homerStyle = {
   bottom: "-5vh",
-  height: "40vh",
+  height: "32vh",
   zIndex: -1
 };
 class Characters extends Component {

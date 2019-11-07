@@ -16,11 +16,3 @@ body, html {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
-
-.bg {
-  background-image: url("https://image.noelshack.com/fichiers/2019/42/5/1571400299-img-20.jpg");
-  height: 100vh;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
