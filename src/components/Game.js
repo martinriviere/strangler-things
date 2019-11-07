@@ -54,18 +54,19 @@ class Game extends Component {
   static contextType = GameContext;
 
   componentDidMount() {
-    const { nbProjectiles } = this.context;
-    this.remainingProjectiles = nbProjectiles;
-    this.projectilesToLaunch = nbProjectiles;
-    this.launchGame();
+    this.initializeGame(true);
   }
 
-  initializeGame = () => {
-    this.setState({ ...this.baseState, count: this.state.count });
+  initializeGame = justMount => {
+    this.state.win && localStorage.setItem("count", this.state.count);
+    !justMount &&
+      this.setState({
+        ...this.baseState,
+        count: parseInt(localStorage.getItem("count")) || 0
+      });
     const { nbProjectiles } = this.context;
     this.remainingProjectiles = nbProjectiles;
     this.projectilesToLaunch = nbProjectiles;
-    // console.log(nbProjectiles);
     this.launchGame();
   };
 
@@ -99,12 +100,14 @@ class Game extends Component {
   componentWillUnmount() {
     window.clearInterval(this.interval);
     this.bgsound.pause();
-    localStorage.setItem("count", this.state.count);
   }
 
   winFunc = () => {
     this.pauseGame();
-    setTimeout(() => this.setState({ win: true }), 10);
+    setTimeout(() => {
+      this.setState({ win: true });
+      // localStorage.setItem("count", this.state.count);
+    }, 10);
   };
 
   deleteProjectile = projectileId => {
@@ -112,7 +115,6 @@ class Game extends Component {
       projectile => projectile.id !== projectileId
     );
     this.setState({ projectiles: projectiles });
-    if (this.remainingProjectiles === 0) this.winFunc();
   };
 
   // checkLose = () => {
@@ -127,9 +129,9 @@ class Game extends Component {
       this.state.swipeZone.forEach(projectile => {
         if (projectile.type.name === "duff") {
           // this.checkWin();
+          this.removeProjectileFromSwipeZone(projectile.id);
           this.deleteProjectile(projectile.id);
           this.setState({ streak: [...this.state.streak, projectile] });
-          this.removeProjectileFromSwipeZone(projectile.id);
           this.addPoints();
         }
       });
@@ -138,9 +140,9 @@ class Game extends Component {
       this.state.swipeZone.forEach(projectile => {
         if (projectile.type.name === "doughnut") {
           // this.checkWin();
+          this.removeProjectileFromSwipeZone(projectile.id);
           this.deleteProjectile(projectile.id);
           this.setState({ streak: [...this.state.streak, projectile] });
-          this.removeProjectileFromSwipeZone(projectile.id);
           this.addPoints();
         }
       });
@@ -152,9 +154,9 @@ class Game extends Component {
           projectile.type.name === "flanders"
         ) {
           // this.checkWin();
+          this.removeProjectileFromSwipeZone(projectile.id);
           this.deleteProjectile(projectile.id);
           this.setState({ streak: [...this.state.streak, projectile] });
-          this.removeProjectileFromSwipeZone(projectile.id);
           this.addPoints();
         }
       });
@@ -184,7 +186,7 @@ class Game extends Component {
       });
     } else {
       this.doh.play();
-      setTimeout(() => this.setState({ lose: true }), 10);
+      this.setState({ lose: true });
       this.pauseGame();
     }
   };
@@ -205,6 +207,8 @@ class Game extends Component {
       projectileInSwipeZone => projectileInSwipeZone.id !== projectileId
     );
     this.setState({ swipeZone: projectiles });
+    this.removeRemainingProjectile();
+    if (this.remainingProjectiles === 0 && !this.state.lose) this.winFunc();
   };
 
   pauseGame = () => {
