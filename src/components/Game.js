@@ -43,21 +43,29 @@ class Game extends Component {
       pause: false,
       resume: false,
       streak: [],
-      count: 0
+      count: parseInt(localStorage.getItem("count")) || 0
     };
     this.baseState = this.state;
     this.doh = new Audio(Doh);
     this.bgsound = new Audio(Bgsound);
+    this.newGameHasBeenInitialized = false;
   }
 
   static contextType = GameContext;
 
   componentDidMount() {
+    const { nbProjectiles } = this.context;
+    this.remainingProjectiles = nbProjectiles;
+    this.projectilesToLaunch = nbProjectiles;
     this.launchGame();
   }
 
   initializeGame = () => {
     this.setState({ ...this.baseState, count: this.state.count });
+    const { nbProjectiles } = this.context;
+    this.remainingProjectiles = nbProjectiles;
+    this.projectilesToLaunch = nbProjectiles;
+    // console.log(nbProjectiles);
     this.launchGame();
   };
 
@@ -68,50 +76,57 @@ class Game extends Component {
 
   launchGame = () => {
     this.interval = setInterval(() => {
-      const { projectiles, index } = this.state;
-      this.setState({
-        projectiles: [
-          ...projectiles,
-          { id: index, type: this.state.items[randomOf(4)] }
-        ],
-        index: index + 1
-      });
+      if (this.projectilesToLaunch > 0) {
+        const { projectiles, index } = this.state;
+        this.setState({
+          projectiles: [
+            ...projectiles,
+            { id: index, type: this.state.items[randomOf(4)] }
+          ],
+          index: index + 1
+        });
+        this.projectilesToLaunch--;
+      }
     }, 1200);
     this.bgsound.play();
+  };
+
+  removeRemainingProjectile = () => {
+    this.remainingProjectiles--;
+    console.log(this.remainingProjectiles);
   };
 
   componentWillUnmount() {
     window.clearInterval(this.interval);
     this.bgsound.pause();
+    localStorage.setItem("count", this.state.count);
   }
+
+  winFunc = () => {
+    this.pauseGame();
+    setTimeout(() => this.setState({ win: true }), 10);
+  };
 
   deleteProjectile = projectileId => {
     const projectiles = this.state.projectiles.filter(
       projectile => projectile.id !== projectileId
     );
     this.setState({ projectiles: projectiles });
+    if (this.remainingProjectiles === 0) this.winFunc();
   };
 
-  checkWin = () => {
-    const { level } = this.context;
-    if (this.state.index >= level * 5) {
-      this.pauseGame();
-      setTimeout(() => this.setState({ win: true }), 10);
-    }
-  };
-
-  checkLose = () => {
-    if (this.state.lifeNumber < 1) {
-      this.pauseGame();
-      setTimeout(() => this.setState({ lose: true }), 10);
-    }
-  };
+  // checkLose = () => {
+  //   if (this.state.lifeNumber < 1) {
+  //     this.pauseGame();
+  //     setTimeout(() => this.setState({ lose: true }), 10);
+  //   }
+  // };
 
   handleSwipe = event => {
     if (event === "right") {
       this.state.swipeZone.forEach(projectile => {
         if (projectile.type.name === "duff") {
-          this.checkWin();
+          // this.checkWin();
           this.deleteProjectile(projectile.id);
           this.setState({ streak: [...this.state.streak, projectile] });
           this.removeProjectileFromSwipeZone(projectile.id);
@@ -122,7 +137,7 @@ class Game extends Component {
     if (event === "left") {
       this.state.swipeZone.forEach(projectile => {
         if (projectile.type.name === "doughnut") {
-          this.checkWin();
+          // this.checkWin();
           this.deleteProjectile(projectile.id);
           this.setState({ streak: [...this.state.streak, projectile] });
           this.removeProjectileFromSwipeZone(projectile.id);
@@ -136,7 +151,7 @@ class Game extends Component {
           projectile.type.name === "brocoli" ||
           projectile.type.name === "flanders"
         ) {
-          this.checkWin();
+          // this.checkWin();
           this.deleteProjectile(projectile.id);
           this.setState({ streak: [...this.state.streak, projectile] });
           this.removeProjectileFromSwipeZone(projectile.id);
@@ -169,7 +184,7 @@ class Game extends Component {
       });
     } else {
       this.doh.play();
-      this.setState({ lose: true });
+      setTimeout(() => this.setState({ lose: true }), 10);
       this.pauseGame();
     }
   };
@@ -229,6 +244,7 @@ class Game extends Component {
           deleteProjectile={this.deleteProjectile}
           addProjectileToSwipeZone={this.addProjectileToSwipeZone}
           removeProjectileFromSwipeZone={this.removeProjectileFromSwipeZone}
+          removeRemainingProjectile={this.removeRemainingProjectile}
           reduceLife={this.reduceLife}
           pause={this.state.pause}
           resume={this.state.resume}

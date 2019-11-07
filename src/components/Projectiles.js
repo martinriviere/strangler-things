@@ -6,6 +6,7 @@ function Projectiles({
   addProjectileToSwipeZone,
   removeProjectileFromSwipeZone,
   deleteProjectile,
+  removeRemainingProjectile,
   reduceLife,
   pause,
   resume
@@ -26,6 +27,7 @@ function Projectiles({
             removeProjectileFromSwipeZone={removeProjectileFromSwipeZone}
             projectile={projectile}
             onDelete={deleteProjectile}
+            removeRemainingProjectile={removeRemainingProjectile}
             key={projectile.id}
             reduceLife={reduceLife}
             pause={pause}
