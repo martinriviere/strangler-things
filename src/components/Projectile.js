@@ -17,7 +17,7 @@ class Projectile extends Component {
   }
 
   fallsDown = () => {
-    const { y, coef, x, size } = this.state;
+    const { y, coef, x, size, isInSwipeZone } = this.state;
     const step = this.speed / Math.sqrt(1 + coef * coef) / 30;
     const computedSize = (size / window.innerWidth) * 100;
     if (y < 100) {
@@ -37,15 +37,22 @@ class Projectile extends Component {
     } else {
       this.setState({ active: false });
     }
-    if (y > 45 && y < 55 && !this.state.isInSwipeZone) {
+    if (y > 40 && y < 90) {
       this.props.addProjectileToSwipeZone(this.props.projectile);
-      this.setState({ isInSwipeZone: !this.state.isInSwipeZone });
-      this.props.removeRemainingProjectile();
+      !isInSwipeZone && this.setState({ isInSwipeZone: true });
+      // this.props.removeRemainingProjectile();
+      if (y < 50 || y > 80) {
+        this.props.projectile.coeff = 0.33;
+      } else if (y < 60 || y > 70) {
+        this.props.projectile.coeff = 0.66;
+      } else {
+        this.props.projectile.coeff = 1;
+      }
     }
-    if (y > 62 && this.state.isInSwipeZone) {
-      this.props.removeProjectileFromSwipeZone(this.props.projectile.id);
-      this.setState({ isInSwipeZone: !this.state.isInSwipeZone });
+    if (y > 90 && isInSwipeZone) {
       this.props.reduceLife();
+      this.props.removeProjectileFromSwipeZone(this.props.projectile.id);
+      this.setState({ isInSwipeZone: false });
     }
   };
 
