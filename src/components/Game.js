@@ -70,6 +70,7 @@ class Game extends Component {
     const { nbProjectiles } = this.context;
     this.remainingProjectiles = nbProjectiles;
     this.projectilesToLaunch = nbProjectiles;
+
     this.launchGame();
   };
 
@@ -97,7 +98,6 @@ class Game extends Component {
 
   removeRemainingProjectile = () => {
     this.remainingProjectiles--;
-    console.log(this.remainingProjectiles);
   };
 
   componentWillUnmount() {
@@ -144,55 +144,75 @@ class Game extends Component {
 
   handleSwipe = event => {
     if (event === "right") {
-      this.state.swipeZone.forEach(projectile => {
+      const projectileToRemove = this.state.swipeZone.find(projectile => {
         if (projectile.type.name === "duff") {
+<<<<<<< HEAD
           // this.checkWin();
           this.removeProjectileFromSwipeZone(projectile.id);
           this.deleteProjectile(projectile.id);
           this.setState({ streak: [...this.state.streak, projectile] });
           this.addPoints();
           // this.isDrunk()
+=======
+          return true;
+>>>>>>> dev
         }
       });
+      // this.checkWin();
+      if (projectileToRemove) {
+        this.removeProjectileFromSwipeZone(projectileToRemove.id);
+        this.deleteProjectile(projectileToRemove.id);
+        this.setState({ streak: [...this.state.streak, projectileToRemove] });
+        this.removeProjectileFromSwipeZone(projectileToRemove.id);
+        this.addPoints(projectileToRemove.coeff);
+      }
     }
     if (event === "left") {
-      this.state.swipeZone.forEach(projectile => {
+      const projectileToRemove = this.state.swipeZone.find(projectile => {
         if (projectile.type.name === "doughnut") {
-          // this.checkWin();
-          this.removeProjectileFromSwipeZone(projectile.id);
-          this.deleteProjectile(projectile.id);
-          this.setState({ streak: [...this.state.streak, projectile] });
-          this.addPoints();
+          return true;
         }
       });
+      // this.checkWin();
+      if (projectileToRemove) {
+        this.removeProjectileFromSwipeZone(projectileToRemove.id);
+        this.deleteProjectile(projectileToRemove.id);
+        this.setState({ streak: [...this.state.streak, projectileToRemove] });
+        this.removeProjectileFromSwipeZone(projectileToRemove.id);
+        this.addPoints(projectileToRemove.coeff);
+      }
     }
     if (event === "touch") {
-      this.state.swipeZone.forEach(projectile => {
+      const projectileToRemove = this.state.swipeZone.find(projectile => {
         if (
           projectile.type.name === "brocoli" ||
           projectile.type.name === "flanders"
         ) {
-          // this.checkWin();
-          this.removeProjectileFromSwipeZone(projectile.id);
-          this.deleteProjectile(projectile.id);
-          this.setState({ streak: [...this.state.streak, projectile] });
-          this.addPoints();
+          return true;
         }
       });
+      // this.checkWin();
+      if (projectileToRemove) {
+        this.removeProjectileFromSwipeZone(projectileToRemove.id);
+        this.deleteProjectile(projectileToRemove.id);
+        this.setState({ streak: [...this.state.streak, projectileToRemove] });
+        this.removeProjectileFromSwipeZone(projectileToRemove.id);
+        this.addPoints(projectileToRemove.coeff);
+      }
     }
   };
 
-  addPoints = () => {
+  addPoints = coeff => {
     if (this.state.streak.length < 5) {
-      this.setState({ count: this.state.count + 50 });
+      this.setState({ count: this.state.count + 50 * coeff });
     } else if (this.state.streak.length < 10) {
-      this.setState({ count: this.state.count + 75 });
+      this.setState({ count: this.state.count + 75 * coeff });
     } else if (this.state.streak.length < 15) {
-      this.setState({ count: this.state.count + 100 });
+      this.setState({ count: this.state.count + 100 * coeff });
     } else if (this.state.streak.length < 20) {
-      this.setState({ count: this.state.count + 150 });
+      this.setState({ count: this.state.count + 150 * coeff });
     } else {
-      this.setState({ count: this.state.count + 200 });
+      this.setState({ count: this.state.count + 200 * coeff });
     }
   };
 
@@ -278,6 +298,7 @@ class Game extends Component {
           reduceLife={this.reduceLife}
           pause={this.state.pause}
           resume={this.state.resume}
+          getCoeff={this.getCoeff}
         />
         <SwipeDetection handleSwipe={this.handleSwipe} drunkMode={this.state.drunkMode}/>
         {!this.state.win && !this.state.lose && (

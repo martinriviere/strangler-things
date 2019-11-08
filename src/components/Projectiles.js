@@ -9,7 +9,8 @@ function Projectiles({
   removeRemainingProjectile,
   reduceLife,
   pause,
-  resume
+  resume,
+  getCoeff
 }) {
   return (
     <div
@@ -32,6 +33,7 @@ function Projectiles({
             reduceLife={reduceLife}
             pause={pause}
             resume={resume}
+            getCoeff={getCoeff}
           />
         ))}
       </div>
