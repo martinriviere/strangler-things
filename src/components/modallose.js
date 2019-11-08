@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Haha from "../Design/Sounds/nelson-haha.mp3";
 import "../App.css";
+import { GameContext } from "../providers/GameProvider";
 
 class ModalLose extends Component {
+  static contextType = GameContext;
   render() {
     return (
       <div className="container-modal">
@@ -18,13 +20,15 @@ class ModalLose extends Component {
             <Link to="/">Back to menu</Link>
           </p>
         </div>
-        <iframe
-          title="son-haha"
-          src={Haha}
-          allow="autoplay"
-          id="audio"
-          style={{ visibility: "hidden" }}
-        ></iframe>
+        {this.context.isFxOn && (
+          <iframe
+            title="son-haha"
+            src={Haha}
+            allow="autoplay"
+            id="audio"
+            style={{ visibility: "hidden" }}
+          ></iframe>
+        )}
       </div>
     );
   }
