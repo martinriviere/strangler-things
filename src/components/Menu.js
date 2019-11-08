@@ -16,11 +16,11 @@ let divStyle = {
 };
 
 function Menu() {
-  const { level, resetLevel } = useContext(GameContext);
+  const { level, resetLevel, isMusicOn } = useContext(GameContext);
 
   return (
     <div className="Menu" style={divStyle}>
-       <nav>
+      <nav>
         <ul>
           <li onClick={() => resetLevel()}>
             <Link to="/game">NEW GAME</Link>
@@ -36,13 +36,15 @@ function Menu() {
           <li>CREDITS</li>
         </ul>
       </nav>
-      <iframe
-        title="son-accueil"
-        src={Accueil}
-        allow="autoplay"
-        id="audio"
-        style={{ visibility: "hidden" }}
-      ></iframe>
+      {isMusicOn && (
+        <iframe
+          title="son-accueil"
+          src={Accueil}
+          allow="autoplay"
+          id="audio"
+          style={{ visibility: "hidden" }}
+        ></iframe>
+      )}
     </div>
   );
 }

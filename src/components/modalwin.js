@@ -5,7 +5,7 @@ import Champions from "../Design/Sounds/homer-champions.mp3";
 import { GameContext } from "../providers/GameProvider";
 
 function ModalWin(props) {
-  const { nextLevel } = useContext(GameContext);
+  const { nextLevel, isFxOn } = useContext(GameContext);
   return (
     <div className="container-modal">
       <div className="ModalWin">
@@ -29,13 +29,15 @@ function ModalWin(props) {
           </Link>
         </p>
       </div>
-      <iframe
-        title="son-champions"
-        src={Champions}
-        allow="autoplay"
-        id="audio"
-        style={{ visibility: "hidden" }}
-      ></iframe>
+      {isFxOn && (
+        <iframe
+          title="son-champions"
+          src={Champions}
+          allow="autoplay"
+          id="audio"
+          style={{ visibility: "hidden" }}
+        ></iframe>
+      )}
     </div>
   );
 }

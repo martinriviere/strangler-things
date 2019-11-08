@@ -89,7 +89,7 @@ class Game extends Component {
         this.projectilesToLaunch--;
       }
     }, 1200);
-    this.bgsound.play();
+    this.context.isMusicOn && this.bgsound.play();
   };
 
   removeRemainingProjectile = () => {
@@ -180,14 +180,15 @@ class Game extends Component {
   };
 
   reduceLife = () => {
+    const { isFxOn } = this.context;
     // { e => this.reduceLife()} pour l'utiliser
     if (this.state.lifeNumber > 1) {
       this.setState(state => {
-        this.doh.play();
+        isFxOn && this.doh.play();
         return { lifeNumber: state.lifeNumber - 1, streak: [] };
       });
     } else {
-      this.doh.play();
+      isFxOn && this.doh.play();
       this.setState({ lose: true });
       this.pauseGame();
     }
@@ -222,7 +223,7 @@ class Game extends Component {
   resumeGame = () => {
     this.launchGame();
     this.setState({ pause: false, resume: true });
-    this.bgsound.play();
+    this.context.isMusicOn && this.bgsound.play();
   };
 
   componentDidUpdate() {
@@ -260,13 +261,15 @@ class Game extends Component {
         {!this.state.win && !this.state.lose && (
           <button
             onClick={e => this.ruleModalDisplay()}
-            style={{position: "fixed", zIndex: 3000}}
+            style={{ position: "fixed", zIndex: 3000 }}
           >
             <p className="buttonPause">
-              <i class="fas fa-pause" onClick={this.props.ruleModalDisplay} />
+              <i
+                className="fas fa-pause"
+                onClick={this.props.ruleModalDisplay}
+              />
             </p>
           </button>
-
         )}
         {this.state.streak.length > 0 &&
           this.state.streak.length % 5 === 0 &&
