@@ -94,6 +94,7 @@ class Game extends Component {
   };
 
   removeRemainingProjectile = () => {
+    console.log(this.remainingProjectiles);
     this.remainingProjectiles--;
   };
 
@@ -126,50 +127,40 @@ class Game extends Component {
 
   handleSwipe = event => {
     if (event === "right") {
-      const projectileToRemove = this.state.swipeZone.find(projectile => {
-        if (projectile.type.name === "duff") {
-          return true;
-        }
-      });
+      const projectileToRemove = this.state.swipeZone.find(
+        projectile => projectile.type.name === "duff"
+      );
       // this.checkWin();
       if (projectileToRemove) {
         this.removeProjectileFromSwipeZone(projectileToRemove.id);
         this.deleteProjectile(projectileToRemove.id);
         this.setState({ streak: [...this.state.streak, projectileToRemove] });
-        this.removeProjectileFromSwipeZone(projectileToRemove.id);
         this.addPoints(projectileToRemove.coeff);
       }
     }
     if (event === "left") {
-      const projectileToRemove = this.state.swipeZone.find(projectile => {
-        if (projectile.type.name === "doughnut") {
-          return true;
-        }
-      });
+      const projectileToRemove = this.state.swipeZone.find(
+        projectile => projectile.type.name === "doughnut"
+      );
       // this.checkWin();
       if (projectileToRemove) {
         this.removeProjectileFromSwipeZone(projectileToRemove.id);
         this.deleteProjectile(projectileToRemove.id);
         this.setState({ streak: [...this.state.streak, projectileToRemove] });
-        this.removeProjectileFromSwipeZone(projectileToRemove.id);
         this.addPoints(projectileToRemove.coeff);
       }
     }
     if (event === "touch") {
-      const projectileToRemove = this.state.swipeZone.find(projectile => {
-        if (
+      const projectileToRemove = this.state.swipeZone.find(
+        projectile =>
           projectile.type.name === "brocoli" ||
           projectile.type.name === "flanders"
-        ) {
-          return true;
-        }
-      });
+      );
       // this.checkWin();
       if (projectileToRemove) {
         this.removeProjectileFromSwipeZone(projectileToRemove.id);
         this.deleteProjectile(projectileToRemove.id);
         this.setState({ streak: [...this.state.streak, projectileToRemove] });
-        this.removeProjectileFromSwipeZone(projectileToRemove.id);
         this.addPoints(projectileToRemove.coeff);
       }
     }
