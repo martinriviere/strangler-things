@@ -146,16 +146,12 @@ class Game extends Component {
     if (event === "right") {
       const projectileToRemove = this.state.swipeZone.find(projectile => {
         if (projectile.type.name === "duff") {
-<<<<<<< HEAD
           // this.checkWin();
           this.removeProjectileFromSwipeZone(projectile.id);
           this.deleteProjectile(projectile.id);
           this.setState({ streak: [...this.state.streak, projectile] });
           this.addPoints();
           // this.isDrunk()
-=======
-          return true;
->>>>>>> dev
         }
       });
       // this.checkWin();
