@@ -3,7 +3,7 @@ import "./App.css";
 import Menu from "./components/Menu";
 import MenuOptions from "./components/MenuOptions.js";
 import Game from "./components/Game";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import GameProvider from "./providers/GameProvider";
 
 class App extends Component {
