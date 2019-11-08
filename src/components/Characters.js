@@ -14,7 +14,7 @@ const bartStyle = {
 };
 const homerStyle = {
   bottom: "-5vh",
-  height: "32vh",
+  height: "30vh",
   zIndex: -1
 };
 class Characters extends Component {
