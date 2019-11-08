@@ -11,7 +11,7 @@ function ModalWin(props) {
       <div className="ModalWin">
         <h2 className="you-win">YOU WIN !!</h2>
         <img
-          src="http://giphygifs.s3.amazonaws.com/media/A6aHBCFqlE0Rq/giphy.gif"
+          src="https://www.emugifs.net/wp-content/uploads/2019/07/Funny-Animation-from-Episode-The-Simpsons-Homer-Choking-Bart.gif"
           alt="winner"
         />
         <p
