@@ -5,14 +5,14 @@ import "./MenuOptions.css";
 import { GameContext } from "../providers/GameProvider";
 
 let divStyle = {
-    backgroundImage: `url(${TitleScreen})`,
-    backgroundSize: "cover",
-    textAlign: "left",
-    position: "fixed",
-    width: "100vw",
-    height: "100vh",
-    zIndex: 2
-  };
+  backgroundImage: `url(${TitleScreen})`,
+  backgroundSize: "cover",
+  textAlign: "left",
+  position: "fixed",
+  width: "100vw",
+  height: "100vh",
+  zIndex: 2
+};
 
 function MenuOptions() {
   const { isMusicOn, isFxOn, toggleMusic, toggleFx } = useContext(GameContext);

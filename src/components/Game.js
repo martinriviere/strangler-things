@@ -261,13 +261,15 @@ class Game extends Component {
         {!this.state.win && !this.state.lose && (
           <button
             onClick={e => this.ruleModalDisplay()}
-            style={{position: "fixed", zIndex: 3000}}
+            style={{ position: "fixed", zIndex: 3000 }}
           >
             <p className="buttonPause">
-              <i class="fas fa-pause" onClick={this.props.ruleModalDisplay} />
+              <i
+                className="fas fa-pause"
+                onClick={this.props.ruleModalDisplay}
+              />
             </p>
           </button>
-
         )}
         {this.state.streak.length > 0 &&
           this.state.streak.length % 5 === 0 &&
