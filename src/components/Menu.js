@@ -33,7 +33,7 @@ function Menu() {
           <li>
             <Link to="/MenuOptions">OPTIONS</Link>
           </li>
-          <li>CREDITS</li>
+          <li style={{ color: "#bbb" }}>CREDITS</li>
         </ul>
       </nav>
       {isMusicOn && (

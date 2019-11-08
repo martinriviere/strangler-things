@@ -20,7 +20,7 @@ function MenuOptions() {
     <div className="Menu" style={divStyle}>
       <nav>
         <ul>
-          <li style={{ color: "#ddd" }}>LANGUAGE</li>
+          <li style={{ color: "#bbb" }}>LANGUAGE</li>
           <li>
             MUSIC
             <label className="switch">
