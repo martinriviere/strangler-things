@@ -4,9 +4,6 @@
 }
 
 nav ul li {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     list-style: none;
     font-family: 'Homer_Simpson';
     font-size: 3.5em;
