@@ -8,6 +8,7 @@ import "./Menu.css";
 let divStyle = {
   backgroundImage: `url(${TitleScreen})`,
   backgroundSize: "cover",
+  textAlign: "center",
   position: "fixed",
   width: "100vw",
   height: "100vh",

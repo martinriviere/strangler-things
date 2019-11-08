@@ -14,7 +14,6 @@ import Duff from "../Design/Projectiles/duff.png";
 import Brocoli from "../Design/Projectiles/brocoli.png";
 import Flanders from "../Design/Projectiles/flanders.png";
 import GameRules from "./GameRules.js";
-import { Button } from "reactstrap";
 import { GameContext } from "../providers/GameProvider";
 import Doh from "../Design/Sounds/homer-doh.mp3";
 import Bgsound from "../Design/Sounds/game-generique.mp3";
@@ -260,19 +259,15 @@ class Game extends Component {
         />
         <SwipeDetection handleSwipe={this.handleSwipe} />
         {!this.state.win && !this.state.lose && (
-          <Button
-            outline
-            color="primary"
+          <button
             onClick={e => this.ruleModalDisplay()}
-            style={{
-              position: "fixed",
-              left: "2vw",
-              top: "1vh",
-              zIndex: 3000
-            }}
+            style={{position: "fixed", zIndex: 3000}}
           >
-            {this.state.gameRuleDisplay ? "Resume" : "Pause"}
-          </Button>
+            <p className="buttonPause">
+              <i class="fas fa-pause" onClick={this.props.ruleModalDisplay} />
+            </p>
+          </button>
+
         )}
         {this.state.streak.length > 0 &&
           this.state.streak.length % 5 === 0 &&

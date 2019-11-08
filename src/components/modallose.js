@@ -11,6 +11,8 @@ class ModalLose extends Component {
       <div className="container-modal">
         <div className="ModalLose">
           <h2 className="you-lose">YOU LOSE !!</h2>
+          <div className="counter-container">
+      </div>
           <img
             src="http://giphygifs.s3.amazonaws.com/media/jUwpNzg9IcyrK/giphy.gif"
             alt="winner"
