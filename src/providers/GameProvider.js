@@ -25,17 +25,13 @@ class GameProvider extends Component {
         { name: "French", code: "fr" }
       ],
       translation: globalTranslations,
-      options: { renderToStaticMarkup, defaultLanguage: "fr" }
+      options: {
+        renderToStaticMarkup,
+        defaultLanguage:
+          localStorage.getItem("language") || navigator.language.slice(0, 2)
+      }
     });
   }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.state.level !== prevState.level) {
-  //     this.setState({
-  //       nbProjectiles: 5 * this.state.level
-  //     });
-  //   }
-  // }
 
   resetLevel = () => {
     this.setState({ level: 1, nbProjectiles: 5 });
