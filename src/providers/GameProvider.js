@@ -12,7 +12,7 @@ class GameProvider extends Component {
       level: parseInt(localStorage.getItem("level")) || 1,
       nextLevel: this.nextLevel,
       resetLevel: this.resetLevel,
-      nbProjectiles: parseInt(localStorage.getItem("level")) * 5 || 5,
+      nbProjectiles: parseInt(localStorage.getItem("level")) * 10 || 10,
       isMusicOn: true,
       isFxOn: true,
       toggleMusic: this.toggleMusic,
@@ -34,7 +34,7 @@ class GameProvider extends Component {
   }
 
   resetLevel = () => {
-    this.setState({ level: 1, nbProjectiles: 5 });
+    this.setState({ level: 1, nbProjectiles: 10 });
     localStorage.setItem("level", 1);
     localStorage.setItem("count", 0);
   };
@@ -42,7 +42,7 @@ class GameProvider extends Component {
   nextLevel = () => {
     this.setState({
       level: this.state.level + 1,
-      nbProjectiles: 5 * (this.state.level + 1)
+      nbProjectiles: 10 * (this.state.level + 1)
     });
     localStorage.setItem("level", this.state.level + 1);
   };

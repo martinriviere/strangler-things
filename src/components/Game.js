@@ -66,7 +66,14 @@ class Game extends Component {
     const { nbProjectiles } = this.context;
     this.remainingProjectiles = nbProjectiles;
     this.projectilesToLaunch = nbProjectiles;
-
+    this.maxScore =
+      5 *
+        (50 +
+          75 +
+          (Math.floor(nbProjectiles / 15) && 100) +
+          (Math.floor(nbProjectiles / 20) && 150)) +
+      (nbProjectiles - 20 > 0 && (nbProjectiles - 20) * 200);
+    console.log(this.maxScore);
     this.launchGame();
   };
 
@@ -105,6 +112,12 @@ class Game extends Component {
   winFunc = () => {
     this.pauseGame();
     setTimeout(() => {
+      this.note = Math.ceil(
+        ((this.state.count - parseInt(localStorage.getItem("count"))) /
+          this.maxScore) *
+          3
+      );
+      console.log(this.note);
       this.setState({ win: true });
       // localStorage.setItem("count", this.state.count);
     }, 10);
@@ -166,13 +179,13 @@ class Game extends Component {
   };
 
   addPoints = coeff => {
-    if (this.state.streak.length < 5) {
+    if (this.state.streak.length <= 5) {
       this.setState({ count: this.state.count + 50 * coeff });
-    } else if (this.state.streak.length < 10) {
+    } else if (this.state.streak.length <= 10) {
       this.setState({ count: this.state.count + 75 * coeff });
-    } else if (this.state.streak.length < 15) {
+    } else if (this.state.streak.length <= 15) {
       this.setState({ count: this.state.count + 100 * coeff });
-    } else if (this.state.streak.length < 20) {
+    } else if (this.state.streak.length <= 20) {
       this.setState({ count: this.state.count + 150 * coeff });
     } else {
       this.setState({ count: this.state.count + 200 * coeff });
