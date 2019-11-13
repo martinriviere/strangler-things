@@ -3,13 +3,16 @@ import "../App.css";
 import { Link } from "react-router-dom";
 import Champions from "../Design/Sounds/homer-champions.mp3";
 import { GameContext } from "../providers/GameProvider";
+import { Translate } from "react-localize-redux";
 
 function ModalWin(props) {
   const { nextLevel, isFxOn } = useContext(GameContext);
   return (
     <div className="container-modal">
       <div className="ModalWin">
-        <h2 className="you-win">YOU WIN !!</h2>
+        <h2 className="you-win">
+          <Translate id="modal.win" />
+        </h2>
         <img
           src="https://www.emugifs.net/wp-content/uploads/2019/07/Funny-Animation-from-Episode-The-Simpsons-Homer-Choking-Bart.gif"
           alt="winner"
@@ -21,11 +24,11 @@ function ModalWin(props) {
             // props.initializeGame();
           }}
         >
-          Continue
+          <Translate id="modal.continue" />
         </p>
         <p>
           <Link onClick={nextLevel} to="/">
-            Back to menu
+            <Translate id="modal.backToMenu" />
           </Link>
         </p>
       </div>

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { GameContext } from "../providers/GameProvider";
 import Accueil from "../Design/Sounds/accueil.mp3";
 import "./Menu.css";
+import { withLocalize, Translate } from "react-localize-redux";
 
 let divStyle = {
   backgroundImage: `url(${TitleScreen})`,
@@ -17,23 +18,30 @@ let divStyle = {
 
 function Menu() {
   const { level, resetLevel, isMusicOn } = useContext(GameContext);
-
   return (
     <div className="Menu" style={divStyle}>
       <nav>
         <ul>
-          <li onClick={() => resetLevel()}>
-            <Link to="/game">NEW GAME</Link>
-          </li>
           {level > 1 && (
             <li>
-              <Link to="/game">RESUME GAME</Link>
+              <Link to="/game">
+                <Translate id="menu.continue" />
+              </Link>
             </li>
           )}
-          <li>
-            <Link to="/MenuOptions">OPTIONS</Link>
+          <li onClick={() => resetLevel()}>
+            <Link to="/game">
+              <Translate id="menu.newGame" />
+            </Link>
           </li>
-          <li style={{ color: "#bbb" }}>CREDITS</li>
+          <li>
+            <Link to="/MenuOptions">
+              <Translate id="menu.options" />
+            </Link>
+          </li>
+          <li style={{ color: "#bbb" }}>
+            <Translate id="menu.credits" />
+          </li>
         </ul>
       </nav>
       {isMusicOn && (
@@ -49,4 +57,4 @@ function Menu() {
   );
 }
 
-export default Menu;
+export default withLocalize(Menu);

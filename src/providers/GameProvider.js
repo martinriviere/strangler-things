@@ -1,4 +1,7 @@
 import React, { createContext, Component } from "react";
+import globalTranslations from "../translations/global.json";
+import { renderToStaticMarkup } from "react-dom/server";
+import { withLocalize } from "react-localize-redux";
 
 export const GameContext = createContext();
 
@@ -16,15 +19,19 @@ class GameProvider extends Component {
       toggleFx: this.toggleFx
     };
     this.baseCount = parseInt(localStorage.getItem("count")) || 0;
+    this.props.initialize({
+      languages: [
+        { name: "English", code: "en" },
+        { name: "French", code: "fr" }
+      ],
+      translation: globalTranslations,
+      options: {
+        renderToStaticMarkup,
+        defaultLanguage:
+          localStorage.getItem("language") || navigator.language.slice(0, 2)
+      }
+    });
   }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.state.level !== prevState.level) {
-  //     this.setState({
-  //       nbProjectiles: 5 * this.state.level
-  //     });
-  //   }
-  // }
 
   resetLevel = () => {
     this.setState({ level: 1, nbProjectiles: 5 });
@@ -53,4 +60,4 @@ class GameProvider extends Component {
   }
 }
 
-export default GameProvider;
+export default withLocalize(GameProvider);
