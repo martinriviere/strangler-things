@@ -1,5 +1,14 @@
 {
-  "movie": {
-    "title": ["Jurassic Park", "Le Parc jurassique"]
+  "menu": {
+    "continue": ["CONTINUE", "CONTINUER"],
+    "newGame": ["NEW GAME", "NOUVEAU JEU"],
+    "options": ["OPTIONS", "OPTIONS"],
+    "credits": ["CREDIT", "CREDITS"]
+  },
+  "options": {
+    "language": ["LANGUAGE", "LANGUE"],
+    "music": ["MUSIC", "MUSIQUE"],
+    "fx": ["FX", "FX"],
+    "back": ["BACK", "RETOUR"]
   }
 }

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import TitleScreen from "../Design/Images/TitleScreenMenu.jpg";
 import "./MenuOptions.css";
 import { GameContext } from "../providers/GameProvider";
+import { withLocalize, Translate } from "react-localize-redux";
 
 let divStyle = {
   backgroundImage: `url(${TitleScreen})`,
@@ -14,15 +15,17 @@ let divStyle = {
   zIndex: 2
 };
 
-function MenuOptions() {
+function MenuOptions(props) {
   const { isMusicOn, isFxOn, toggleMusic, toggleFx } = useContext(GameContext);
   return (
     <div className="Menu" style={divStyle}>
       <nav>
         <ul>
-          <li style={{ color: "#bbb" }}>LANGUAGE</li>
+          <li style={{ color: "#bbb" }}>
+            <Translate id="options.language" />
+          </li>
           <li>
-            MUSIC
+            <Translate id="options.music" />
             <label className="switch">
               <input
                 type="checkbox"
@@ -33,7 +36,7 @@ function MenuOptions() {
             </label>{" "}
           </li>
           <li>
-            FX
+            <Translate id="options.fx" />
             <label className="switch">
               <input
                 type="checkbox"
@@ -52,4 +55,4 @@ function MenuOptions() {
   );
 }
 
-export default MenuOptions;
+export default withLocalize(MenuOptions);
