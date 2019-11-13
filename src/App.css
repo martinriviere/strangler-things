@@ -60,7 +60,7 @@
   text-shadow: rgba(0, 0, 0, 0.678) 3px 3px 3px;
 }
 
-/* MODALES WIN, LOSE, STREAK */
+/* MODALES */
 
 .container-modal {
   width: 100vw;
@@ -72,6 +72,26 @@
   left: 0;
   z-index: 2000;
 }
+
+.ModalWin,
+.ModalLose,
+.ModalStartRules {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  font-family: "SimpsonFont";
+  color: rgb(255, 230, 0);
+  background-color: rgba(0, 0, 0, 0.7);
+  text-shadow: rgba(134, 133, 133, 0.678) 2px 2px 2px;
+}
+
+
+/* MODALE RULES */
 
 .containerRules {
   display: flex;
@@ -98,21 +118,21 @@
   padding: 10px;
 }
 
-.ModalWin,
-.ModalLose {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  position: absolute;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2em;
-  font-family: "SimpsonFont";
-  color: rgb(255, 230, 0);
-  background-color: rgba(0, 0, 0, 0.7);
-  text-shadow: rgba(134, 133, 133, 0.678) 2px 2px 2px;
+/* MODALE START RULES */
+.ModalStartRules p {
+  text-align:center;
+  font-size: 1.5em
 }
+
+.ModalStartRules img {
+  align-self: center; 
+}
+
+.ModalStartRules .espace {
+  height:3vh;
+}
+
+/* MODALE STREAK */
 
 .container-streak {
   width: 100vw;
@@ -140,6 +160,8 @@
   text-shadow: rgba(0, 0, 0, 0.678) 3px 3px 3px;
 }
 
+
+/* MODALE WIN et LOSE */
 .ModalLose img,
 .ModalWin img {
   align-self: center;
@@ -148,7 +170,8 @@
 }
 
 .you-win,
-.you-lose {
+.you-lose,
+.rules-title {
   font-size: 3em;
   padding-bottom: 5vh;
   text-shadow: 3px 3px 7px black;
@@ -172,6 +195,9 @@
   padding-bottom: 1vh;
   text-shadow: 3px 3px 7px rgb(0, 0, 0);
 }
+
+
+/* BUTTON PAUSE */
 
 .buttonsPauseMenu, button {
   color: rgb(255, 230, 0);

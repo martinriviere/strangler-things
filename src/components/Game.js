@@ -19,6 +19,7 @@ import Doh from "../Design/Sounds/homer-doh.mp3";
 import Bgsound from "../Design/Sounds/game-generique.mp3";
 import Barriere from "./Barriere";
 import Level from "./Level";
+import ModalStartRules from "./ModalStartRules";
 
 class Game extends Component {
   constructor() {
@@ -277,7 +278,7 @@ class Game extends Component {
           !this.state.lose && <ModalStreak streak={this.state.streak.length} />}
 
         {this.state.gameRuleDisplay && (
-          <GameRules ruleModalDisplay={this.ruleModalDisplay} />
+          <ModalStartRules ruleModalDisplay={this.ruleModalDisplay} />
         )}
         {this.state.win && <ModalWin initializeGame={this.initializeGame} />}
         {this.state.lose && <ModalLose initializeGame={this.initializeGame} />}
