@@ -5,6 +5,7 @@ import homerRules from "../Design/GameRules/homerRule.gif";
 import tapRule from "../Design/GameRules/tapRule.png";
 import "./modal.css";
 import { Link } from "react-router-dom";
+import { Translate } from "react-localize-redux";
 
 class GameRules extends Component {
   render() {
@@ -23,10 +24,12 @@ class GameRules extends Component {
             className="buttonsPauseMenu"
             onClick={!this.props.gameRuleDisplay && this.props.ruleModalDisplay}
           >
-            Continue
+            <Translate id="modal.continue" />
           </button>
           <button className="buttonsPauseMenu">
-            <Link to="/">Back to menu</Link>
+            <Link to="/">
+              <Translate id="modal.backToMenu" />
+            </Link>
           </button>
         </div>
       </div>

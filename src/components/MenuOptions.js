@@ -19,7 +19,7 @@ let divStyle = {
 function MenuOptions({ languages }) {
   const { isMusicOn, isFxOn, toggleMusic, toggleFx } = useContext(GameContext);
   return (
-    <div className="Menu" style={divStyle}>
+    <div className="Menu" id="MenuOptions" style={divStyle}>
       <nav>
         <ul>
           <li>

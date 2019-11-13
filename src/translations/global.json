@@ -10,5 +10,13 @@
     "music": ["MUSIC", "MUSIQUE"],
     "fx": ["FX", "FX"],
     "back": ["BACK", "RETOUR"]
-  }
+  },
+  "modal": {
+    "continue": ["Continue", "Continuer"],
+    "backToMenu": ["Back to menu", "Retour au menu"],
+    "tryAgain": ["Try again", "Essaye encore"],
+    "lose": ["YOU LOSE!!", "TU AS PERDU !!"],
+    "win": ["YOU WIN!!", "TU AS GAGNE !!"]
+  },
+  "level": ["level", "niveau"]
 }
