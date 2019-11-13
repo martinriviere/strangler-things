@@ -42,7 +42,8 @@ class Game extends Component {
       pause: false,
       resume: false,
       streak: [],
-      count: parseInt(localStorage.getItem("count")) || 0
+      count: parseInt(localStorage.getItem("count")) || 0,
+      movement: "none"
     };
     this.baseState = this.state;
     this.doh = new Audio(Doh);
@@ -126,6 +127,7 @@ class Game extends Component {
 
   handleSwipe = event => {
     if (event === "right") {
+      this.setState({movement : "right"});
       const projectileToRemove = this.state.swipeZone.find(
         projectile => projectile.type.name === "duff"
       );
@@ -138,6 +140,7 @@ class Game extends Component {
       }
     }
     if (event === "left") {
+      this.setState({movement : "left"});
       const projectileToRemove = this.state.swipeZone.find(
         projectile => projectile.type.name === "doughnut"
       );
@@ -150,6 +153,7 @@ class Game extends Component {
       }
     }
     if (event === "touch") {
+      this.setState({movement : "avoid"});
       const projectileToRemove = this.state.swipeZone.find(
         projectile =>
           projectile.type.name === "brocoli" ||
@@ -228,6 +232,7 @@ class Game extends Component {
 
   componentDidUpdate() {
     if (this.state.resume) this.setState({ resume: false });
+    if (this.state.movement !== "none") this.setState({movement: "none"})
   }
 
   render() {
@@ -245,7 +250,7 @@ class Game extends Component {
         {!this.state.win && !this.state.lose && (
           <Counter count={this.state.count} />
         )}
-        <Characters />
+        <Characters movement={this.state.movement}/>
         <Projectiles
           projectiles={this.state.projectiles}
           deleteProjectile={this.deleteProjectile}
