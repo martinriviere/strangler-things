@@ -19,6 +19,7 @@ import Doh from "../Design/Sounds/homer-doh.mp3";
 import Bgsound from "../Design/Sounds/game-generique.mp3";
 import Barriere from "./Barriere";
 import Level from "./Level";
+import ModalDrunk from "./ModalDrunk";
 
 class Game extends Component {
   constructor() {
@@ -42,7 +43,10 @@ class Game extends Component {
       pause: false,
       resume: false,
       streak: [],
-      count: parseInt(localStorage.getItem("count")) || 0
+      count: parseInt(localStorage.getItem("count")) || 0,
+      movement: "none",
+      drunkMode: false,
+      displayModalDrunk: false,
     };
     this.baseState = this.state;
     this.doh = new Audio(Doh);
@@ -124,8 +128,24 @@ class Game extends Component {
   //   }
   // };
 
+  isDrunk = () => {
+    const { streak } = this.state;
+    if (streak[streak.length - 2].type.name === "duff" && streak[streak.length - 3].type.name === "duff") {
+      this.setState({ drunkMode: true, displayModalDrunk: true })
+      setTimeout(() => this.setState({displayModalDrunk: false}), 3000)
+      }
+  }
+
+  isSober = () => {
+    const { streak } = this.state;
+    if (streak.length >= 4 && this.state.drunkMode && streak[streak.length - 2].type.name !== "duff" && streak[streak.length - 3].type.name !== "duff" && streak[streak.length - 4].type.name !== "duff") {
+      this.setState({ drunkMode: false })
+      }
+  }
+
   handleSwipe = event => {
     if (event === "right") {
+      this.setState({movement : "right"});
       const projectileToRemove = this.state.swipeZone.find(
         projectile => projectile.type.name === "duff"
       );
@@ -138,6 +158,7 @@ class Game extends Component {
       }
     }
     if (event === "left") {
+      this.setState({movement : "left"});
       const projectileToRemove = this.state.swipeZone.find(
         projectile => projectile.type.name === "doughnut"
       );
@@ -150,6 +171,7 @@ class Game extends Component {
       }
     }
     if (event === "touch") {
+      this.setState({movement : "avoid"});
       const projectileToRemove = this.state.swipeZone.find(
         projectile =>
           projectile.type.name === "brocoli" ||
@@ -226,8 +248,15 @@ class Game extends Component {
     this.context.isMusicOn && this.bgsound.play();
   };
 
-  componentDidUpdate() {
-    if (this.state.resume) this.setState({ resume: false });
+  componentDidUpdate(prevProps, prevState) {
+    const { streak, resume } = this.state
+    if (resume) this.setState({ resume: false });
+    if (streak !== prevState.streak && streak.length >= 3 && streak[streak.length - 1].type.name === "duff" )  {
+      this.isDrunk();
+    }
+    if (streak !== prevState.streak && streak.length >= 3 && streak[streak.length - 1].type.name !== "duff") {
+      this.isSober();
+    }
   }
 
   render() {
@@ -245,7 +274,7 @@ class Game extends Component {
         {!this.state.win && !this.state.lose && (
           <Counter count={this.state.count} />
         )}
-        <Characters />
+        <Characters movement={this.state.movement}/>
         <Projectiles
           projectiles={this.state.projectiles}
           deleteProjectile={this.deleteProjectile}
@@ -257,7 +286,7 @@ class Game extends Component {
           resume={this.state.resume}
           getCoeff={this.getCoeff}
         />
-        <SwipeDetection handleSwipe={this.handleSwipe} />
+        <SwipeDetection handleSwipe={this.handleSwipe} drunkMode={this.state.drunkMode}/>
         {!this.state.win && !this.state.lose && (
           <button
             onClick={e => this.ruleModalDisplay()}
@@ -281,6 +310,7 @@ class Game extends Component {
         )}
         {this.state.win && <ModalWin initializeGame={this.initializeGame} />}
         {this.state.lose && <ModalLose initializeGame={this.initializeGame} />}
+        {this.state.displayModalDrunk && !this.state.win && !this.state.lose && <ModalDrunk />}
       </div>
     );
   }

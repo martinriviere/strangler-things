@@ -10,13 +10,24 @@ class SwipeDetection extends Component {
     event.preventDefault();
     const endPosition = event.changedTouches[0].screenX;
     const positionChange = endPosition - this.startPosition;
+    if (this.props.drunkMode === false) {
+      if (positionChange < -30) {
+        this.props.handleSwipe("left");
+      } else if (positionChange > 30) {
+        this.props.handleSwipe("right");
+      } else {
+        this.props.handleSwipe("touch");
+    }
+  }
+  else {
     if (positionChange < -30) {
-      this.props.handleSwipe("left");
-    } else if (positionChange > 30) {
       this.props.handleSwipe("right");
+    } else if (positionChange > 30) {
+      this.props.handleSwipe("left");
     } else {
       this.props.handleSwipe("touch");
     }
+  }
   };
 
   render() {
