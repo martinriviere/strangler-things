@@ -1,0 +1,9 @@
+.flag {
+  width: 40px;
+  margin-left: 16px;
+  vertical-align: baseline;
+}
+
+.active {
+  filter: drop-shadow(0 0 5px yellow);
+}

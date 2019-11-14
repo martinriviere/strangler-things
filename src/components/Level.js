@@ -1,13 +1,14 @@
 import React, { useContext } from "react";
 import { GameContext } from "../providers/GameProvider";
+import { Translate } from "react-localize-redux";
 
 function Level() {
   const { level } = useContext(GameContext);
   return (
     <div style={style}>
-      level
+      <Translate id="level" />
       <br />
-      {level}
+      <span style={{ fontSize: "2em" }}>{level}</span>
     </div>
   );
 }
