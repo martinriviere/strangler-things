@@ -4,12 +4,14 @@ import { Link } from "react-router-dom";
 import Champions from "../Design/Sounds/homer-champions.mp3";
 import { GameContext } from "../providers/GameProvider";
 import { Translate } from "react-localize-redux";
+import Stars from "./Stars";
 
 function ModalWin(props) {
   const { nextLevel, isFxOn } = useContext(GameContext);
   return (
     <div className="container-modal">
       <div className="ModalWin">
+        <Stars note={props.note} />
         <h2 className="you-win">
           <Translate id="modal.win" />
         </h2>
