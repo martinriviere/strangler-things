@@ -13,12 +13,12 @@ import Doughnut from "../Design/Projectiles/doughnut.png";
 import Duff from "../Design/Projectiles/duff.png";
 import Brocoli from "../Design/Projectiles/brocoli.png";
 import Flanders from "../Design/Projectiles/flanders.png";
-import GameRules from "./GameRules.js";
 import { GameContext } from "../providers/GameProvider";
 import Doh from "../Design/Sounds/homer-doh.mp3";
 import Bgsound from "../Design/Sounds/game-generique.mp3";
 import Barriere from "./Barriere";
 import Level from "./Level";
+import ModalRules from "./ModalRules";
 import ModalDrunk from "./ModalDrunk";
 
 class Game extends Component {
@@ -58,6 +58,9 @@ class Game extends Component {
 
   componentDidMount() {
     this.initializeGame(true);
+    if (this.context.level === 1) {
+      this.ruleModalDisplay();
+    }
   }
 
   initializeGame = justMount => {
@@ -275,16 +278,18 @@ class Game extends Component {
   render() {
     return (
       <div className="App">
-        {!this.state.win && !this.state.lose && <Level />}
+        {!this.state.win && !this.state.lose && !this.state.gameRuleDisplay && (
+          <Level />
+        )}
         <Barriere />
         <Barriere right />
-        {!this.state.win && !this.state.lose && (
+        {!this.state.win && !this.state.lose && !this.state.gameRuleDisplay && (
           <HomerLife
             lifeNumber={this.state.lifeNumber}
             lifeMax={this.state.lifeMax}
           />
         )}
-        {!this.state.win && !this.state.lose && (
+        {!this.state.win && !this.state.lose && !this.state.gameRuleDisplay && (
           <Counter count={this.state.count} />
         )}
         <Characters movement={this.state.movement}/>
@@ -300,7 +305,7 @@ class Game extends Component {
           getCoeff={this.getCoeff}
         />
         <SwipeDetection handleSwipe={this.handleSwipe} drunkMode={this.state.drunkMode}/>
-        {!this.state.win && !this.state.lose && (
+        {!this.state.win && !this.state.lose && !this.state.gameRuleDisplay && (
           <button
             onClick={e => this.ruleModalDisplay()}
             style={{ position: "fixed", zIndex: 3000 }}
@@ -319,7 +324,7 @@ class Game extends Component {
           !this.state.lose && <ModalStreak streak={this.state.streak.length} />}
 
         {this.state.gameRuleDisplay && (
-          <GameRules ruleModalDisplay={this.ruleModalDisplay} />
+          <ModalRules ruleModalDisplay={this.ruleModalDisplay} />
         )}
         {this.state.win && (
           <ModalWin initializeGame={this.initializeGame} note={this.note} />

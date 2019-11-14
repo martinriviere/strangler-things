@@ -19,20 +19,22 @@ function ModalWin(props) {
           src="https://www.emugifs.net/wp-content/uploads/2019/07/Funny-Animation-from-Episode-The-Simpsons-Homer-Choking-Bart.gif"
           alt="winner"
         />
-        <p
-          onClick={() => {
-            nextLevel();
-            setTimeout(props.initializeGame, 10);
-            // props.initializeGame();
-          }}
-        >
-          <Translate id="modal.continue" />
-        </p>
-        <p>
-          <Link onClick={nextLevel} to="/">
-            <Translate id="modal.backToMenu" />
-          </Link>
-        </p>
+        <div className="button-section">
+          <button>
+            <Link onClick={nextLevel} to="/">
+              <i class="fas fa-home"></i>
+            </Link>
+          </button>
+          <button
+            onClick={() => {
+              nextLevel();
+              setTimeout(props.initializeGame, 10);
+              // props.initializeGame();
+            }}
+          >
+            <i class="fas fa-play"></i>
+          </button>
+        </div>
       </div>
       {isFxOn && (
         <iframe

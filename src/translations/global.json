@@ -15,8 +15,11 @@
     "continue": ["Continue", "Continuer"],
     "backToMenu": ["Back to menu", "Retour au menu"],
     "tryAgain": ["Try again", "Essaye encore"],
-    "lose": ["YOU LOSE!!", "TU AS PERDU !!"],
-    "win": ["YOU WIN!!", "TU AS GAGNE !!"]
+    "lose": ["YOU LOSE !!", "PERDU !!"],
+    "win": ["YOU WIN !!", "GAGNE !!"],
+    "start": ["HOW TO PLAY", "COMMENT JOUER"],
+    "swiperules": ["Swipe right for beers \rand left for doughnuts", "Swipe à droite pour les bières \ret à gauche pour les doughnuts"],
+    "taprules": ["Tap to avoid Flanders \rand Broccolis", "Tap pour eviter Flanders \ret les Brocolis"]
   },
   "level": ["level", "niveau"]
 }
