@@ -137,7 +137,7 @@ class Game extends Component {
 
   isSober = () => {
     const { streak } = this.state;
-    if (this.state.drunkMode && streak[streak.length - 2].type.name !== "duff" && streak[streak.length - 3].type.name !== "duff" && streak[streak.length - 4].type.name !== "duff") {
+    if (strength.length >= 4 && this.state.drunkMode && streak[streak.length - 2].type.name !== "duff" && streak[streak.length - 3].type.name !== "duff" && streak[streak.length - 4].type.name !== "duff") {
       this.setState({ drunkMode: false })
       }
   }
