@@ -17,7 +17,7 @@
     "tryAgain": ["Try again", "Essaye encore"],
     "lose": ["YOU LOSE !!", "PERDU !!"],
     "win": ["YOU WIN !!", "GAGNE !!"],
-    "start": ["HOW TO PLAY", "COMMENT JOUER"],
+    "start": ["RULES", "REGLES"],
     "swiperules": ["Swipe right for beers \rand left for doughnuts", "Swipe à droite pour les bières \ret à gauche pour les doughnuts"],
     "taprules": ["Tap to avoid Flanders \rand Broccolis", "Tap pour eviter Flanders \ret les Brocolis"]
   },
