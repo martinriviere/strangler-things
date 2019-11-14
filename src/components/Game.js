@@ -44,7 +44,7 @@ class Game extends Component {
       resume: false,
       streak: [],
       count: parseInt(localStorage.getItem("count")) || 0,
-      movement: "none"
+      movement: "none",
       drunkMode: false,
       displayModalDrunk: false,
     };
