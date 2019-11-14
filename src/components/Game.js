@@ -292,7 +292,9 @@ class Game extends Component {
         {this.state.gameRuleDisplay && (
           <GameRules ruleModalDisplay={this.ruleModalDisplay} />
         )}
-        {this.state.win && <ModalWin initializeGame={this.initializeGame} />}
+        {this.state.win && (
+          <ModalWin initializeGame={this.initializeGame} note={this.note} />
+        )}
         {this.state.lose && <ModalLose initializeGame={this.initializeGame} />}
       </div>
     );
