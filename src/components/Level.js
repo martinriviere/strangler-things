@@ -22,7 +22,7 @@ const style = {
   color: "white",
   fontFamily: "SimpsonFont",
   textShadow: "0 0 10px #000000",
-  textAlign: "right"
+  textAlign: "center"
 };
 
 export default Level;
