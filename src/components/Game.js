@@ -48,7 +48,7 @@ class Game extends Component {
       drunkMode: false,
       displayModalDrunk: false,
     };
-    this.baseState = this.state;      movement: "none"
+    this.baseState = this.state;
     this.doh = new Audio(Doh);
     this.bgsound = new Audio(Bgsound);
     this.newGameHasBeenInitialized = false;
