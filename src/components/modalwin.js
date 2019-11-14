@@ -5,13 +5,13 @@ import Champions from "../Design/Sounds/homer-champions.mp3";
 import { GameContext } from "../providers/GameProvider";
 
 function ModalWin(props) {
-  const { nextLevel } = useContext(GameContext);
+  const { nextLevel, isFxOn } = useContext(GameContext);
   return (
     <div className="container-modal">
       <div className="ModalWin">
         <h2 className="you-win">YOU WIN !!</h2>
         <img
-          src="http://giphygifs.s3.amazonaws.com/media/A6aHBCFqlE0Rq/giphy.gif"
+          src="https://www.emugifs.net/wp-content/uploads/2019/07/Funny-Animation-from-Episode-The-Simpsons-Homer-Choking-Bart.gif"
           alt="winner"
         />
         <p
@@ -29,13 +29,15 @@ function ModalWin(props) {
           </Link>
         </p>
       </div>
-      <iframe
-        title="son-champions"
-        src={Champions}
-        allow="autoplay"
-        id="audio"
-        style={{ visibility: "hidden" }}
-      ></iframe>
+      {isFxOn && (
+        <iframe
+          title="son-champions"
+          src={Champions}
+          allow="autoplay"
+          id="audio"
+          style={{ visibility: "hidden" }}
+        ></iframe>
+      )}
     </div>
   );
 }

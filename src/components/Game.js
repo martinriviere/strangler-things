@@ -14,7 +14,6 @@ import Duff from "../Design/Projectiles/duff.png";
 import Brocoli from "../Design/Projectiles/brocoli.png";
 import Flanders from "../Design/Projectiles/flanders.png";
 import GameRules from "./GameRules.js";
-import { Button } from "reactstrap";
 import { GameContext } from "../providers/GameProvider";
 import Doh from "../Design/Sounds/homer-doh.mp3";
 import Bgsound from "../Design/Sounds/game-generique.mp3";
@@ -93,10 +92,11 @@ class Game extends Component {
         this.projectilesToLaunch--;
       }
     }, 1200);
-    this.bgsound.play();
+    this.context.isMusicOn && this.bgsound.play();
   };
 
   removeRemainingProjectile = () => {
+    console.log(this.remainingProjectiles);
     this.remainingProjectiles--;
   };
 
@@ -144,55 +144,40 @@ class Game extends Component {
 
   handleSwipe = event => {
     if (event === "right") {
-      const projectileToRemove = this.state.swipeZone.find(projectile => {
-        if (projectile.type.name === "duff") {
-          // this.checkWin();
-          this.removeProjectileFromSwipeZone(projectile.id);
-          this.deleteProjectile(projectile.id);
-          this.setState({ streak: [...this.state.streak, projectile] });
-          this.addPoints();
-          // this.isDrunk()
-        }
-      });
+      const projectileToRemove = this.state.swipeZone.find(
+        projectile => projectile.type.name === "duff"
+      );
       // this.checkWin();
       if (projectileToRemove) {
         this.removeProjectileFromSwipeZone(projectileToRemove.id);
         this.deleteProjectile(projectileToRemove.id);
         this.setState({ streak: [...this.state.streak, projectileToRemove] });
-        this.removeProjectileFromSwipeZone(projectileToRemove.id);
         this.addPoints(projectileToRemove.coeff);
       }
     }
     if (event === "left") {
-      const projectileToRemove = this.state.swipeZone.find(projectile => {
-        if (projectile.type.name === "doughnut") {
-          return true;
-        }
-      });
+      const projectileToRemove = this.state.swipeZone.find(
+        projectile => projectile.type.name === "doughnut"
+      );
       // this.checkWin();
       if (projectileToRemove) {
         this.removeProjectileFromSwipeZone(projectileToRemove.id);
         this.deleteProjectile(projectileToRemove.id);
         this.setState({ streak: [...this.state.streak, projectileToRemove] });
-        this.removeProjectileFromSwipeZone(projectileToRemove.id);
         this.addPoints(projectileToRemove.coeff);
       }
     }
     if (event === "touch") {
-      const projectileToRemove = this.state.swipeZone.find(projectile => {
-        if (
+      const projectileToRemove = this.state.swipeZone.find(
+        projectile =>
           projectile.type.name === "brocoli" ||
           projectile.type.name === "flanders"
-        ) {
-          return true;
-        }
-      });
+      );
       // this.checkWin();
       if (projectileToRemove) {
         this.removeProjectileFromSwipeZone(projectileToRemove.id);
         this.deleteProjectile(projectileToRemove.id);
         this.setState({ streak: [...this.state.streak, projectileToRemove] });
-        this.removeProjectileFromSwipeZone(projectileToRemove.id);
         this.addPoints(projectileToRemove.coeff);
       }
     }
@@ -213,14 +198,15 @@ class Game extends Component {
   };
 
   reduceLife = () => {
+    const { isFxOn } = this.context;
     // { e => this.reduceLife()} pour l'utiliser
     if (this.state.lifeNumber > 1) {
       this.setState(state => {
-        this.doh.play();
+        isFxOn && this.doh.play();
         return { lifeNumber: state.lifeNumber - 1, streak: [] };
       });
     } else {
-      this.doh.play();
+      isFxOn && this.doh.play();
       this.setState({ lose: true });
       this.pauseGame();
     }
@@ -255,7 +241,7 @@ class Game extends Component {
   resumeGame = () => {
     this.launchGame();
     this.setState({ pause: false, resume: true });
-    this.bgsound.play();
+    this.context.isMusicOn && this.bgsound.play();
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -298,19 +284,17 @@ class Game extends Component {
         />
         <SwipeDetection handleSwipe={this.handleSwipe} drunkMode={this.state.drunkMode}/>
         {!this.state.win && !this.state.lose && (
-          <Button
-            outline
-            color="primary"
+          <button
             onClick={e => this.ruleModalDisplay()}
-            style={{
-              position: "fixed",
-              left: "2vw",
-              top: "1vh",
-              zIndex: 3000
-            }}
+            style={{ position: "fixed", zIndex: 3000 }}
           >
-            {this.state.gameRuleDisplay ? "Resume" : "Pause"}
-          </Button>
+            <p className="buttonPause">
+              <i
+                className="fas fa-pause"
+                onClick={this.props.ruleModalDisplay}
+              />
+            </p>
+          </button>
         )}
         {this.state.streak.length > 0 &&
           this.state.streak.length % 5 === 0 &&
