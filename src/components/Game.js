@@ -248,11 +248,6 @@ class Game extends Component {
     this.context.isMusicOn && this.bgsound.play();
   };
 
-<<<<<<< HEAD
-  componentDidUpdate() {
-    if (this.state.resume) this.setState({ resume: false });
-    if (this.state.movement !== "none") this.setState({movement: "none"})
-=======
   componentDidUpdate(prevProps, prevState) {
     const { streak, resume } = this.state
     if (resume) this.setState({ resume: false });
@@ -262,7 +257,6 @@ class Game extends Component {
     if (streak !== prevState.streak && streak.length >= 3 && streak[streak.length - 1].type.name !== "duff") {
       this.isSober();
     }
->>>>>>> dev
   }
 
   render() {
