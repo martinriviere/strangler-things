@@ -85,7 +85,7 @@ class Game extends Component {
         this.setState({
           projectiles: [
             ...projectiles,
-            { id: index, type: this.state.items[2] }
+            { id: index, type: this.state.items[randomOf(4)] }
           ],
           index: index + 1
         });
@@ -137,7 +137,7 @@ class Game extends Component {
 
   isSober = () => {
     const { streak } = this.state;
-    if (this.state.drunkMode && streak[streak.length - 2].type.name !== "duff" && streak[streak.length - 3].type.name !== "duff") {
+    if (this.state.drunkMode && streak[streak.length - 2].type.name !== "duff" && streak[streak.length - 3].type.name !== "duff" && streak[streak.length - 4].type.name !== "duff") {
       this.setState({ drunkMode: false })
       }
   }
