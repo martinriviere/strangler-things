@@ -54,6 +54,9 @@ class Game extends Component {
 
   componentDidMount() {
     this.initializeGame(true);
+    if (this.context.level === 1) {
+      this.ruleModalDisplay();
+    }
   }
 
   initializeGame = justMount => {
@@ -233,7 +236,9 @@ class Game extends Component {
   render() {
     return (
       <div className="App">
-        {!this.state.win && !this.state.lose && !this.state.gameRuleDisplay && <Level />}
+        {!this.state.win && !this.state.lose && !this.state.gameRuleDisplay && (
+          <Level />
+        )}
         <Barriere />
         <Barriere right />
         {!this.state.win && !this.state.lose && !this.state.gameRuleDisplay && (
@@ -242,7 +247,7 @@ class Game extends Component {
             lifeMax={this.state.lifeMax}
           />
         )}
-        {!this.state.win && !this.state.lose && !this.state.gameRuleDisplay &&  (
+        {!this.state.win && !this.state.lose && !this.state.gameRuleDisplay && (
           <Counter count={this.state.count} />
         )}
         <Characters />
@@ -258,7 +263,7 @@ class Game extends Component {
           getCoeff={this.getCoeff}
         />
         <SwipeDetection handleSwipe={this.handleSwipe} />
-        {!this.state.win && !this.state.lose && !this.state.gameRuleDisplay &&(
+        {!this.state.win && !this.state.lose && !this.state.gameRuleDisplay && (
           <button
             onClick={e => this.ruleModalDisplay()}
             style={{ position: "fixed", zIndex: 3000 }}
