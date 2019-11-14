@@ -14,19 +14,20 @@ class ModalLose extends Component {
           <h2 className="you-lose">
             <Translate id="modal.lose" />
           </h2>
-          <div className="counter-container"></div>
           <img
             src="http://giphygifs.s3.amazonaws.com/media/jUwpNzg9IcyrK/giphy.gif"
             alt="winner"
           />
-          <p onClick={() => this.props.initializeGame(false)}>
-            <Translate id="modal.tryAgain" />
-          </p>
-          <p>
-            <Link to="/">
-              <Translate id="modal.backToMenu" />
-            </Link>
-          </p>
+          <div className="button-section">
+            <button>
+              <Link to="/">
+                <i class="fas fa-home"></i>
+              </Link>
+            </button>
+            <button onClick={() => this.props.initializeGame(false)}>
+              <i class="fas fa-play"></i>
+            </button>
+          </div>
         </div>
         {this.context.isFxOn && (
           <iframe

@@ -60,7 +60,7 @@
   text-shadow: rgba(0, 0, 0, 0.678) 3px 3px 3px;
 }
 
-/* MODALES */
+/* MODALS */
 
 .container-modal {
   width: 100vw;
@@ -91,7 +91,7 @@
 }
 
 
-/* MODALE RULES */
+/* MODAL RULES */
 
 .containerRules {
   display: flex;
@@ -121,7 +121,7 @@
 /* MODALE START RULES */
 .ModalStartRules p {
   text-align:center;
-  font-size: 1.5em
+  font-size: 1em
 }
 
 .ModalStartRules img {
@@ -129,7 +129,11 @@
 }
 
 .ModalStartRules .espace {
-  height:3vh;
+  height:1vh;
+}
+.ModalStartRules .img-section {
+  display:flex;
+  justify-content: center;
 }
 
 /* MODALE STREAK */
@@ -172,9 +176,10 @@
 .you-win,
 .you-lose,
 .rules-title {
-  font-size: 3em;
-  padding-bottom: 5vh;
+  font-size: 2.5em;
+  padding-bottom: 2vh;
   text-shadow: 3px 3px 7px black;
+  text-align:center
 }
 
 .you-win {
@@ -185,8 +190,16 @@
   color: red;
 }
 
-.ModalWin p,
-.ModalLose p {
+/* BUTTON MODAL RULES */
+
+.button-section {
+  display: flex;
+  justify-content: space-around;
+}
+
+.ModalWin button,
+.ModalLose button {
+  color: rgb(255, 230, 0);
   font-size: 2em;
   padding: 0 5vw 0 5vw;
   background-color: rgba(0, 0, 0, 0.5);
@@ -194,28 +207,34 @@
   border: 2px solid rgb(255, 255, 255);
   padding-bottom: 1vh;
   text-shadow: 3px 3px 7px rgb(0, 0, 0);
+  margin:1vh;
 }
-
-
-/* BUTTON PAUSE */
 
 .buttonsPauseMenu, button {
   color: rgb(255, 230, 0);
   font-size: 2em;
   padding: 0 5vw 0 5vw;
-  font-family: "SimpsonFont";
   background-color: rgba(0,0,0, 0.5);
   border-radius: 8px;
   border: 1px solid rgb(255, 255, 255);
   padding-bottom: 1vh;
-  margin-top: 0.7em;
+  margin: 1vh;
 }
+
+/* BUTTON PAUSE */
 
 .buttonPause {
   position: fixed;
   right: 5vw;
   top: 0.5vh;
-  font-size: 2.3em;
+  font-size: 2em;
   z-index: 3000;
-  color: rgba(0, 0, 0, 0.678);
+  color: rgb(255, 230, 0, 0.8);
+  background-color: rgba(0,0,0, 0.5);
+  padding: 0 5vw 0 5vw;
+  border-radius: 8px;
+  border: 1px solid rgb(255, 255, 255);
 }
+
+
+
