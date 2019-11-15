@@ -235,3 +235,41 @@ button {
   border-radius: 8px;
   border: 1px solid rgb(255, 255, 255);
 }
+
+
+/* MODAL DRUNK */
+
+.containerDrunk {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1019;
+}
+
+.ModalDrunk {
+  display: flex;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+  text-align: center;
+  font-size: 1em;
+  font-family: "SimpsonFont";
+  color: rgb(255, 230, 0);
+  text-shadow: rgba(0, 0, 0, 0.678) 3px 3px 3px;
+  padding-top: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.ModalDrunk h2 {
+  font-size : 2em;
+}
+
+.ModalDrunk p {
+  font-size : 1em;
+}
