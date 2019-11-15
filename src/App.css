@@ -236,7 +236,6 @@ button {
   border: 1px solid rgb(255, 255, 255);
 }
 
-
 /* MODAL DRUNK */
 
 .containerDrunk {
@@ -263,13 +262,18 @@ button {
   color: rgb(255, 230, 0);
   text-shadow: rgba(0, 0, 0, 0.678) 3px 3px 3px;
   padding-top: 50%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(50, 85, 120, 0.5);
 }
 
 .ModalDrunk h2 {
-  font-size : 2em;
+  font-size: 2em;
 }
 
 .ModalDrunk p {
-  font-size : 1em;
+  font-size: 1em;
+}
+
+.ModalDrunk img {
+  width: 60vw;
+  align-self: center;
 }
