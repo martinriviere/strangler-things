@@ -49,6 +49,7 @@ class Characters extends Component {
         return homerLeft;
       case "avoid":
         return homerAvoid;
+      default:
     }
   };
 
