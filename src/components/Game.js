@@ -204,12 +204,13 @@ class Game extends Component {
 
   handleKeyDown = event => {
     const keyDown = event.keyCode;
+    const { drunkMode } = this.state;
     switch (keyDown) {
       case 37:
-        this.handleSwipe("left");
+        !drunkMode ? this.handleSwipe("left") : this.handleSwipe("right");
         break;
       case 39:
-        this.handleSwipe("right");
+        !drunkMode ? this.handleSwipe("right") : this.handleSwipe("left");
         break;
       case 40:
         this.handleSwipe("touch");
@@ -296,6 +297,7 @@ class Game extends Component {
     ) {
       this.isSober();
     }
+    if (prevState.movement !== "none") this.setState({ movement: "none" });
   }
 
   render() {
@@ -315,7 +317,9 @@ class Game extends Component {
         {!this.state.win && !this.state.lose && !this.state.gameRuleDisplay && (
           <Counter count={this.state.count} />
         )}
-        <Characters movement={this.state.movement} />
+        <Characters
+          movement={this.state.movement !== "none" && this.state.movement}
+        />
         <Projectiles
           projectiles={this.state.projectiles}
           deleteProjectile={this.deleteProjectile}
