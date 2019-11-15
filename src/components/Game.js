@@ -123,7 +123,6 @@ class Game extends Component {
           this.maxScore) *
           3
       );
-      console.log(this.note);
       this.setState({ win: true });
       // localStorage.setItem("count", this.state.count);
     }, 10);
@@ -160,7 +159,6 @@ class Game extends Component {
   };
 
   handleSwipe = event => {
-    console.log(this.state.streak);
     if (event === "right") {
       this.setState({ movement: "right" });
       const projectileToRemove = this.state.swipeZone.find(
@@ -205,7 +203,6 @@ class Game extends Component {
   };
 
   handleKeyDown = event => {
-    const { drunkMode } = this.state;
     const keyDown = event.keyCode;
     switch (keyDown) {
       case 37:
@@ -299,6 +296,7 @@ class Game extends Component {
     ) {
       this.isSober();
     }
+    if (prevState.movement !== "none") this.setState({ movement: "none" });
   }
 
   render() {
@@ -318,7 +316,9 @@ class Game extends Component {
         {!this.state.win && !this.state.lose && !this.state.gameRuleDisplay && (
           <Counter count={this.state.count} />
         )}
-        <Characters movement={this.state.movement} />
+        <Characters
+          movement={this.state.movement !== "none" && this.state.movement}
+        />
         <Projectiles
           projectiles={this.state.projectiles}
           deleteProjectile={this.deleteProjectile}
