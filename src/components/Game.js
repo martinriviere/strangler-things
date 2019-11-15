@@ -297,7 +297,8 @@ class Game extends Component {
     ) {
       this.isSober();
     }
-    if (prevState.movement !== "none") this.setState({ movement: "none" });
+    if (prevState.movement !== "none")
+      setTimeout(() => this.setState({ movement: "none" }), 200);
   }
 
   render() {
@@ -317,9 +318,7 @@ class Game extends Component {
         {!this.state.win && !this.state.lose && !this.state.gameRuleDisplay && (
           <Counter count={this.state.count} />
         )}
-        <Characters
-          movement={this.state.movement !== "none" && this.state.movement}
-        />
+        <Characters movement={this.state.movement} />
         <Projectiles
           projectiles={this.state.projectiles}
           deleteProjectile={this.deleteProjectile}

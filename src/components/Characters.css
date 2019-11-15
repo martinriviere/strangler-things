@@ -1,0 +1,29 @@
+.right {
+  animation: right linear 0.2s;
+}
+
+@keyframes right {
+  100% {
+    background-image: url("../Design/Personnages/homer-dos1-right.png");
+  }
+}
+
+.left {
+  animation: left linear 0.2s;
+}
+
+@keyframes left {
+  100% {
+    background-image: url("../Design/Personnages/homer-dos1-left.png");
+  }
+}
+
+.avoid {
+  animation: avoid linear 0.2s;
+}
+
+@keyframes avoid {
+  100% {
+    background-image: url("../Design/Personnages/homer-dos1-avoid.png");
+  }
+}
