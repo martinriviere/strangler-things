@@ -11,7 +11,7 @@ function Stars({ note }) {
     if (note >= 2 && imgSrc === Stars1) setTimeout(() => setSrc(Stars2), 750);
     if (note === 3 && imgSrc === Stars2) setTimeout(() => setSrc(Stars3), 750);
   });
-  return <img src={imgSrc} style={{ width: "50%", marginTop: "2vh" }} />;
+  return <img src={imgSrc} style={{ width: "50%", marginTop: "2vh" }} alt="stars-img" />;
 }
 
 export default Stars;
