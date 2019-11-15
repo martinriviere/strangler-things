@@ -52,6 +52,7 @@ class Game extends Component {
     this.bgsound = new Audio(Bgsound);
     this.bgsound.loop = true;
     this.newGameHasBeenInitialized = false;
+    window.addEventListener("keydown", this.handleKeyDown);
   }
 
   static contextType = GameContext;
@@ -135,13 +136,6 @@ class Game extends Component {
     this.setState({ projectiles: projectiles });
   };
 
-  // checkLose = () => {
-  //   if (this.state.lifeNumber < 1) {
-  //     this.pauseGame();
-  //     setTimeout(() => this.setState({ lose: true }), 10);
-  //   }
-  // };
-
   isDrunk = () => {
     const { streak } = this.state;
     if (
@@ -207,6 +201,23 @@ class Game extends Component {
         this.setState({ streak: [...this.state.streak, projectileToRemove] });
         this.addPoints(projectileToRemove.coeff);
       }
+    }
+  };
+
+  handleKeyDown = event => {
+    console.log("keydown");
+    const keyDown = event.keyCode;
+    switch (keyDown) {
+      case 37:
+        this.handleSwipe("left");
+        break;
+      case 39:
+        this.handleSwipe("right");
+        break;
+      case 40:
+        this.handleSwipe("touch");
+        break;
+      default:
     }
   };
 
