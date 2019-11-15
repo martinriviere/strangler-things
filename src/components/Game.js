@@ -204,14 +204,14 @@ class Game extends Component {
   };
 
   handleKeyDown = event => {
-    console.log("keydown");
+    const { drunkMode } = this.state;
     const keyDown = event.keyCode;
     switch (keyDown) {
       case 37:
-        this.handleSwipe("left");
+        !drunkMode ? this.handleSwipe("left") : this.handleSwipe("right");
         break;
       case 39:
-        this.handleSwipe("right");
+        !drunkMode ? this.handleSwipe("right") : this.handleSwipe("left");
         break;
       case 40:
         this.handleSwipe("touch");
