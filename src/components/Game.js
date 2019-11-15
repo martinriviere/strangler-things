@@ -45,7 +45,7 @@ class Game extends Component {
       streak: [],
       count: parseInt(localStorage.getItem("count")) || 0,
       movement: "none",
-      drunkMode: false
+      drunkMode: true
     };
     this.baseState = this.state;
     this.doh = new Audio(Doh);
@@ -123,7 +123,6 @@ class Game extends Component {
           this.maxScore) *
           3
       );
-      console.log(this.note);
       this.setState({ win: true });
       // localStorage.setItem("count", this.state.count);
     }, 10);
@@ -160,7 +159,6 @@ class Game extends Component {
   };
 
   handleSwipe = event => {
-    console.log(this.state.streak);
     if (event === "right") {
       this.setState({ movement: "right" });
       const projectileToRemove = this.state.swipeZone.find(
@@ -205,7 +203,6 @@ class Game extends Component {
   };
 
   handleKeyDown = event => {
-    console.log("keydown");
     const keyDown = event.keyCode;
     switch (keyDown) {
       case 37:
@@ -353,7 +350,7 @@ class Game extends Component {
           !this.state.lose && <ModalStreak streak={this.state.streak.length} />}
 
         {this.state.gameRuleDisplay && (
-          <ModalRules ruleModalDisplay={this.ruleModalDisplay} />
+          <ModalRules ruleModalDisplay={this.ruleModalDisplay} note={this.note}/>
         )}
         {this.state.win && (
           <ModalWin initializeGame={this.initializeGame} note={this.note} />

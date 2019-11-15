@@ -5,20 +5,19 @@ import Champions from "../Design/Sounds/homer-champions.mp3";
 import { GameContext } from "../providers/GameProvider";
 import { Translate } from "react-localize-redux";
 import Stars from "./Stars";
+import HomerWin from "../Design/Images/homer-win.gif";
 
 function ModalWin(props) {
   const { nextLevel, isFxOn } = useContext(GameContext);
   return (
     <div className="container-modal">
       <div className="ModalWin">
+        <div className="espace"></div>
         <Stars note={props.note} />
         <h2 className="you-win">
           <Translate id="modal.win" />
         </h2>
-        <img
-          src="https://www.emugifs.net/wp-content/uploads/2019/07/Funny-Animation-from-Episode-The-Simpsons-Homer-Choking-Bart.gif"
-          alt="winner"
-        />
+        <img className="modalGif" src={HomerWin} alt="winner" />
         <div className="button-section">
           <button>
             <Link onClick={nextLevel} to="/">

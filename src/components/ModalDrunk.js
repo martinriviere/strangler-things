@@ -1,16 +1,17 @@
 import React, { useContext } from "react";
 import { Translate } from "react-localize-redux";
 import Drunk from "../Design/Sounds/homer-drunk.mp3";
+import DrunkImg from "../Design/Images/homer-drunk.gif";
 import { GameContext } from "../providers/GameProvider";
 import "../App.css";
 
 function ModalDrunk(props) {
   const { isFxOn } = useContext(GameContext);
   return (
-    <div className="containerDrunk">
+    <div>
       <div className="ModalDrunk">
         <img
-          src="https://media3.giphy.com/media/10OOPKuNawOB8c/giphy.gif"
+          src={DrunkImg}
           alt="winner"
         />
         <h2 className="homerDrunk">
