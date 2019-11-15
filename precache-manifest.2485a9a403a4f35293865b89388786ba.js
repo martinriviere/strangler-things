@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d85179fd082a346cc0b1512a0c011370",
+    "revision": "457e8a388954f38a940b1a7b0a20541b",
     "url": "/lyon-0919-react-p2-strangler-things/index.html"
   },
   {
-    "revision": "54ef7f5d27458686b955",
+    "revision": "de58caee97d9febfa120",
     "url": "/lyon-0919-react-p2-strangler-things/static/css/2.0624914a.chunk.css"
   },
   {
-    "revision": "3da767ee4ddff1d7a707",
-    "url": "/lyon-0919-react-p2-strangler-things/static/css/main.962b74aa.chunk.css"
+    "revision": "3b815bd94eb93c6ec1b4",
+    "url": "/lyon-0919-react-p2-strangler-things/static/css/main.33d181e0.chunk.css"
   },
   {
-    "revision": "54ef7f5d27458686b955",
-    "url": "/lyon-0919-react-p2-strangler-things/static/js/2.c769b301.chunk.js"
+    "revision": "de58caee97d9febfa120",
+    "url": "/lyon-0919-react-p2-strangler-things/static/js/2.d82638fe.chunk.js"
   },
   {
-    "revision": "3da767ee4ddff1d7a707",
-    "url": "/lyon-0919-react-p2-strangler-things/static/js/main.c8c47092.chunk.js"
+    "revision": "3b815bd94eb93c6ec1b4",
+    "url": "/lyon-0919-react-p2-strangler-things/static/js/main.b54598b9.chunk.js"
   },
   {
     "revision": "55b5054d4584da50f230",
@@ -106,6 +106,18 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "8fcca2b39c6833e212608bb6d11e1cee",
     "url": "/lyon-0919-react-p2-strangler-things/static/media/homer-drunk.8fcca2b3.mp3"
+  },
+  {
+    "revision": "a2a67c67e6fbba1647b2f69c0275bf46",
+    "url": "/lyon-0919-react-p2-strangler-things/static/media/homer-drunk.a2a67c67.gif"
+  },
+  {
+    "revision": "f0a55d1441e27995eef731504a1812ac",
+    "url": "/lyon-0919-react-p2-strangler-things/static/media/homer-lose.f0a55d14.gif"
+  },
+  {
+    "revision": "11179f5b64b4320351b74309dc1ec17e",
+    "url": "/lyon-0919-react-p2-strangler-things/static/media/homer-win.11179f5b.gif"
   },
   {
     "revision": "8c603bb25654c8222e9cc721d53c1423",

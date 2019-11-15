@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/lyon-0919-react-p2-strangler-things/precache-manifest.b87b17805db4608736a0da7691552876.js"
+  "/lyon-0919-react-p2-strangler-things/precache-manifest.2485a9a403a4f35293865b89388786ba.js"
 );
 
 self.addEventListener('message', (event) => {

@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/lyon-0919-react-p2-strangler-things/static/css/main.962b74aa.chunk.css",
-    "main.js": "/lyon-0919-react-p2-strangler-things/static/js/main.c8c47092.chunk.js",
-    "main.js.map": "/lyon-0919-react-p2-strangler-things/static/js/main.c8c47092.chunk.js.map",
+    "main.css": "/lyon-0919-react-p2-strangler-things/static/css/main.33d181e0.chunk.css",
+    "main.js": "/lyon-0919-react-p2-strangler-things/static/js/main.b54598b9.chunk.js",
+    "main.js.map": "/lyon-0919-react-p2-strangler-things/static/js/main.b54598b9.chunk.js.map",
     "runtime-main.js": "/lyon-0919-react-p2-strangler-things/static/js/runtime-main.7d24606b.js",
     "runtime-main.js.map": "/lyon-0919-react-p2-strangler-things/static/js/runtime-main.7d24606b.js.map",
     "static/css/2.0624914a.chunk.css": "/lyon-0919-react-p2-strangler-things/static/css/2.0624914a.chunk.css",
-    "static/js/2.c769b301.chunk.js": "/lyon-0919-react-p2-strangler-things/static/js/2.c769b301.chunk.js",
-    "static/js/2.c769b301.chunk.js.map": "/lyon-0919-react-p2-strangler-things/static/js/2.c769b301.chunk.js.map",
+    "static/js/2.d82638fe.chunk.js": "/lyon-0919-react-p2-strangler-things/static/js/2.d82638fe.chunk.js",
+    "static/js/2.d82638fe.chunk.js.map": "/lyon-0919-react-p2-strangler-things/static/js/2.d82638fe.chunk.js.map",
     "index.html": "/lyon-0919-react-p2-strangler-things/index.html",
-    "precache-manifest.b87b17805db4608736a0da7691552876.js": "/lyon-0919-react-p2-strangler-things/precache-manifest.b87b17805db4608736a0da7691552876.js",
+    "precache-manifest.2485a9a403a4f35293865b89388786ba.js": "/lyon-0919-react-p2-strangler-things/precache-manifest.2485a9a403a4f35293865b89388786ba.js",
     "service-worker.js": "/lyon-0919-react-p2-strangler-things/service-worker.js",
     "static/css/2.0624914a.chunk.css.map": "/lyon-0919-react-p2-strangler-things/static/css/2.0624914a.chunk.css.map",
-    "static/css/main.962b74aa.chunk.css.map": "/lyon-0919-react-p2-strangler-things/static/css/main.962b74aa.chunk.css.map",
+    "static/css/main.33d181e0.chunk.css.map": "/lyon-0919-react-p2-strangler-things/static/css/main.33d181e0.chunk.css.map",
     "static/media/GameScreen.png": "/lyon-0919-react-p2-strangler-things/static/media/GameScreen.dc74f0af.png",
     "static/media/MenuOptions.css": "/lyon-0919-react-p2-strangler-things/static/media/Homer_Simpson.d857adbf.ttf",
     "static/media/index.css": "/lyon-0919-react-p2-strangler-things/static/media/Simpsonfont.42e79bc9.otf",
@@ -29,6 +29,9 @@
     "static/media/Characters.css": "/lyon-0919-react-p2-strangler-things/static/media/homer-dos1-right.91b428ea.png",
     "static/media/homer-dos1.png": "/lyon-0919-react-p2-strangler-things/static/media/homer-dos1.6b66ec5b.png",
     "static/media/homer-drunk.mp3": "/lyon-0919-react-p2-strangler-things/static/media/homer-drunk.8fcca2b3.mp3",
+    "static/media/homer-drunk.gif": "/lyon-0919-react-p2-strangler-things/static/media/homer-drunk.a2a67c67.gif",
+    "static/media/homer-lose.gif": "/lyon-0919-react-p2-strangler-things/static/media/homer-lose.f0a55d14.gif",
+    "static/media/homer-win.gif": "/lyon-0919-react-p2-strangler-things/static/media/homer-win.11179f5b.gif",
     "static/media/homerRule.gif": "/lyon-0919-react-p2-strangler-things/static/media/homerRule.8c603bb2.gif",
     "static/media/nelson-haha.mp3": "/lyon-0919-react-p2-strangler-things/static/media/nelson-haha.2d645865.mp3",
     "static/media/stars0.png": "/lyon-0919-react-p2-strangler-things/static/media/stars0.b37152c7.png",
@@ -40,8 +43,8 @@
   "entrypoints": [
     "static/js/runtime-main.7d24606b.js",
     "static/css/2.0624914a.chunk.css",
-    "static/js/2.c769b301.chunk.js",
-    "static/css/main.962b74aa.chunk.css",
-    "static/js/main.c8c47092.chunk.js"
+    "static/js/2.d82638fe.chunk.js",
+    "static/css/main.33d181e0.chunk.css",
+    "static/js/main.b54598b9.chunk.js"
   ]
 }
