@@ -122,7 +122,6 @@ class Game extends Component {
           this.maxScore) *
           3
       );
-      console.log(this.note);
       this.setState({ win: true });
       // localStorage.setItem("count", this.state.count);
     }, 10);
@@ -159,7 +158,6 @@ class Game extends Component {
   };
 
   handleSwipe = event => {
-    console.log(this.state.streak);
     if (event === "right") {
       this.setState({ movement: "right" });
       const projectileToRemove = this.state.swipeZone.find(
@@ -204,7 +202,6 @@ class Game extends Component {
   };
 
   handleKeyDown = event => {
-    console.log("keydown");
     const keyDown = event.keyCode;
     switch (keyDown) {
       case 37:
