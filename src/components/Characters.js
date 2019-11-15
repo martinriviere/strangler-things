@@ -35,7 +35,7 @@ class Characters extends Component {
       this.setState({ movement: movement });
     }
     if (prevState.movement !== "none") {
-      setTimeout(() => this.setState({ movement: "none" }), 1000);
+      setTimeout(() => this.setState({ movement: "none" }), 200);
     }
   }
 
