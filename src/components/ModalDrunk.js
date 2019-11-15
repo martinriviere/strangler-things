@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { Translate } from "react-localize-redux";
 import Drunk from "../Design/Sounds/homer-drunk.mp3";
-import HomerDrunk from "../Design/Images/homer-drunk.gif";
 import { GameContext } from "../providers/GameProvider";
 import "../App.css";
 

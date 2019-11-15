@@ -45,7 +45,7 @@ class Game extends Component {
       streak: [],
       count: parseInt(localStorage.getItem("count")) || 0,
       movement: "none",
-      drunkMode: true
+      drunkMode: false
     };
     this.baseState = this.state;
     this.doh = new Audio(Doh);
@@ -145,8 +145,8 @@ class Game extends Component {
   isDrunk = () => {
     const { streak } = this.state;
     if (
-      streak[streak.length - 2].type.name === "duff" &&
-      streak[streak.length - 3].type.name === "duff"
+      streak[streak.length - 1].type.name === "duff" &&
+      streak[streak.length - 2].type.name === "duff"
     ) {
       this.setState({ drunkMode: true });
     }
@@ -155,11 +155,11 @@ class Game extends Component {
   isSober = () => {
     const { streak } = this.state;
     if (
-      streak.length >= 4 &&
+      streak.length >= 3 &&
       this.state.drunkMode &&
+      streak[streak.length - 1].type.name !== "duff" &&
       streak[streak.length - 2].type.name !== "duff" &&
-      streak[streak.length - 3].type.name !== "duff" &&
-      streak[streak.length - 4].type.name !== "duff"
+      streak[streak.length - 3].type.name !== "duff"
     ) {
       this.setState({ drunkMode: false });
     }
