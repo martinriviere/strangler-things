@@ -4,6 +4,8 @@ import Haha from "../Design/Sounds/nelson-haha.mp3";
 import "../App.css";
 import { GameContext } from "../providers/GameProvider";
 import { Translate } from "react-localize-redux";
+import Stars from "./Stars";
+import HomerLose from "../Design/Images/homer-lose.gif";
 
 class ModalLose extends Component {
   static contextType = GameContext;
@@ -11,13 +13,12 @@ class ModalLose extends Component {
     return (
       <div className="container-modal">
         <div className="ModalLose">
+          <div className="espace"></div>
+          <Stars note={this.props.note} />
           <h2 className="you-lose">
             <Translate id="modal.lose" />
           </h2>
-          <img
-            src="http://giphygifs.s3.amazonaws.com/media/jUwpNzg9IcyrK/giphy.gif"
-            alt="loser"
-          />
+          <img className="modalGif" src={HomerLose} alt="loser" />
           <div className="button-section">
             <button>
               <Link to="/">

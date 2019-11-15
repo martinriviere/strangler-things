@@ -353,7 +353,7 @@ class Game extends Component {
           !this.state.lose && <ModalStreak streak={this.state.streak.length} />}
 
         {this.state.gameRuleDisplay && (
-          <ModalRules ruleModalDisplay={this.ruleModalDisplay} />
+          <ModalRules ruleModalDisplay={this.ruleModalDisplay} note={this.note}/>
         )}
         {this.state.win && (
           <ModalWin initializeGame={this.initializeGame} note={this.note} />

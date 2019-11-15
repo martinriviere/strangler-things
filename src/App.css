@@ -81,7 +81,7 @@
   display: flex;
   position: absolute;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   font-size: 1.2em;
   font-family: "SimpsonFont";
@@ -165,11 +165,16 @@
 }
 
 /* MODALE WIN et LOSE */
-.ModalLose img,
-.ModalWin img {
+.ModalLose .modalGif,
+.ModalWin .modalGif {
   align-self: center;
   width: 90%;
-  padding-bottom: 2vh;
+  padding: 2vh 0 10vh 0;
+}
+
+.ModalLose .espace, 
+.ModalWin .espace {
+  height: 1vh;
 }
 
 .you-win,
@@ -206,7 +211,7 @@
   border: 2px solid rgb(255, 255, 255);
   padding-bottom: 1vh;
   text-shadow: 3px 3px 7px rgb(0, 0, 0);
-  margin: 1vh;
+  margin: 1vh 1vh 10vh 1vh ;
 }
 
 .buttonsPauseMenu,
@@ -238,25 +243,17 @@ button {
 
 /* MODAL DRUNK */
 
-.containerDrunk {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1019;
-}
-
 .ModalDrunk {
   display: flex;
   position: absolute;
   height: 100vh;
   width: 100vw;
+  top: 0;
+  left: 0;
+  z-index: 1019;
   flex-direction: column;
   text-align: center;
+  align-items: center;
   font-size: 1em;
   font-family: "SimpsonFont";
   color: rgb(255, 230, 0);
