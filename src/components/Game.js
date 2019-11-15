@@ -45,7 +45,7 @@ class Game extends Component {
       streak: [],
       count: parseInt(localStorage.getItem("count")) || 0,
       movement: "none",
-      drunkMode: true
+      drunkMode: false
     };
     this.baseState = this.state;
     this.doh = new Audio(Doh);
