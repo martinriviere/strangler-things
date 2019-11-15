@@ -16,7 +16,7 @@ class ModalLose extends Component {
           </h2>
           <img
             src="http://giphygifs.s3.amazonaws.com/media/jUwpNzg9IcyrK/giphy.gif"
-            alt="winner"
+            alt="loser"
           />
           <div className="button-section">
             <button>
