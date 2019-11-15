@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import bart from "../Design/Personnages/bart-lance-pierres.png";
-import homer from "../Design/Personnages/homer-dos.png";
+import homer from "../Design/Personnages/homer-dos1.png";
+import homerRight from "../Design/Personnages/homer-dos1-right.png";
+import homerLeft from "../Design/Personnages/homer-dos1-left.png";
+import homerAvoid from "../Design/Personnages/homer-dos1-avoid.png";
 
 const charactersStyle = {
   position: "absolute",
   backgroundSize: "100% 100%",
-  backgroundRepeat: "no-repeat",
+  backgroundRepeat: "no-repeat"
 };
 const bartStyle = {
   height: "20vh",
@@ -18,6 +21,37 @@ const homerStyle = {
   zIndex: -1
 };
 class Characters extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      movement: "none"
+    };
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { movement } = this.props;
+    if (movement !== prevProps.movement && movement) {
+      console.log("update");
+      this.setState({ movement: movement });
+    }
+    if (prevState.movement !== "none") {
+      setTimeout(() => this.setState({ movement: "none" }), 1000);
+    }
+  }
+
+  defineHomerSrc = movement => {
+    switch (movement) {
+      case "none":
+        return homer;
+      case "right":
+        return homerRight;
+      case "left":
+        return homerLeft;
+      case "avoid":
+        return homerAvoid;
+    }
+  };
+
   render() {
     return (
       <div
@@ -38,7 +72,7 @@ class Characters extends Component {
         />
         <img
           style={{ ...homerStyle, ...charactersStyle }}
-          src={homer}
+          src={this.defineHomerSrc(this.state.movement)}
           alt="homer"
         ></img>
       </div>
