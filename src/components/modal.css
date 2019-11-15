@@ -83,7 +83,7 @@
   font-family: "SimpsonFont";
   color: rgb(255, 230, 0);
   text-shadow: rgba(0, 0, 0, 0.678) 3px 3px 3px;
-  padding-top: 50% 0;
+  padding-top: 50%;
   background-color: rgba(70, 69, 67, 0.7);
 }
 

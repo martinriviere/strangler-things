@@ -79,7 +79,6 @@ class Game extends Component {
           (Math.floor(nbProjectiles / 15) && 100) +
           (Math.floor(nbProjectiles / 20) && 150)) +
       (nbProjectiles - 20 > 0 && (nbProjectiles - 20) * 200);
-    console.log(this.maxScore);
     this.launchGame();
   };
 
@@ -106,7 +105,6 @@ class Game extends Component {
   };
 
   removeRemainingProjectile = () => {
-    console.log(this.remainingProjectiles);
     this.remainingProjectiles--;
   };
 
@@ -167,6 +165,7 @@ class Game extends Component {
   };
 
   handleSwipe = event => {
+    console.log(this.state.streak);
     if (event === "right") {
       this.setState({ movement: "right" });
       const projectileToRemove = this.state.swipeZone.find(
