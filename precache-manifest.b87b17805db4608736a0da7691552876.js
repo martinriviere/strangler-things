@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b883d6391e7baafd4702d469c309dd9c",
+    "revision": "d85179fd082a346cc0b1512a0c011370",
     "url": "/lyon-0919-react-p2-strangler-things/index.html"
   },
   {
-    "revision": "25b4dc1f44a81e59fd3a",
+    "revision": "54ef7f5d27458686b955",
     "url": "/lyon-0919-react-p2-strangler-things/static/css/2.0624914a.chunk.css"
   },
   {
-    "revision": "3b9ba14703c7de799cdd",
-    "url": "/lyon-0919-react-p2-strangler-things/static/css/main.188ad575.chunk.css"
+    "revision": "3da767ee4ddff1d7a707",
+    "url": "/lyon-0919-react-p2-strangler-things/static/css/main.962b74aa.chunk.css"
   },
   {
-    "revision": "25b4dc1f44a81e59fd3a",
-    "url": "/lyon-0919-react-p2-strangler-things/static/js/2.d0913131.chunk.js"
+    "revision": "54ef7f5d27458686b955",
+    "url": "/lyon-0919-react-p2-strangler-things/static/js/2.c769b301.chunk.js"
   },
   {
-    "revision": "3b9ba14703c7de799cdd",
-    "url": "/lyon-0919-react-p2-strangler-things/static/js/main.6c3011e7.chunk.js"
+    "revision": "3da767ee4ddff1d7a707",
+    "url": "/lyon-0919-react-p2-strangler-things/static/js/main.c8c47092.chunk.js"
   },
   {
     "revision": "55b5054d4584da50f230",
@@ -116,16 +116,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/lyon-0919-react-p2-strangler-things/static/media/nelson-haha.2d645865.mp3"
   },
   {
-    "revision": "39b29d951feaf3a99b6c650078ccf31c",
-    "url": "/lyon-0919-react-p2-strangler-things/static/media/stars0.39b29d95.png"
+    "revision": "b37152c708b50baf074a4c41ccc708cc",
+    "url": "/lyon-0919-react-p2-strangler-things/static/media/stars0.b37152c7.png"
   },
   {
     "revision": "0efed2d740f1b627d2cc3bc56bd79f8d",
     "url": "/lyon-0919-react-p2-strangler-things/static/media/stars1.0efed2d7.png"
   },
   {
-    "revision": "fd3ed1b81878043187efa60e811de55f",
-    "url": "/lyon-0919-react-p2-strangler-things/static/media/stars2.fd3ed1b8.png"
+    "revision": "10683cf5b640281997c19754a0c4cf38",
+    "url": "/lyon-0919-react-p2-strangler-things/static/media/stars2.10683cf5.png"
   },
   {
     "revision": "4a33e5e4c862ee6f33b90d45b0f4f1e9",
