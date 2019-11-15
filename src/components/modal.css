@@ -1,4 +1,4 @@
-.container {
+/* .container {
   display: flex;
   justify-content: center;
   width: 100vw;
@@ -46,6 +46,21 @@
   z-index: 1019;
 }
 
+
+.ModalDrunk {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+  text-align: center;
+  font-size: 1em;
+  font-family: "SimpsonFont";
+  color: rgb(255, 230, 0);
+  text-shadow: rgba(0, 0, 0, 0.678) 3px 3px 3px;
+  padding-top: 50%;
+  background-color: rgba(70, 69, 67, 0.7);
+}
+
 .ModalWin,
 .ModalLose {
   width: 100vw;
@@ -73,19 +88,6 @@
   padding-top: 2vh;
 }
 
-.ModalDrunk {
-  position: absolute;
-  height: 100vh;
-  width: 100vw;
-  flex-direction: column;
-  text-align: center;
-  font-size: 1em;
-  font-family: "SimpsonFont";
-  color: rgb(255, 230, 0);
-  text-shadow: rgba(0, 0, 0, 0.678) 3px 3px 3px;
-  padding-top: 50%;
-  background-color: rgba(70, 69, 67, 0.7);
-}
 
 .ModalLose img,
 .ModalWin img {
@@ -157,4 +159,4 @@ a:visited {
     color: rgb(255, 230, 0);
     background-color: rgba(255, 2, 2, 0.678);
     text-shadow: rgba(0, 0, 0, 0.678) 3px 3px 3px;
-} */
+} */ */

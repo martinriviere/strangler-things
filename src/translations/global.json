@@ -17,9 +17,12 @@
     "tryAgain": ["Try again", "Essaye encore"],
     "lose": ["YOU LOSE !!", "PERDU !!"],
     "win": ["YOU WIN !!", "GAGNE !!"],
-    "start": ["HOW TO PLAY", "COMMENT JOUER"],
+    "start": ["RULES", "REGLES"],
     "swiperules": ["Swipe right for beers \rand left for doughnuts", "Swipe à droite pour les bières \ret à gauche pour les doughnuts"],
-    "taprules": ["Tap to avoid Flanders \rand Broccolis", "Tap pour eviter Flanders \ret les Brocolis"]
+    "taprules": ["Tap to avoid Flanders \rand Broccolis", "Tap pour eviter Flanders \ret les Brocolis"],
+    "drunk-title" : ["HOMER IS DRUNK !", "HOMER EST IVRE !"],
+    "drunk-text":[ "Right and left are reversed", "Inversion de la gauche et de la droite"]
+
   },
   "level": ["level", "niveau"]
 }
