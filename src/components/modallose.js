@@ -22,11 +22,11 @@ class ModalLose extends Component {
           <div className="button-section">
             <button>
               <Link to="/">
-                <i class="fas fa-home"></i>
+                <i className="fas fa-home"></i>
               </Link>
             </button>
             <button onClick={() => this.props.initializeGame(false)}>
-              <i class="fas fa-play"></i>
+              <i className="fas fa-play"></i>
             </button>
           </div>
         </div>

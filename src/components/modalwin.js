@@ -21,7 +21,7 @@ function ModalWin(props) {
         <div className="button-section">
           <button>
             <Link onClick={nextLevel} to="/">
-              <i class="fas fa-home"></i>
+              <i className="fas fa-home"></i>
             </Link>
           </button>
           <button
@@ -31,7 +31,7 @@ function ModalWin(props) {
               // props.initializeGame();
             }}
           >
-            <i class="fas fa-play"></i>
+            <i className="fas fa-play"></i>
           </button>
         </div>
       </div>

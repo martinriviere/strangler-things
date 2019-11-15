@@ -37,7 +37,7 @@ class ModalStartRules extends Component {
           <div className="button-section">
             <button className="buttonsPauseMenu">
               <Link to="/">
-                <i class="fas fa-home"></i>
+                <i className="fas fa-home"></i>
               </Link>
             </button>
             <button
@@ -46,7 +46,7 @@ class ModalStartRules extends Component {
                 !this.props.gameRuleDisplay && this.props.ruleModalDisplay
               }
             >
-              <i class="fas fa-play"></i>
+              <i className="fas fa-play"></i>
             </button>
           </div>
         </div>
