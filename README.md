@@ -4,6 +4,14 @@ This project is the 2nd important project I have worked on with 4 teammates duri
 It is a Progressive Web App that is intended to be installed on a smartphone.
 The game can be played on a computer, but is not designed to be in landscape orientation.
 
+<p align="center">
+  <img height="500px" src="https://user-images.githubusercontent.com/51818567/69257357-3ab5bc00-0bbb-11ea-8579-89eca478e5dc.png">
+ <img height="500px" src="https://user-images.githubusercontent.com/51818567/69257411-4ef9b900-0bbb-11ea-8f64-2affc5f7c648.png">
+ <img height="500px" src="https://user-images.githubusercontent.com/51818567/69257461-60db5c00-0bbb-11ea-987c-4babf551cd94.png">
+</p>
+
+
+
 ## Installation
 
 Please visit [http://tinyurl.com/strangler-things](http://tinyurl.com/strangler-things) to view the app and refer to the following instructions depending on your smartphone.
