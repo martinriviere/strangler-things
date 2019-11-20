@@ -1,68 +1,35 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Simpsons Strangler Things
 
-## Available Scripts
+This project is the 2nd important project I have worked on with 4 teammates during my Wild Code School training. The context of this project was: create a mobile game based on the Simpsons universe in 5 weeks.
+It is a Progressive Web App that is intend to be installed on a smartphone.
+The game can be played on a computer, but is not designed to be in landscape orientation.
 
-In the project directory, you can run:
+## Installation
 
-### `npm start`
+Please visit [http://tinyurl.com/strangler-things](http://tinyurl.com/strangler-things) to view the app and refer to the following instructions depending on your smartphone.
+This will install it on your smartphone, and you will then be able to have a much more fun experience even without any network.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Android using Chrome
+If you use an Android phone with Chrome, a popup should suggest you to add the app to your homescreen. If not, please go to the settings menu, and click the Add to Home Screen button.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### iOS using Safari
+Please click on the share button, and then Add to Home Screen.
 
-### `npm test`
+## Development mode
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+You can launch this app in development mode by cloning this repo and using  `npm start` in the new folder (be sure that Node.js is installed on your machine first).
+This will start a local server (http://localhost:3000 or another port if 3000 is not available).
 
-### `npm run build`
+## Game rules
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The aim of the game is to touch or swipe in the appropriate direction when the items are in the designated area.  Please refer to game rules that are shown when you start and that are accessible during the game through the pause menu.
+The timing of the swipe influences the amount of points you get (the most in the middle, the most points).
+Swiping several items in a row makes combos and also influences the amount of points.
+You lost a life each time you miss an item.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+If you survive to all the items of the level, you access to the next level and your progression is saved.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+You can play on a computer using the arrow keys: 
+- `&#8592;`: swipe left
+- `&#8594;`: swipe right
+- `&#8595;`: touch
