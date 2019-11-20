@@ -30,6 +30,6 @@ You lost a life each time you miss an item.
 If you survive to all the items of the level, you access to the next level and your progression is saved.
 
 You can play on a computer using the arrow keys: 
-- `&#8592;`: swipe left
-- `&#8594;`: swipe right
-- `&#8595;`: touch
+- ⇦: swipe left
+- ⇨: swipe right
+- ⇩: touch
