@@ -13,7 +13,7 @@ This will install it, and you will then be able to have a much more fun experien
 If you use an Android phone with Chrome, a popup should suggest you to add the app to your homescreen. If not, please go to the settings menu, and click the Add to Home Screen button.
 
 ### iOS using Safari
-Please click on the share button, and then Add to Home Screen.
+Please click the share button, and then Add to Home Screen.
 
 ## Development mode
 
